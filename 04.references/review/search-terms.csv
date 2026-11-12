@@ -1,0 +1,94 @@
+route,question,concept,term,source
+q1,q1,place,Congo Basin,synonym
+q1,q1,place,Central Africa,synonym
+q1,q1,place,Congo,statement
+q1,q1,place,Zaire,synonym
+q1,q1,place,Cameroon,synonym
+q1,q1,place,Cameroun,synonym
+q1,q1,place,Gabon,synonym
+q1,q1,place,Central African Republic,synonym
+q1,q1,place,Equatorial Guinea,synonym
+q1,q1,change,deforestation,statement
+q1,q1,change,forest loss,synonym
+q1,q1,change,land use change,statement
+q1,q1,change,land cover change,synonym
+q1,q1,model,deforestation risk,statement
+q1,q1,model,risk map,statement
+q1,q1,model,spatial model,synonym
+q1,q1,model,spatially explicit,synonym
+q1,q1,model,predictive,synonym
+q1,q1,model,projection,synonym
+q1,q1,model,scenario,synonym
+q1,q1,model,simulation,synonym
+q1,q1,model,land change model,synonym
+q2,q2,place,Congo Basin,synonym
+q2,q2,place,Central Africa,synonym
+q2,q2,place,Congo,statement
+q2,q2,place,Zaire,synonym
+q2,q2,place,Cameroon,synonym
+q2,q2,place,Cameroun,synonym
+q2,q2,place,Gabon,synonym
+q2,q2,place,Central African Republic,synonym
+q2,q2,place,Equatorial Guinea,synonym
+q2,q2,change,deforestation,statement
+q2,q2,change,forest loss,synonym
+q2,q2,driver,driver,synonym
+q2,q2,driver,drivers,synonym
+q2,q2,driver,determinant,synonym
+q2,q2,driver,determinants,synonym
+q2,q2,driver,proximate cause,synonym
+q2,q2,driver,underlying cause,synonym
+q2,q2,driver,logging,statement
+q2,q2,driver,population growth,statement
+q3,q3,place,Congo Basin,synonym
+q3,q3,place,Central Africa,synonym
+q3,q3,place,Congo,statement
+q3,q3,place,Zaire,synonym
+q3,q3,place,Cameroon,synonym
+q3,q3,place,Cameroun,synonym
+q3,q3,place,Gabon,synonym
+q3,q3,place,Central African Republic,synonym
+q3,q3,place,Equatorial Guinea,synonym
+q3,q3,change,deforestation,statement
+q3,q3,change,forest loss,synonym
+q3,q3,change,forest cover,synonym
+q3,q3,change,land cover,synonym
+q3,q3,accuracy,accuracy,synonym
+q3,q3,accuracy,validation,synonym
+q3,q3,accuracy,agreement,synonym
+q3,q3,accuracy,area estimation,synonym
+q3,q3,accuracy,reference data,synonym
+q3,q3,accuracy,training data,statement
+q4,q4,change,deforestation,statement
+q4,q4,baseline,risk map,statement
+q4,q4,baseline,deforestation risk,statement
+q4,q4,baseline,baseline,synonym
+q4,q4,baseline,reference level,synonym
+q4,q4,evaluation,validation,synonym
+q4,q4,evaluation,accuracy,synonym
+q4,q4,evaluation,uncertainty,synonym
+q4,q4,evaluation,overestimation,synonym
+q4,q4,evaluation,over-crediting,synonym
+q4,q4,evaluation,benchmark,synonym
+q4,q4,tropics,tropical,synonym
+q4,q4,tropics,REDD,synonym
+q5a,q5,name,Global Land Cover Mapping and Estimation,statement
+q5b,q5,acronym,GLanCE,statement
+q5b,q5,data,Landsat,synonym
+q5b,q5,data,land cover,synonym
+q5c,q5,cites,10.1038/s41597-023-02798-5,seed
+q5d,q5,cites,10.3389/frsen.2022.894571,seed
+q6,q6,change,deforestation,statement
+q6,q6,change,forest loss,synonym
+q6,q6,model,deforestation risk,statement
+q6,q6,model,risk map,statement
+q6,q6,model,spatial model,synonym
+q6,q6,model,spatially explicit,synonym
+q6,q6,model,land change model,synonym
+q6,q6,model,predictive model,synonym
+q6,q6,model,deforestation model,synonym
+q6,q6,model,deforestation probability,synonym
+q6,q6,model,logistic regression,synonym
+q6,q6,tropics,tropical,synonym
+q6,q6,tropics,tropics,synonym
+q6,q6,tropics,REDD,synonym
