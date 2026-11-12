@@ -112,7 +112,29 @@ The review code stays out of the manuscript, because the article reports nothing
 
 ## Deviations
 
-None yet.
+1. On 12 November 2026, two questions were added after the search had run once under the frozen text. A count on Semantic Scholar had shown that the frozen routes missed most Congo Basin papers naming emissions or risk. Seamus answered in these words.
+
+   > "Yeah, definitely add emissions to the literature review. That's 100% needed. Add risk too."
+
+   > "About disease and landslides. No, don't leave it out. It's important. Because that's, so spatial risk modeling is quite a interdisciplinary science. It's very much a new evolving area of forest monitoring research."
+
+   The two questions follow the six above.
+
+   7. Which emissions from deforestation, forest degradation and land use change have been estimated in the Congo Basin, by which methods and from which forest change data? Population Congo Basin land, concept greenhouse gas emissions and carbon losses from forest change, context research, REDD+ and national reporting. Route `q7`.
+   8. Which spatial risk models in other fields, such as disease, landslides and fire, have used land use or forest change in the Congo Basin, and by which methods? Population Congo Basin land, concept spatial models of risk, context any field. Route `q8`.
+
+   Each new route joins the place and change terms of question 1 with one more concept. That concept is emissions or emission for `q7`, and risk for `q8`. Emissions and risk are marked `statement`, as Seamus's words of 12 November 2026. The rows were appended to `search-terms.csv`, and no frozen row was changed. On Semantic Scholar on 12 November 2026, the two routes matched 377 and 196 records, of which 207 and 114 had not been found before.
+
+   Two adjudication rules were added with them.
+
+   7. If published Congo Basin emission estimates disagree because of the forest change data they used, the study's land use change map is framed as bearing on emissions. If they agree, emissions are context for the Introduction.
+   8. If a spatial risk method from another field has been applied with land use change in the Congo Basin and validated, it enters the comparison of question 6. If none has, those fields are cited as context only.
+
+   Criterion 4 is relaxed for question 8 alone. A record bears on it when forest or land use change enters its model as a predictor or an outcome, without being its central subject. Every route is searched again under this text, and only the records of that search are screened.
+
+2. On 12 November 2026, the screening rule was revised once, as the Screening section allows. The full screen is read under `screening-rule-2.md`, whose SHA-256 digest begins 64b87fc4, and `screening-rule.md` is kept as frozen. The new rule adds questions 7 and 8 and settles the three pilot disagreements by rule. A question 5 record must name the GLanCE data in its title or abstract. Forest change of the distant past, rebuilt from pollen or lake sediment, is `wrong-concept`. A record with no abstract is `undecided` unless its title shows a search term matched something else.
+
+3. On 12 November 2026, a reader was changed. Reader A of the pilot was replaced for the full screen by a third language model, run in its own session. That reader screened the same 60 pilot records first and agreed with reader B on 55 [Cohen's kappa 0.83]. Each disagreement of the full screen is read a third time by the pilot's reader A, who settles it.
 
 ## References
 

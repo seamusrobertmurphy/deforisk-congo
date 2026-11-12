@@ -92,3 +92,32 @@ q6,q6,model,logistic regression,synonym
 q6,q6,tropics,tropical,synonym
 q6,q6,tropics,tropics,synonym
 q6,q6,tropics,REDD,synonym
+q7,q7,place,Congo Basin,synonym
+q7,q7,place,Central Africa,synonym
+q7,q7,place,Congo,statement
+q7,q7,place,Zaire,synonym
+q7,q7,place,Cameroon,synonym
+q7,q7,place,Cameroun,synonym
+q7,q7,place,Gabon,synonym
+q7,q7,place,Central African Republic,synonym
+q7,q7,place,Equatorial Guinea,synonym
+q7,q7,change,deforestation,statement
+q7,q7,change,forest loss,synonym
+q7,q7,change,land use change,statement
+q7,q7,change,land cover change,synonym
+q7,q7,emissions,emissions,statement
+q7,q7,emissions,emission,synonym
+q8,q8,place,Congo Basin,synonym
+q8,q8,place,Central Africa,synonym
+q8,q8,place,Congo,statement
+q8,q8,place,Zaire,synonym
+q8,q8,place,Cameroon,synonym
+q8,q8,place,Cameroun,synonym
+q8,q8,place,Gabon,synonym
+q8,q8,place,Central African Republic,synonym
+q8,q8,place,Equatorial Guinea,synonym
+q8,q8,change,deforestation,statement
+q8,q8,change,forest loss,synonym
+q8,q8,change,land use change,statement
+q8,q8,change,land cover change,synonym
+q8,q8,risk,risk,statement
