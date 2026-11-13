@@ -136,6 +136,8 @@ The review code stays out of the manuscript, because the article reports nothing
 
 3. On 12 November 2026, a reader was changed. Reader A of the pilot was replaced for the full screen by a third language model, run in its own session. That reader screened the same 60 pilot records first and agreed with reader B on 55 [Cohen's kappa 0.83]. Each disagreement of the full screen is read a third time by the pilot's reader A, who settles it.
 
+4. On 13 November 2026, a column was added to the charting. Each included record also takes its main result, in the reader's words and with its numbers, in a field named `finding`. The seven columns above give a record's design but not what it found, and the Introduction reports what prior work found. The fields are set out in `charting-rule.md`. Both readers charted ten records first, and the rule was revised once from that pilot into `charting-rule-2.md`, which the full charting follows.
+
 ## References
 
 Arksey, H. and O'Malley, L. (2005) Scoping studies, towards a methodological framework. International Journal of Social Research Methodology 8(1), 19 to 32. https://doi.org/10.1080/1364557032000119616
