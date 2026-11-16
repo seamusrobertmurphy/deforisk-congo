@@ -1,0 +1,13 @@
+---
+format:
+  docx:
+    reference-doc: ../04.references/style-letter.docx
+---
+
+The Editors, Forest Ecology and Management
+
+Dear Editors,
+
+Yours sincerely,
+
+Dr. Seamus Murphy

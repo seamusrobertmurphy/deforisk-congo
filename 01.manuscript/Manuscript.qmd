@@ -1,0 +1,106 @@
+---
+title: "deforisk-congo"
+author:
+  - name: Seamus Murphy
+    orcid: 0000-0002-1792-0351
+    email: seamusrobertmurphy@gmail.com
+    corresponding: true
+    affiliations:
+      - name: TUV SUD Canada
+        city: Comox
+        region: British Columbia
+        country: Canada
+date: today
+
+format:
+  docx:
+    prefer-html: true
+    reference-doc: ../04.references/style-formal.docx
+    highlight-style: pygments
+    number-sections: true
+  html:
+    page-layout: full
+    toc: true
+    toc-title: ""
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    embed-resources: true
+    code-fold: false
+    code-tools: true
+    code-link: true
+    theme:
+      - ../04.references/style.scss
+      - cosmo
+
+crossref:
+  fig-title: "Fig."
+  fig-prefix: "Fig."
+  title-delim: ""
+
+execute:
+  eval: true
+  echo: true
+  warning: false
+  message: false
+  error: false
+  comment: NA
+
+engine: knitr
+citeproc: true
+editor: visual
+bibliography:
+  - ../04.references/references.bib
+csl: ../04.references/apa.csl
+---
+
+```{r}
+#| label: setup
+#| echo: true
+#| output: false
+knitr::opts_chunk$set(fig.path = "../03.outputs/PNG/", dpi = 300, dev = "png")
+fetch <- function(url, file) if (!file.exists(file)) {
+  dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
+  download.file(url, file, mode = "wb")
+}
+fmt_tbl <- function(df, right = NULL) {
+  df <- dplyr::mutate(df, dplyr::across(dplyr::any_of("Year"), as.integer))
+  right <- union(names(df)[vapply(df, is.numeric, TRUE)], right)
+  flextable::flextable(df) |>
+    flextable::fontsize(size = 9, part = "all") |>
+    flextable::align(align = "center", part = "header") |>
+    flextable::align(j = setdiff(names(df), right), align = "left", part = "body") |>
+    flextable::align(j = right, align = "right", part = "body") |>
+    flextable::colformat_int(big.mark = "") |>
+    flextable::padding(padding.top = 1, padding.bottom = 1, part = "all") |>
+    flextable::set_table_properties(layout = "autofit", width = 1)
+}
+th <- ggplot2::theme_bw(base_size = 8) + ggplot2::theme(panel.grid.minor = ggplot2::element_blank())
+num <- \(x, d = 1) gsub("-(?=[0-9])", "−", sprintf(paste0("%.", d, "f"), round(x, d) + 0), perl = TRUE)
+pm <- function(x, s, digits) dplyr::case_when(is.na(x) ~ "", is.na(s) ~ formatC(x, format = "f", digits = digits),
+  .default = paste0(formatC(x, format = "f", digits = digits), " ± ", formatC(s, format = "f", digits = digits)))
+ci95 <- function(x) if (stats::sd(x) > 0) stats::t.test(x)$conf.int else c(mean(x), mean(x))
+fmt_p <- \(p) if (p < 0.001) "< 0.001" else paste("=", formatC(p, format = "f", digits = 3))
+fmt_t <- function(fit, term) {
+  s <- summary(fit)$coefficients[term, ]
+  paste0("[t(", stats::df.residual(fit), ") = ", formatC(s[[3]], format = "f", digits = 3), ", p ", fmt_p(s[[4]]), "]")
+}
+fmt_paired <- \(tt) paste0("[t(", tt$parameter, ") = ", formatC(tt$statistic, format = "f", digits = 3), ", p ", fmt_p(tt$p.value), "]")
+```
+
+# Abstract {.unnumbered}
+
+# Introduction
+
+# Materials and Methods
+
+# Results
+
+# Discussion
+
+# Conclusions
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
