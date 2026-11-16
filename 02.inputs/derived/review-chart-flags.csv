@@ -1,0 +1,129 @@
+record_id,reader,flag,note
+r8b2a8bba,b,merge,Figshare table carrying its parent paper's abstract on Panama's reference level
+r46d15f96,b,no-question,"1991 policy report with no data analysis, keeps q2"
+r170d6a66,b,place,kept q7 although placed only through areas around the Gulf of Guinea
+r03fbc9a6,b,no-question,no forest change
+r0977197c,b,no-question,no baseline evaluated
+r1400b0f4,b,no-question,no emissions estimated
+r04fded56,b,merge,dataset record
+r05d1403c,b,merge,"dataset, probably the data of r00abf370"
+r0f872347,b,merge,article whose abstract ends in a dataset description
+r0866a7b1,b,abstract,abstract is a table fragment
+r3905394e,b,no-question,carbon gain only
+r32a3732b,b,no-question,commentary with no model
+r3e08afcf,b,no-question,land cover only as a static factor
+r21f378f3,b,no-question,deforestation only in the interpretation
+r267d4e07,b,no-question,driver tests left to future work
+r2b2ec274,b,merge,code record of r37acea1f
+r385fad29,b,merge,supplement of r32414e10
+r281bcb23,b,merge,review comment on r2b983630
+r23513a96,b,abstract,title is a book on research universities and the abstract describes another work
+r282274bf,b,abstract,title and abstract describe different works
+r3efff9d8,b,no-question,"no driver measured from data, keeps q2"
+r44c0cf6d,b,no-question,"no driver measured from data, keeps q2"
+r4c6aa2ad,b,no-question,"no driver measured from data, keeps q2"
+r5023627f,b,no-question,"no driver measured from data, keeps q2"
+r4186d091,b,merge,dataset or table carrying a parent abstract
+r50076756,b,merge,dataset or table carrying a parent abstract
+r551b7aac,b,merge,dataset or table carrying a parent abstract
+r562636fa,b,merge,dataset or table carrying a parent abstract
+r49ab6ee4,b,abstract,"no abstract, charted from the title"
+r537e99ac,b,abstract,"no abstract, charted from the title"
+r4ce3821c,b,language,abstract in Spanish
+r51d4ca9b,b,place,title names the Democratic Republic of the Congo and the abstract the Republic of the Congo
+r6e6e8c26,b,no-question,"driver study in Laos that predicts nothing, keeps q6"
+r613415b0,b,merge,supplement of an Ebola spillover paper
+r7f122c0b,b,no-question,"descriptive work with no driver data, keeps q2"
+r8cd86cc5,b,no-question,"descriptive work with no driver data, keeps q2"
+r8ef843ef,b,no-question,"descriptive work with no driver data, keeps q2"
+r806eec5a,b,no-question,"habitat model with no forest change, keeps q1"
+r804b7de6,b,abstract,abstract is a table of contents
+r84d37b19,b,abstract,abstract holds an unrelated passage
+r93630821,b,no-question,"detects past loss only, in Ecuador"
+ra6e21f50,b,no-question,"detects past loss only, place not named"
+r9efc63fd,b,no-question,names Africa but not the Congo Basin
+ra342780f,b,no-question,names Africa but not the Congo Basin
+r9825bc49,b,no-question,"static land cover, not change"
+r945cefc0,b,merge,dataset carrying its paper's abstract
+r9d947691,b,merge,code archive of a submitted paper
+radafc358,b,no-question,static land cover only
+raeca1f38,b,no-question,no data
+rb1af7a08,b,no-question,no data
+rb8fc4a24,b,no-question,no data
+rbadfcf9a,b,no-question,no data
+rbc8d2eb4,b,no-question,no emissions estimate
+rbe069225,b,no-question,foreword with no Congo Basin place and no prediction
+rc22cdc76,b,no-question,timber value model
+rb6c61a33,b,merge,dataset carrying its paper's abstract
+rb1486add,b,merge,French edition of rae160cf6 with the same abstract
+rc70cf029,b,no-question,review with no model or map
+rcd4dee73,b,no-question,review with no model or map
+rdd2dc7ee,b,no-question,review with no model or map
+rc8581620,b,no-question,no driver data
+rd539c573,b,no-question,no driver data
+rdc01c588,b,no-question,"reports effects of forest loss, not its drivers"
+rcf701315,b,no-question,predicts nothing
+rd2adf144,b,no-question,commentary
+rd379ae9b,b,no-question,does not name the GLanCE data
+rdbdac2b1,b,no-question,"regrowth gains, not losses"
+rc5d30379,b,merge,dataset carrying a paper's abstract
+rd83e035b,b,merge,dataset carrying a paper's abstract
+re706bf60,b,no-question,reason not given by the reader
+redf8b4f9,b,no-question,reason not given by the reader
+rf4712446,b,no-question,reason not given by the reader
+rf9592564,b,no-question,reason not given by the reader
+rfc96d090,b,no-question,reason not given by the reader
+re7e391dc,b,merge,dataset record
+rf0d0c952,b,merge,dataset record
+ref722bb7,b,place,title names the Republic of the Congo and the abstract the Democratic Republic of the Congo
+r1400b0f4,a,no-question,"sampling plot proposal, keeps q7"
+raba327f7,a,no-question,"cost and benefit analysis, keeps q6"
+rb6de9fe9,a,no-question,"forest inventory, keeps q1 q2"
+rbf8acfbd,a,no-question,"framework for setting reference levels, keeps q4"
+re918c3fe,a,no-question,"framework for setting reference levels, keeps q4"
+re918c3fe,a,merge,rbf8acfbd and re918c3fe are the same brief
+rc76158b4,a,no-question,"oil palm economics, keeps q1 q2"
+r03bd0970,a,no-question,"warming from deforestation, keeps q8"
+r007bbb22,a,no-question,weak q2
+r9697003b,a,no-question,weak q8
+rf7dcd1c6,a,no-question,weak q8
+r385fad29,a,merge,supplement carrying its parent paper's abstract
+r3e94846a,check,twin,may be the repository copy of the 2024 article rb2b7209a
+rbdfad4f0,check,twin,thesis that holds the 2015 article r65e29b81
+r282274bf,check,abstract,"carries the World Bank series abstract it shares with rcc19de0e, not its own"
+rcc19de0e,check,abstract,"carries the World Bank series abstract it shares with r282274bf, not its own"
+rdfec57d4,check,twin,"shares its abstract with r6304b05c, another chapter of the same book"
+ra80a407e,check,twin,"shares its abstract with r78ba0406, which was excluded as wrong-concept"
+r4ce3821c,check,twin,"the same thesis as rddcf7075, which was excluded as not English"
+r04fded56,check,dataset,dataset whose paper is not among the records
+rc5d30379,check,dataset,dataset whose paper is not among the records
+r9d947691,check,dataset,code and data of a paper not among the records
+r05d1403c,check,dataset,"data product, perhaps behind rf868d99c or r00abf370"
+r142b2bb0,check,twin,thesis that may hold the 2012 article r831faa31
+r2428058b,check,twin,2022 abstract that may be the study of the 2025 article r01dfbadd
+r62420d66,check,twin,thesis that may hold the articles r2806a553 and r450f484b
+r63f4947a,check,twin,thesis that may hold the articles r1c89335f and rdbebb3c9
+r7c2c53b0,check,twin,thesis that may hold the articles rc8612e28 and rfcfc906e
+r8e00742f,check,twin,2024 abstract that may be the study of the 2026 article r5d662802
+r45adb449,check,twin,thesis that may hold the 2006 article rceadd7ef
+rd2dd7205,b,no-question,"conceptual framework that maps no risk, keeps q8"
+ra2471524,b,no-question,"evaluates a moratorium, not a baseline, keeps q4"
+r6fc16eaf,b,no-question,"narrative chapter with no data, keeps q2"
+r22b58447,b,no-question,"evaluates project effect by matching, not a baseline, keeps q4"
+r224902e7,b,no-question,"two sentences of background, keeps q4"
+r27ff3ac6,b,abstract,"abstract is the paper's introduction, q6 rests on the title"
+r14caec35,check,conflict,"set in Ecuador, a declared conflict of interest if the manuscript cites it"
+r2a1e5350,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"
+r32226e35,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"
+r4f62ab26,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"
+r79b61a67,check,conflict,"set in Ecuador, a declared conflict of interest if the manuscript cites it"
+r7a3dff18,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"
+r93630821,check,conflict,"set in Ecuador, a declared conflict of interest if the manuscript cites it"
+rb1fc39db,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"
+rcae7ac0e,check,conflict,"set in Ecuador, a declared conflict of interest if the manuscript cites it"
+rcd9bc0c1,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"
+rd33bb82d,check,conflict,"set in Ecuador, a declared conflict of interest if the manuscript cites it"
+re332362f,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"
+r4e1a8262,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"
+r7f628676,check,conflict,"set in Ecuador, a declared conflict of interest if the manuscript cites it"
+rcbb9ec06,check,conflict,"set in Guyana, a declared conflict of interest if the manuscript cites it"

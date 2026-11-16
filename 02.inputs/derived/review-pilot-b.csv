@@ -1,0 +1,61 @@
+record_id,decision,reason,questions,note
+r82bec497,include,,q1,"Congo Basin chapter projecting climate effects of continued forest loss, scenario role unclear"
+r571384db,exclude,wrong-concept,,"Savanna land use model in northern Cameroon, abstract never mentions forest"
+r699a7217,include,,q1 q3,"Landsat forest cover maps for four dates near Kinshasa, with future projection"
+r32414e10,exclude,wrong-concept,,"Models peat carbon under drainage and warming, forest change itself not mapped"
+r860e7ef3,include,,q1 q3,"Radar land cover maps of Douala show vegetation decline, projected to 2035"
+r6139cb8f,include,,q1,"Cellular automata model simulates DRC forest clearing to 2050, checked on past loss"
+rf5c88334,include,,q2,Lake sediments test climate against farming as cause of ancient rainforest retreat
+rc19b59c1,undecided,,q3 q5,"No abstract, title suggests comparison of land cover products, place unknown"
+raf55b4ff,exclude,duplicate,,"Repository copy of the peatland article abstract, same work as r32414e10"
+r232b5853,undecided,,q1 q3,"No abstract, bonobo habitat monitoring in DRC may map forest loss"
+r385fad29,exclude,duplicate,,"Supplement to the peatland carbon article, same work as r32414e10"
+re5184f8e,exclude,wrong-population,,"Rubber land use scenarios in Yunnan, Central Africa cited only as analogy"
+r21fc8762,include,,q1 q2 q3,"Spatial model of forest clearing in southern Cameroon, roads tested, projections validated"
+r1522002b,exclude,wrong-concept,,"Wood isotope tracing of timber origin in Gabon, no forest change"
+re968f313,undecided,,q4,"No abstract, Congo carbon credit policy may address crediting baselines"
+reb474d7b,include,,q1 q2 q3,Radar alerts and image reading attribute peat forest disturbance mainly to farming
+r7c2c53b0,include,,q2 q3,Deep learning classifies direct causes of forest loss across Cameroon
+r3efff9d8,include,,q2,"Farming and population causes of Central African forest loss, use of data unclear"
+r8b616661,include,,q1 q2,Rule based forest loss allocation tested against MODIS change in Central Africa
+raf91ca3b,exclude,wrong-concept,,"Teak growth trial near Yangambi, forest loss only motivates the study"
+r32951fe7,exclude,wrong-concept,,"Urban surface temperature study in Yaounde, forest change secondary"
+r826e3105,include,,q1 q3,Compares and merges two Landsat forest change products for Cameroon
+r5f2d570b,exclude,wrong-concept,,"Cocoa trader survey in Kumba, forest loss argued but never measured"
+r22ae2544,exclude,wrong-concept,,"Malaria spillover framework, forest loss is background only"
+rdb73455f,exclude,wrong-concept,,"Sanaga hydrology model, projected land cover serves only as an input"
+r5723a7b4,exclude,wrong-concept,,"Groundwater zoning in western Cameroon, land cover is one weighted layer"
+rfefbf877,include,,q1 q3,"Regional 30 m land cover maps for Kasai basin beat global maps, cropland gains measured"
+r22a4b8c4,exclude,wrong-concept,,"Laser scanning of tree biomass in eastern Cameroon, no forest change"
+r193b81b4,include,,q1 q2 q3,Landsat deforestation rates and farming effects on forest near Mount Cameroon
+ra340ecb4,exclude,wrong-concept,,"Governance analysis of REDD+ and timber legality in Cameroon, no change measured"
+redd1f32b,exclude,off-topic,,"Anthology of social simulation papers, not about forest change"
+rdb8d6186,undecided,,q1 q3,"No abstract, Mefou water study may project land cover change"
+r751796c1,include,,q2 q4,"Tests designs for judging REDD+ impact on tree loss, Cameroon sites included"
+r2a15b20d,exclude,wrong-concept,,"Global vegetation carbon model thesis, Central Africa named only for carbon fluxes"
+r383d7a53,undecided,,q3,"No abstract, agroecological zoning in South Kivu may map land cover"
+r85c13706,exclude,wrong-concept,,"Urban classification method for two Cameroon highland towns, no forest change"
+r82cb57af,include,,q4,Review of satellite monitoring for third party audit of REDD+ baselines
+rc73368f2,include,,q4,Uncertainty analysis of a REDD+ emission baseline and its detectability in Panama
+r41b9d771,undecided,,q4,"No abstract, title points to uncertainty in REDD+ emission reduction estimates"
+r474f84c8,include,,q4,Review of REDD+ finance flags excess credits from overstated reference baselines
+r58e82313,exclude,wrong-concept,,"Expert survey of Asian forest carbon markets, baselines never evaluated"
+rf63bceee,exclude,off-topic,,"Panama history essay, Congo matched the name of a Darien river"
+r9a649a7e,include,,q4,REDD+ book with chapters on reference levels and project baselines
+r8d0ec351,exclude,wrong-population,,"Oil palm conversion mapping and product comparison in Uganda, outside the six countries"
+re918c3fe,include,,q4,Proposes a staged approach to reference levels that addresses bias and data gaps
+rdf5f731a,include,,q4,Policy report discussing baseline setting and emission uncertainty for avoided clearing
+r2723621f,exclude,wrong-population,,"Forest loss image retrieval model for Indonesia, outside the Congo Basin"
+reb9e1958,exclude,wrong-population,,"Forest change mapping for a Sri Lanka district, reference level not evaluated"
+rf9aae17e,exclude,wrong-concept,,"Global NDVI persistence by biome, no forest change and no Congo result"
+rf8ac7c27,exclude,wrong-population,,"Land cover mapping network trained on global labels, no Congo study area"
+r522862c0,undecided,,q3,"No abstract, satellite time series reconstruction method, study area unknown"
+r4918b3d7,include,,q5,"Review of global land change mapping history, may describe GLanCE products"
+r96ec7e40,exclude,wrong-population,,"Fire driver regression for Indonesia, outside the Congo Basin"
+r81c1def6,exclude,wrong-population,,"Land cover change maps for the Canadian Prairies, outside the Congo Basin"
+r4fad4ec0,exclude,wrong-population,,"Croatian island land cover change, outside the Congo Basin"
+ra5f025c3,undecided,,q3,"No abstract, land cover classification network, study area unknown"
+raf5830af,exclude,wrong-population,,Projects forest loss in the upper Zambezi basin of southern Africa
+r4fbda021,exclude,not-research,,Journal preface introducing a special issue
+rf7b2a16b,exclude,wrong-population,,"Surface water change in European coastal basins, no forest or Congo"
+r95f772a7,exclude,wrong-population,,"Wetland change detection in a French marsh, outside the Congo Basin"

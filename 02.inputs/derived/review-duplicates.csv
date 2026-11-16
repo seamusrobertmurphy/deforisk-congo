@@ -1,0 +1,47 @@
+record_id,duplicate_of,kind,action,code,evidence,checked
+r8df5cce0,rae160cf6,catalogue copy,exclude,duplicate,"the same World Bank report listed twice, the kept record carrying its DOI, same first author, abstracts share 99 per cent of their five word runs",2026-11-13
+rb1486add,rae160cf6,translation,exclude,duplicate,"French edition of the same World Bank report, same first author, abstracts share 99 per cent of their five word runs",2026-11-13
+r7662aac3,r04591b1f,translation,exclude,duplicate,"French edition of the same World Bank working paper on agriculture, abstracts share 100 per cent of their five word runs",2026-11-13
+r0f3e9036,r6b58ceb8,catalogue copy,exclude,duplicate,"the same World Bank working paper on wood energy, the kept record carrying its DOI, same first author, abstracts share 100 per cent of their five word runs",2026-11-13
+r2dbef9e6,r6b58ceb8,translation,exclude,duplicate,"French edition of the same World Bank working paper on wood energy, same first author, abstracts share 100 per cent of their five word runs",2026-11-13
+r05c18416,r35d3e657,catalogue copy,exclude,duplicate,"the same 2004 thesis listed as a book, the kept record carrying its DOI, same first author, abstracts share 97 per cent of their five word runs",2026-11-13
+rd4d8d1c8,r2b983630,preprint,exclude,duplicate,"discussion paper nhess-2021-336 of the 2023 article, same first author, abstracts share 54 per cent of their five word runs",2026-11-13
+r0a393afd,r2b983630,conference abstract,exclude,duplicate,"2021 conference abstract of the same landslide study, same first author",2026-11-13
+r281bcb23,r2b983630,peer review comment,exclude,not-research,"reviewer comment on nhess-2021-336, carrying the paper's abstract, same first author, abstracts share 99 per cent of their five word runs",2026-11-13
+r3c9daf82,r2b1768a3,catalogue copy,exclude,duplicate,"SSRN copy of the same working paper, same first author, titles match",2026-11-13
+r427af11b,r8635f7bb,conference abstract,exclude,duplicate,"2024 conference abstract of the same study, same first author, abstracts share 91 per cent of their five word runs",2026-11-13
+rfa874914,r43483a43,translation,exclude,duplicate,"French edition of the same 2013 report, same first author",2026-11-13
+r6ede57c7,rd539c573,translation,confirm,duplicate,"French edition of the 2020 second edition, same first author",2026-11-13
+r526f2f2d,r62b87d75,preprint,exclude,duplicate,"preprint of the same 2021 article, same first author, abstracts share 89 per cent of their five word runs",2026-11-13
+r66c25f2d,r82bec497,catalogue copy,exclude,duplicate,"online entry of the same chapter under a second DOI, same first author, abstracts share 100 per cent of their five word runs",2026-11-13
+r67050fa0,rf6bc71a2,translation,exclude,duplicate,"French edition of the same 2003 book, same first author, abstracts share 100 per cent of their five word runs",2026-11-13
+re44747c2,r7fa3463c,republication,exclude,duplicate,"the 2006 article reprinted as a 2011 chapter, same first author, abstracts share 92 per cent of their five word runs",2026-11-13
+r9b173b33,rd1bb1536,preprint,exclude,duplicate,"preprint of the same 2026 article, same first author, abstracts share 65 per cent of their five word runs",2026-11-13
+ra6a376f8,re918c3fe,translation,exclude,duplicate,"Japanese edition of the same chapter, same first author, abstracts share 100 per cent of their five word runs",2026-11-13
+ra84d8a31,rd758ae60,conference abstract,exclude,duplicate,"2022 conference abstract of the same Mefou study, abstracts share 94 per cent of their five word runs",2026-11-13
+rb6c61a33,r71499970,dataset,exclude,duplicate,"data and code deposit of the article, same first author, abstracts share 88 per cent of their five word runs",2026-11-13
+r562636fa,r098bd82b,dataset,exclude,duplicate,"Figshare table of the article, same first author, abstracts share 98 per cent of their five word runs",2026-11-13
+r8b2a8bba,r098bd82b,dataset,exclude,duplicate,"Figshare table of the article, same first author, abstracts share 98 per cent of their five word runs",2026-11-13
+r2b2ec274,r37acea1f,dataset,exclude,duplicate,"code deposit of the article, same first author, titles match",2026-11-13
+r613415b0,r37acea1f,supplement,exclude,duplicate,"supplementary material of the article, same first author, abstracts share 93 per cent of their five word runs",2026-11-13
+r385fad29,r32414e10,supplement,exclude,duplicate,"supplementary material of the article, same first author, abstracts share 97 per cent of their five word runs",2026-11-13
+raf55b4ff,r32414e10,supplement,confirm,duplicate,"Figshare abstract file of the article, same first author, titles match",2026-11-13
+rdb9564f9,r32414e10,supplement,confirm,duplicate,"Figshare supplementary file of the article, same first author, titles match",2026-11-13
+re1d6a14c,rf868d99c,preprint,confirm,duplicate,"2022 preprint of the 2023 article under an earlier title, same first author, abstracts share 51 per cent of their five word runs",2026-11-13
+r7f2a3b7e,r0f893420,supplement,confirm,duplicate,"supplementary data of the archetypes study, titles match",2026-11-13
+re7e391dc,r9d947691,dataset,exclude,duplicate,"second deposit of the same code and data, same first author, abstracts share 50 per cent of their five word runs",2026-11-13
+r945cefc0,r7f589f29,dataset,exclude,duplicate,"land cover dataset of the article, which was excluded, same first author, abstracts share 86 per cent of their five word runs",2026-11-13
+r50076756,r94d4c79c,dataset,exclude,duplicate,"spreadsheets the dataset names as underlying the article, same first author",2026-11-13
+rf0d0c952,r7a5719d1,dataset,exclude,duplicate,"data deposit of the data paper, same first author",2026-11-13
+rd83e035b,r1cb27ae3,dataset,transfer,duplicate,"replication data carrying the abstract of the article, which lacked one, same first author, titles match",2026-11-13
+r4186d091,r94a99737,dataset,transfer,duplicate,"replication data carrying the abstract of the article, which lacked one, same first author, titles match",2026-11-13
+r04fdb4c6,rd29ed3d4,catalogue copy,exclude,duplicate,"English title of the same 2016 article, which has a French title, titles match",2026-11-13
+rc992f384,r85961613,catalogue copy,exclude,duplicate,"the same 2017 article with a garbled title, same first author, titles match",2026-11-13
+r920f7b1a,rdd8fc52f,catalogue copy,exclude,duplicate,"the same 2020 article with a cut title, same first author, titles match",2026-11-13
+rf814ddbc,r976ab5d1,catalogue copy,exclude,duplicate,"the same 2016 article with a bilingual title, same first author, titles match",2026-11-13
+r30c91fff,rc406df98,conference abstract,exclude,duplicate,"the 2024 abstract of the same SAR forest loss index study, same first author, titles state the same study",2026-11-13
+r3905394e,r5e1bac5a,conference abstract,exclude,duplicate,"the 2022 abstract of the same study of the carbon sink of secondary and degraded humid tropical forests, same first author",2026-11-13
+r7514c56a,rc8612e28,conference abstract,exclude,duplicate,"the 2024 abstract of the same study of deforestation drivers in Cameroon, same first author, abstracts share 47 per cent of their five word runs",2026-11-13
+rbdfad4f0,r65e29b81,thesis,exclude,duplicate,"the 2015 thesis whose study is the 2015 article, same first author, abstracts share 74 per cent of their five word runs",2026-11-13
+re8432db7,rd2dd7205,catalogue copy,confirm,duplicate,both readers of the CrossRef abstracts excluded it as the same Kinshasa article,2026-11-13
+r86f46410,rae160cf6,catalogue copy,exclude,duplicate,"the same World Bank report split off at the merge after the citation chasing, same first author, year and title",2026-11-13

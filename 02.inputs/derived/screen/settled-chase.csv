@@ -1,0 +1,46 @@
+record_id,decision,reason,questions,note
+r093f037b,undecided,,q2 q6,"Abstract cut short; synthesis of tropical deforestation models, place and method unclear"
+r0f79fd92,include,,q6,Ghana land cover projected to 2040 with a validated model; question 6 needs tropics only
+r191e828f,exclude,wrong-population,,"Biofuel clearing in three world regions; sub-Saharan Africa named, Central Africa not"
+r19986575,include,,q3 q4,"Forest change data accuracy tested for REDD+ performance at five tropical sites, countries unnamed"
+r27ff3ac6,include,,q6,Amazon frontier spatial transition model; question 6 covers the tropics
+r2bf9d582,exclude,wrong-population,,Tropical land sector emissions dataset; Africa named only as a continent
+r2c763d22,include,,q6,Amazon household model accounts for spatial pattern of clearing; borderline for full text
+r3078f89d,exclude,wrong-population,,Pantropical intact forest map; Africa named only as a continent
+r35cc0fc0,exclude,wrong-population,,"Cross-national causes study, no Central African place and no prediction"
+r39aa3fc6,exclude,wrong-population,,"Tropical causes meta-analysis; Africa pooled, no Central African result, no prediction"
+r3c1f7f79,undecided,,q4 q7,Abstract only lists book parts on emissions and crediting; too thin to decide
+r3f2ab6fa,include,,q7,"Land cover change emissions in an Afromontane reserve; country unnamed, full text settles place"
+r3fa5c6d3,include,,q6,"Costa Rica model estimates deforestation susceptibility, offered for baselines"
+r414cf397,include,,q8,Southern Cameroon bird parasite prevalence tested against deforested and intact sites
+r42c57ecf,include,,q6,Colombian Andes regression gives probability of natural vegetation change; borderline
+r4e084b20,include,,q6,Peru map of carbon stocks at risk from land use; borderline risk map
+r5b932b6a,include,,q7,Cameroon soil carbon stocks compared across forest and savanna conversions; borderline
+r65209c82,include,,q6,Indonesian equilibrium model simulates deforestation under policies; borderline prediction
+r653fd562,include,,q4 q6,Model of 85 countries compares reference level designs and resulting deforestation
+r69a5fe45,exclude,wrong-population,,Pantropical deforestation emissions; Africa named only as a continent
+r6a36e249,include,,q6,Brazilian Amazon equilibrium model simulates deforestation under shocks and tenure change
+r6abdd10f,undecided,,q1 q2,No abstract; title names a Cameroon deforestation policy model
+r6ad46c66,include,,q6,Colombian spatial models of village deforestation rates compared
+r6c985909,include,,q3,"Intact forest decline mapped 2000 to 2024, study area partly in Cameroon"
+r6fc16eaf,include,,q2,Congo Basin chapter names farming as main deforestation cause; data use unclear
+r76448ffc,include,,q6,Tanzania transect tests predicted spread of logging and charcoal degradation; borderline
+r7f628676,include,,q4,Ecuador matching shows usual avoided deforestation estimates run too high; borderline
+r8979a223,include,,q6,Thailand econometric deforestation rate model with scenario projections
+r8a605c41,include,,q6,Pantropical deforestation projected to 2050 from spatial predictors
+r8a7ab4fe,include,,q8,"Rainfall loss modelled from forest loss, with a projection for the Congo; borderline"
+r8b323214,include,,q4 q6,Method builds a deforestation baseline without the policy for a Brazilian municipality
+r9120b761,include,,q6,Kalimantan avoided emissions set against a projected business as usual path; borderline
+ra2471524,include,,q4,Indonesian moratorium effect compared with payments on a historical baseline; borderline
+rb7edaca0,include,,q4 q6,Neural network spatialises Brazilian Amazon baseline and compares it with observed loss
+rb8d710d0,exclude,wrong-concept,,"Aid design review; reference levels listed as a challenge, none evaluated"
+rc00d7315,include,,q6,Tanzania land cover change scenarios and carbon loss projected to 2025
+rc2d4385e,include,,q6,Brazilian Amazon cost study rests on projected deforestation; source of projection unclear
+rcddb154c,include,,q6,Framework rates future risks to forests in 48 tropical countries; borderline
+rde654e65,include,,q6,Discusses land use models for subnational REDD+ effects; borderline
+re4f76e37,exclude,wrong-population,,Degradation emissions in 74 countries; Africa named only as a continent
+red6190c6,exclude,wrong-population,,Protected area effect in 64 countries; Africa named only as a continent
+rf2cbdc5f,include,,q7,Eastern Cameroon soil carbon across fallow ages after clearing; borderline
+rf529efe6,include,,q6,Three global land use models project deforestation and its avoided emissions to 2030
+rfb3c2d6f,include,,q4,REDD+ project accounting compared with national methods in three tropical countries; borderline
+rfe91fd70,include,,q3,Deforestation mapping by optical and radar fusion; study area unstated

@@ -1,0 +1,26 @@
+record_id,decision,reason,questions,note
+r1919607a,exclude,wrong-population,,Global land cover product; no Congo or Central Africa study area named.
+r220602d3,include,,q8,Zoonotic disease risk in DR Congo small mammals linked to land use change.
+r37944b04,include,,q2 q3,Land cover maps and landscape metrics describing forest and savanna change in Republic of Congo.
+r3b17c928,exclude,wrong-concept,,Continental fire season summary; forest loss is not the subject.
+r3f808360,exclude,wrong-population,,Hunting and carbon stocks in Brazilian Amazon.
+r434384f2,exclude,wrong-population,,"Ecosystem accounting tested in Australian and Andean basins, none in Congo Basin."
+r436d6b0e,exclude,wrong-population,,"Land cover change accuracy assessment in Uganda, outside the six countries."
+r49756d94,exclude,wrong-concept,,Lion habitat distribution model; forest change is only background.
+r4b1df871,exclude,wrong-concept,,Cameroon forest governance synthesis; no forest change measured.
+r4ba1d86b,include,,q4,Compares ex-post baseline methods for REDD+ deforestation avoided-emission crediting.
+r58984d20,exclude,wrong-population,,"Firewood effects on miombo in Zimbabwe, outside the six countries."
+r5e3d71d3,exclude,wrong-concept,,Urban tree planting survey in Lubumbashi; no forest change measured.
+r67a108f0,exclude,wrong-population,,Surface water mapping in Bangladesh; not forest change.
+r871313bc,exclude,wrong-population,,"Forest loss and soil carbon in Peru; no prediction, no Congo."
+r8bd9679d,undecided,,q8,"Abstract is one line; hydropower and biodiversity, forest link unknown."
+r8bf69a63,include,,q6,"Dynamic model of road-driven tropical deforestation rate, calibrated to Brazil."
+ra1689a80,exclude,wrong-population,,Rainfall in a Mexican city; deforestation only background.
+ra1defa03,exclude,wrong-concept,,Farmer adoption of conservation agriculture in DRC; forest change absent.
+ra7aec1f6,exclude,wrong-concept,,Forest law comparison of Gabon and Sierra Leone; no forest change analysis.
+rc19b59c1,include,,q3,Tests eight land cover products in Cameroon for accuracy and downstream effect.
+rd278cf6a,include,,q5 q3,Describes the GLanCE land cover and change dataset.
+rd2dd7205,include,,q8,Kinshasa landslide and flood risk with deforestation as possible contributor.
+rd5ece9f6,include,,q3 q2,Maps mining-driven land cover change in Cameroon with Sentinel-2 classification.
+re8432db7,exclude,duplicate,,"Same Kinshasa article as record rd2dd7205, another version."
+rfd0a9463,exclude,wrong-population,,"Cattle ranching yield gaps in the Chaco, South America."
