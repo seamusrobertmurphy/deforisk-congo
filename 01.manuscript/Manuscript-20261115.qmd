@@ -1,0 +1,143 @@
+---
+title: "deforisk-congo"
+author:
+  - name: Seamus Murphy
+    orcid: 0000-0002-1792-0351
+    email: seamusrobertmurphy@gmail.com
+    corresponding: true
+    affiliations:
+      - name: TUV SUD Canada
+        city: Comox
+        region: British Columbia
+        country: Canada
+date: today
+
+format:
+  docx:
+    prefer-html: true
+    reference-doc: ../04.references/style-formal.docx
+    highlight-style: pygments
+    number-sections: true
+  html:
+    page-layout: full
+    toc: true
+    toc-title: ""
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    embed-resources: true
+    code-fold: false
+    code-tools: true
+    code-link: true
+    theme:
+      - ../04.references/style.scss
+      - cosmo
+
+crossref:
+  fig-title: "Fig."
+  fig-prefix: "Fig."
+  title-delim: ""
+
+execute:
+  eval: true
+  echo: true
+  warning: false
+  message: false
+  error: false
+  comment: NA
+
+engine: knitr
+citeproc: true
+editor: visual
+bibliography:
+  - ../04.references/references.bib
+csl: ../04.references/apa.csl
+---
+
+```{r}
+#| label: setup
+#| echo: true
+#| output: false
+knitr::opts_chunk$set(fig.path = "../03.outputs/PNG/", dpi = 300, dev = "png")
+fetch <- function(url, file) if (!file.exists(file)) {
+  dir.create(dirname(file), showWarnings = FALSE, recursive = TRUE)
+  download.file(url, file, mode = "wb")
+}
+fmt_tbl <- function(df, right = NULL) {
+  df <- dplyr::mutate(df, dplyr::across(dplyr::any_of("Year"), as.integer))
+  right <- union(names(df)[vapply(df, is.numeric, TRUE)], right)
+  flextable::flextable(df) |>
+    flextable::fontsize(size = 9, part = "all") |>
+    flextable::align(align = "center", part = "header") |>
+    flextable::align(j = setdiff(names(df), right), align = "left", part = "body") |>
+    flextable::align(j = right, align = "right", part = "body") |>
+    flextable::colformat_int(big.mark = "") |>
+    flextable::padding(padding.top = 1, padding.bottom = 1, part = "all") |>
+    flextable::set_table_properties(layout = "autofit", width = 1)
+}
+th <- ggplot2::theme_bw(base_size = 8) + ggplot2::theme(panel.grid.minor = ggplot2::element_blank())
+num <- \(x, d = 1) gsub("-(?=[0-9])", "−", sprintf(paste0("%.", d, "f"), round(x, d) + 0), perl = TRUE)
+pm <- function(x, s, digits) dplyr::case_when(is.na(x) ~ "", is.na(s) ~ formatC(x, format = "f", digits = digits),
+  .default = paste0(formatC(x, format = "f", digits = digits), " ± ", formatC(s, format = "f", digits = digits)))
+ci95 <- function(x) if (stats::sd(x) > 0) stats::t.test(x)$conf.int else c(mean(x), mean(x))
+fmt_p <- \(p) if (p < 0.001) "< 0.001" else paste("=", formatC(p, format = "f", digits = 3))
+fmt_t <- function(fit, term) {
+  s <- summary(fit)$coefficients[term, ]
+  paste0("[t(", stats::df.residual(fit), ") = ", formatC(s[[3]], format = "f", digits = 3), ", p ", fmt_p(s[[4]]), "]")
+}
+fmt_paired <- \(tt) paste0("[t(", tt$parameter, ") = ", formatC(tt$statistic, format = "f", digits = 3), ", p ", fmt_p(tt$p.value), "]")
+```
+
+# Abstract {.unnumbered}
+
+# Introduction
+
+Between 2000 and 2014, small-scale clearing for agriculture without machines caused an estimated 84 per cent of the forest disturbance area in the six rainforest countries of the Congo Basin [@tyukavina2018congo]. Those countries were Cameroon, the Central African Republic, the Democratic Republic of the Congo, Equatorial Guinea, Gabon and the Republic of the Congo. Selective logging came second, at roughly 10 per cent of the regional disturbance area [@tyukavina2018congo]. @umunay2019selective estimated that emissions from selective logging in the six countries "are equivalent to 40% of the region's total emissions from deforestation". From 2015 to 2020, small-scale agriculture, villages and roads together still accounted for most of the deforestation and degradation observed across the same six countries [@shapiro2023small]. About 80 per cent of that deforestation lay within 3 km of the nearest road or settlement [@shapiro2023small]. From 2001 to 2021, 76.5 per cent of the evergreen forest lost in the six countries fell in small-scale clearings [@zhang2026unveiling]. Buffers of 4 km around built-up areas held 51.2 per cent of the evergreen forest cover and about 93.6 per cent of that loss [@zhang2026unveiling]. Forest loss in the basin was therefore clustered around roads and settled land. A deforestation risk map ranked each forest pixel by how likely it was to be cleared. Under the rules that Verra, a carbon crediting standard, issued in 2024, such a map shared the deforestation expected in a whole jurisdiction among the projects inside it [@verra2024vmd0055].
+
+This Introduction first set out the dispute over crediting baselines that brought risk maps into those rules, and the benchmark the rules adopted. It then reviewed the risk models built for the Congo Basin and across the tropics, the tests applied to them and the predictors they entered. The forest change maps and training data that such a model depended on came next, followed by the use of forest change in the risk models of neighbouring fields. The Introduction closed with the questions this literature left open.
+
+Schemes for reducing emissions from deforestation and forest degradation, known as REDD+, issued credits against a baseline, the deforestation expected had no project begun. Synthetic controls, comparison areas weighted to match the past deforestation of a project, were applied to 26 sites of voluntary REDD+ projects in six countries on three continents [@west2023action]. Most of those projects had not significantly reduced deforestation, and no avoided deforestation was found at the sites in the Democratic Republic of the Congo, Tanzania and Zambia [@west2023action]. @west2023action concluded that baselines exaggerating the deforestation expected without REDD+ "are a major reason for the gap between offsets projected ex ante and actual offsets estimated ex post". In the Democratic Republic of the Congo, the baseline of the Mai Ndombe REDD+ project was set from a reference area, the Mayombe forest of Bas-Congo province [@seyller2016virtual]. Annual deforestation was around 0.17 per cent in the project area in the 2000s, against 0.40 per cent in Mayombe [@seyller2016virtual]. @seyller2016virtual judged that the project and one in Madagascar resembled "'virtual emission reduction machines' designed to inflate the production of carbon credits". A synthesis of six independent evaluations, covering 44 projects, found that most projects reduced deforestation. Those projects nevertheless claimed 10.7 times more avoided deforestation than the independent estimates justified [@swinfield2026learning]. A pixel matching study of 40 certified projects in nine countries found deforestation reduced by 47 per cent in the first five years [@guizarcoutino2022global]. Its authors called the absolute reductions "modest in most projects". They could not total the effect of the projects, because the methods used to forecast emission reductions "are incomparable and produce different baseline scenarios" [@guizarcoutino2022global]. For four certified projects, baselines rebuilt under four approved methodologies differed so widely that the highest value averaged more than 14 times the lowest [@west2024methodological]. Across 2,794 jurisdictions worldwide, the median baseline of deforestation emissions varied by 171 per cent of its mean [@teo2023uncertainties]. The projection approach was the most important variable behind that variation, followed by the forest dataset used to estimate deforestation [@teo2023uncertainties].
+
+The standards answered by setting the baseline for a whole jurisdiction. Verra's module VMD0055 took the deforestation measured over the historical reference period of a jurisdiction and shared it among projects by a deforestation risk map [@verra2024vmd0055]. Its tool VT0007 built a benchmark risk map from one variable, the distance to the forest edge [@verra2024vt0007]. An alternative map qualified only if its median absolute error was lower than the benchmark's in two tests. The first fitted the calibration period, the first half of the historical reference period, and the second predicted the confirmation period that followed [@verra2024vt0007]. By November 2026, Verra listed a final risk map for Mai Ndombe province and a provisional map for Equateur, both in the Democratic Republic of the Congo [@verra2026jurisdictional]. For the Republic of the Congo, Cameroon and the Central African Republic, the same table listed deforestation data still in preparation and no risk map [@verra2026jurisdictional]. Jurisdictional baselines drew their own criticism. A baseline set at the historical average could credit too much or too little, predictably, wherever the trend or level of deforestation persisted [@garcia2026on]. @garcia2026on called for research on how jurisdictional trends interact with "risk-map-based project baselines". @swinfield2026learning warned that Verra's new methodology "permits nested projects with baselines produced using ex ante spatial modelling, which we have shown to be problematic". In the Democratic Republic of the Congo, one method mapped deforestation risk and allocated the national reference level to 34 REDD+ projects [@freund2024novel]. That risk map was calibrated on the years 2000 to 2010 and tested on 2010 to 2014, with a predictive power of 65.8 per cent [@freund2024novel]. In Cambodia, four methods of allocating the national reference level were applied to 77 hypothetical and five actual REDD+ projects [@ehara2021allocating]. Each allocation was weighted by deforestation risk, defined there as the distance from recent deforestation, and the four were compared with each other [@ehara2021allocating].
+
+Distance to the forest edge had support as a predictor outside the basin. In and around Kerinci Seblat National Park, Sumatra, forest closer to settlements and to the forest edge, at lower elevations and on flatter land, was more likely to be cleared [@linkie2009modelling]. Across the tropical moist forest of 92 countries, @vieilledent2022spatial found that "the distance to the forest edge is the most important variable in determining the risk of deforestation". The pixel matching study of @guizarcoutino2022global treated distance to recent forest clearings as "a strong predictor of deforestation outcomes in the landscapes we examined". Edge distance entered each of these studies as one variable among several. The VT0007 tool noted that "in some instances, simple models based only on the distance to forest edge exhibit comparable predictive skill to multivariate regression models" [@verra2024vt0007]. Inside the basin, 93 per cent of the deforestation in the logging concessions of the Republic of the Congo, between 2000 and 2010, fell in edge areas [@brandt2014foreign]. Those areas lay within 1 km of a public road, a navigable river or previously disturbed forest [@brandt2014foreign]. In the Democratic Republic of the Congo, 81.53 per cent of the forest cover changes of 2000 to 2005 lay less than 1 km from existing secondary forest [@kibambelubamba2013modeling].
+
+Spatial models of forest change in the Congo Basin differed most in what they were tested against. A review of 48 models, of which 32 covered the Amazon, 13 South-East Asia, two the Congo Basin and one the whole tropics, had judged their predictions "highly variable and often poorly validated" [@rosa2014transparency]. Over the core of the basin, between 3.5 degrees south and 3.5 degrees north, a scenario generator was run forward for one decade from satellite data of 2001 [@tompkins2015generalized]. Its output, averaged to 50 km, reached a maximum spatial correlation of 0.68 with the satellite record [@tompkins2015generalized]. For the six countries with Rwanda and Burundi, an econometric model estimated the effect of road improvement on forest clearing from the years 2000 to 2012 [@wheeler2015road]. For the Democratic Republic of the Congo, the cellular automata model SimCongo, which spread change from each cell to its neighbours, simulated deforestation from 1990 to 2010 [@galford2015will]. The simulated map fitted the observed one at 78 per cent within a 3.5 km search radius, over the same years used to calibrate the model [@galford2015will]. A second national model, a neural network run at 1 km resolution, was calibrated on land cover maps of 2000 and 2005 and tested against the map of 2010 [@kibambelubamba2013modeling]. Its simulated map agreed with the 2010 map at 98 per cent overall, the changes of 2005 to 2010 having been minor [@kibambelubamba2013modeling]. @kibambelubamba2013modeling added that "except for the transitions in primary forest, the model did not predict accurately the locations of change in secondary forest and woodlands". @grainger1999constraints wrote that deforestation models for tropical open woodlands had been "constrained by ecosystem heterogeneity and a lack of reliable data on forest areas and deforestation rates". In the shrub savanna of Bouba Ndjida National Park, northern Cameroon, three models each predicted the radar image of 2021 from the images of 2015 and 2020 [@moskolai2022comparative]. Overall prediction accuracy was 83 per cent for a model pairing cellular automata with a Markov chain, and 91 and 98 per cent for two deep learning networks [@moskolai2022comparative]. A pantropical model fitted to the deforestation of 2010 to 2020 was compared by cross-validation with a null model, a simple logistic regression and a random forest [@vieilledent2022spatial]. It predicted better than the other three [@vieilledent2022spatial]. The open software behind that model listed validation tools among its future developments [@vieilledent2021forestatrisk].
+
+Two models covered all six countries and were tested on later data. The first trained a neural network on land cover maps of 1990 and 2000 and projected them to 2010 and 2020, before projecting dense forest to 2050 [@yuh2024monitoring]. Pearson's correlation between the modelled and mapped land cover was R = 0.8 (p < 0.05) for both 2010 and 2020 [@yuh2024monitoring]. The second, the Forest Foresight model, predicted deforestation six months ahead at 400 m resolution across the tropics [@rosa2025predicting]. It was trained on January 2021 to December 2022 and tested on June 2023 to May 2024 [@rosa2025predicting]. Its F0.5 score, a measure that weighted precision above recall, was 68.8 per cent in Africa, where the model covered the same six countries [@rosa2025predicting]. A baseline that predicted loss wherever loss had occurred in the previous six months scored 65.0 per cent there [@rosa2025predicting]. None of the models described above was compared with a benchmark built from distance to the forest edge alone.
+
+The margin of a complex model over a simple rule was small wherever both were run, and in two cases the rule was the more accurate. Across the tropics, the deep network of @rosa2025predicting "outperformed the Baseline and XGBoost by 4.2% and 1.4%, respectively", XGBoost being a boosted tree model. Around Salonga National Park in the Democratic Republic of the Congo, a random forest reached an area under the receiver operating characteristic curve of 0.980 on its test period [@mboyo2026spatio]. Its authors noted "the strong performance of persistence and historical hotspot baselines", two rules built only on past disturbance, and described disturbance there as "highly spatially clustered and temporally persistent" [@mboyo2026spatio]. In Campo commune, southern Cameroon, a model coupling cellular automata with a neural network was calibrated on 2000 to 2015 and tested against the map of 2025 [@tsoala2026modelisation]. A null model of persistence, which predicted no change, scored the higher overall accuracy, 84.3 per cent against 80.1 ± 0.4 per cent [@tsoala2026modelisation]. Its Figure of Merit, the share of observed and predicted change that was predicted correctly, was zero, against 0.185 ± 0.008 for the coupled model [@tsoala2026modelisation]. In Panama, a projection of forest cover for 2008, built from the trends of 1990 to 2000 and 25 drivers, was 85.2 per cent accurate [@sloan2012how]. @sloan2012how found it "slightly less accurate than if we had assumed no forest-cover change over 2000–2008", with a Figure of Merit of 8.36 per cent. Models built on past loss were weakest at new frontiers. The Forest Foresight model "performs well in active frontier regions but struggles to predict deforestation in previously intact areas", such as new logging roads [@rosa2025predicting]. Along 33 first-cut roads in the Congo Basin, each kilometre of first-cut road was followed by 4.8 km of secondary road on average [@engert2025explosive].
+
+The predictors with one direction across the basin were small-scale agriculture, roads and settlements [@tyukavina2018congo; @shapiro2023small]. At seven sites in Cameroon and the Republic of the Congo, 60 per cent of agricultural clearings lay within 1 km of a road [@corderosancho2017closer]. @corderosancho2017closer added that "not in all conditions roads significantly influence the incidence of agriculture". Commercial land uses acted less directly. In primary forest of the Democratic Republic of the Congo, 0.4 to 0.5 per cent of the area cleared during 2000 to 2015 coincided with mining, logging or plantations [@molinario2020contextualizing]. Between 8.9 and 11.7 per cent of that area had such uses within 5 km [@molinario2020contextualizing]. In five eastern provinces of the same country, artisanal mining triggered deforestation at least 5 km from mining sites [@ladewig2024deforestation]. The forest lost there to other land uses, mostly farming and then settlement, was 28 times the area cleared for mining itself [@ladewig2024deforestation]. Logging concessions, protected areas and conflict gave mixed results. The effect of management plans was estimated across 397 logging concessions in Cameroon, the Republic of the Congo, Gabon and the Central African Republic [@tritsch2020do]. A plan approved between 2000 and 2005 was associated with 74 per cent less deforestation [@tritsch2020do]. Plans approved between 2006 and 2010 showed no statistically significant effect on deforestation from 2000 to 2010 [@tritsch2020do]. In the Republic of the Congo, from 2000 to 2010, European concessions complied most with sustainable forest management policies and had the highest rates of deforestation [@brandt2014foreign]. In the dense forest of the Democratic Republic of the Congo, built-up area, fires and conflicts were associated with lower forest condition [@shapiro2021proximate]. The estimated effect of a protected area there was weakly positive, with a larger negative effect from surrounding protected area [@shapiro2021proximate]. Protected areas in that country had kept most of their forest cover "primarily due to their remote locations" [@ladewig2026increasing]. At their boundaries in the moist forest, forest cover fell by 5.8 percentage points inside and 7.3 percentage points outside from 2007 to 2024 [@ladewig2026increasing]. @ladewig2026increasing concluded that protection "only prevented 20.5% of all forest disturbances" at those boundaries. Across the tropics, @vieilledent2022spatial concluded that protected areas "are effective on average in displacing deforestation outside protected areas", without showing that they reduced it.
+
+The maps of past forest change from which a risk model was fitted disagreed in the Congo Basin. Seven global land cover datasets agreed on forest area at between 88.18 and 99.38 per cent over moist forest, and at as little as 32.82 per cent over savanna [@renaudineau2025forest]. Over 2001 to 2019, the same datasets ranged from a net forest loss of 205,704 km² to a net gain of 50,726 km², the gains coming from the coarser maps [@renaudineau2025forest]. The seven were compared with each other, without ground reference data [@renaudineau2025forest]. Eight global land cover products were compared across a region of about 480,000 km² centred on the Dja Biosphere Reserve, in south-eastern Cameroon [@lenhardt2026effects]. Against samples from about a third of that region, none reached 60 per cent accuracy [@lenhardt2026effects]. The eight did not agree on the direction of net change in any land cover class between 2015 and 2020 [@lenhardt2026effects]. In the Kasaï River basin of the Democratic Republic of the Congo and Angola, a regionally calibrated map put cropland at 13.7 per cent of the basin in 2021 [@zhao2026large]. Five global and continental products put it between 0.1 and 4.7 per cent [@zhao2026large]. Worldwide, eight forest datasets all classed as forest only 26 per cent of the 6.8 billion ha that at least one of them did [@castle2026global]. In tropical and subtropical dry broadleaf forest, the share in complete agreement was 12 per cent [@castle2026global]. Maps also omitted loss that samples detected. Across sub-Saharan Africa, Landsat-based mapping "omitted almost half (44%) of forest loss in Africa compared to the sample-based estimate", mostly in forest of low canopy cover [@tyukavina2015characterizing]. In the emission reduction programme zone of southern Cameroon, the 2015 map missed 64 of 118 reference samples of deforestation [@nana2019estimation]. In the Republic of the Congo, two national maps omitted 39 and 41 per cent of the loss class [@ifo2021analyse]. The reference level of the Democratic Republic of the Congo, for 2000 to 2014, took its areas from reference samples and not from change maps [@kosa2019construction]. The omission carried into emissions, since map-based assessments "unadjusted for errors may lead to significant underestimation of forest aboveground carbon (AGC) loss" where clearings were small [@tyukavina2015characterizing]. For the Democratic Republic of the Congo, gross aboveground carbon loss over 2000 to 2010 was 53.3 ± 9.8 Tg C a year by whole 60 m pixels [@tyukavina2013national]. Counting the pixels that lost part of their forest raised the estimate to 72.1 ± 12.7 Tg C a year, 35 per cent higher [@tyukavina2013national]. Across Africa, the spread across atmospheric inversions of land use CO~2~ fluxes exceeded 50 per cent, "especially in central Africa" [@mostefaoui2024greenhouse].
+
+The Global Land Cover Mapping and Estimation project, GLanCE, released a training dataset of 1,874,995 units across the globe, in seven broad land cover classes [@stanimirova2023global]. @stanimirova2023global noted that "the overall density of training units is lower in Africa and Asia". The GLanCE product built on those data gave annual land cover and land cover change, for 2001 to 2021 in Africa [@arevalo2026global]. Its overall accuracy generally exceeded 0.8 in Africa, with accuracy reported by class and by continent [@arevalo2026global]. @arevalo2026global wrote that data problems "were most persistent in Western and Central Africa", where a separate change detection run was needed. Of shifting cultivation, the same authors wrote that "It is also frequently confused with deforestation, which may lead to over-estimation of forest loss, as only the first time a patch is cleared is a deforestation event". A rigorous analysis of land cover change against the continental reference data was listed among their next steps [@arevalo2026global]. In China, GLanCE training units served as independent validation samples for annual forest maps [@zhao2026mapping]. The 1,000 to 2,000 samples a year within China were judged "insufficient for a comprehensive national-scale assessment" [@zhao2026mapping].
+
+Forest change also entered spatial risk models in neighbouring fields. For land within 10 degrees of the equator in Africa, a model of ebolavirus spillover, the passing of the virus from animals to people, used annual forest loss and fragmentation [@telford2023predictive]. Threefold cross-validation gave an area under the receiver operating characteristic curve of 0.88 for all species and 0.91 for the Zaire species [@telford2023predictive]. Adding the forest variables "resulted in small changes to predictive accuracy in both analyses", and two spillover events of 2022 fell where estimated odds were elevated [@telford2023predictive]. In the Kivu Rift, a forest dynamics model built on logistic regression reconstructed annual forest cover from 1958 to 2016 [@depicker2021historical]. A landslide susceptibility model that responded to forest cover, calibrated on landslides mapped from images of 2000 to 2019, then estimated the landslide hazard of each year [@depicker2021historical]. In the Dja Forest Reserve of southern Cameroon, favourability functions, which rated how far local conditions favoured an event, mapped fire, poaching and forest loss [@farfan2019spatial]. The three maps were averaged into a threat index and combined with a wildlife index into a map of risk to wildlife [@farfan2019spatial]. Poaching and wildlife records came from ranger patrols in 2015 and 2016, and forest loss and fire for 2001 to 2014 came from satellite data [@farfan2019spatial]. Across the same region of Cameroon, maps of avoided erosion modelled from the eight land cover products agreed less than their hotspots of forest gain and loss [@lenhardt2026effects].
+
+This literature left six questions open for the Congo Basin.
+
+1. Whether a risk model built from several predictors located later deforestation better than the benchmark of distance to the forest edge alone, over a period held out from fitting.
+2. How such a model compared with the basin-wide models of @yuh2024monitoring and @rosa2025predicting, and with Verra's maps for Mai Ndombe and Equateur.
+3. Which kind of model predicted best, among logistic regression with or without spatial effects, cellular automata and machine learning, and whether any beat a rule built on past loss alone.
+4. Whether predictive skill held far from past clearing, at new roads and frontiers, where models built on past loss were weakest.
+5. Whether land change mapped from GLanCE training data in Central Africa was accurate enough, in savanna and woodland as well as moist forest, to fit and test a risk model.
+6. In which direction logging concessions, protected areas, mining and conflict acted on risk, once roads, settlements and earlier clearing were accounted for.
+
+# Materials and Methods
+
+## Benchmark comparison
+
+Placeholder. The comparison with Verra's deforestation risk maps for Mai Ndombe and Equateur provinces [@verra2026jurisdictional] is waiting on access to the maps and on Verra's terms for their published use. In the meantime, the national forest reference emission level of the Democratic Republic of the Congo is being considered as a benchmark [@unfccc2018report]. Its deforestation areas for 2000 to 2014 came from reference samples [@unfccc2018report]. A global forest change dataset, such as that of @Hansen_2013, is being considered as a second benchmark.
+
+# Results
+
+# Discussion
+
+# Conclusions
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
