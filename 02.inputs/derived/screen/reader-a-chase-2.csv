@@ -1,0 +1,164 @@
+record_id,decision,reason,questions,note
+r40abef94,exclude,wrong-concept,,"Seven thousand year pollen record from Borneo peat, not mapped change"
+r414cf397,exclude,wrong-concept,,"Field parasite survey in Cameroon, no spatial risk mapped"
+r42868c81,exclude,wrong-population,,Sumatra wildlife study
+r42900672,exclude,wrong-population,,"Landsat sampling for Bolivia, Colombia and Peru"
+r42c57ecf,exclude,wrong-population,,Land cover change near Bogota
+r42d65074,exclude,wrong-population,,Carbon footprints for Brazilian and Indonesian commodities
+r42f866eb,include,,q4 q6,Compares REDD+ baseline scenarios and deforestation models in Guiana Shield
+r43cadf2d,undecided,,q4,No abstract; title concerns Brazilian REDD+ avoided deforestation permanence
+r4478ca22,exclude,wrong-population,,"Social theory of green finance, no place"
+r456c60ac,exclude,wrong-population,,"Timber price test across tropics, Central Africa not named"
+r45ecad50,exclude,wrong-population,,Landsat cloud cover over Brazilian Amazon
+r46065734,exclude,wrong-population,,Oil palm review centred on Southeast Asia
+r463fc749,exclude,wrong-population,,Madagascar deforestation rates
+r467ca859,exclude,wrong-concept,,"DRC REDD+ policy discourse and governance, no forest change measured"
+r47168c0b,exclude,wrong-population,,Brazilian Amazon carbon loss
+r4804ec4c,exclude,wrong-population,,Equatorial Asia fire emissions
+r480d0c67,exclude,wrong-population,,Brazil Atlantic Forest elections
+r48e2c5b5,exclude,wrong-population,,Indonesia REDD+ benefit sharing policy
+r48e5f2aa,exclude,wrong-population,,Peat swamp evapotranspiration in Southeast Asia
+r48ebf780,exclude,wrong-population,,Indonesian oil palm and deforestation thesis
+r492d3579,exclude,wrong-population,,Madagascar soil isotopes
+r4990cd16,exclude,wrong-population,,Zanzibar REDD+ village ethnography
+r49d861c0,exclude,wrong-population,,Sentinel-1 detection tested in Amazon and Borneo
+r49e8cce2,exclude,wrong-population,,"General deforestation policy options, no place"
+r4a11b96b,exclude,wrong-population,,Burkina Faso forest cover trajectories
+r4a26bb41,undecided,,q1,No abstract; general tropical forest change chapter
+r4a5542ce,exclude,wrong-population,,"Pantropical SDG literature overview, Central Africa not named"
+r4bbf85e9,exclude,wrong-population,,Nepal forest change mapping
+r4bfecd68,undecided,,q3,No abstract; title on land cover change in a tropical rain forest
+r4c7ffd4e,exclude,wrong-population,,Indonesian villages and forest change drivers
+r4d9f22bc,exclude,wrong-population,,Himalayan bird study
+r4e084b20,exclude,wrong-population,,Peru carbon conservation mapping
+r4e1a8262,include,,q4,Synthetic baseline of Guyana tree cover loss to test REDD+ additionality
+r4e8751d4,exclude,wrong-population,,"REDD+ rights and co-benefits policy, no place"
+r4ee947fd,include,,q3,Global forest modification index naming Central Africa among results
+r4f3a9dc2,exclude,wrong-population,,Tanzania carbon storage estimates
+r4f77f422,exclude,wrong-population,,"Oil palm degradation method, no Congo Basin place"
+r4f86f23d,exclude,wrong-population,,Amazon degradation estimates
+r5047ffb1,exclude,wrong-population,,"REDD market risk economics, no place"
+r5084ff95,exclude,wrong-population,,Indonesian oil palm policy thesis
+r50d61445,include,,q8,Links West and Central African Ebola spillover to forest fragmentation hotspots
+r50dbe398,exclude,wrong-population,,"Oil palm mapping from MODIS, place not in Congo Basin"
+r51016fb3,exclude,wrong-population,,Rondonia population and deforestation
+r5120ef16,exclude,wrong-population,,Bolivian Amazon forest change and social factors
+r52b0d094,undecided,,q7,No abstract; carbon maps for tropical deforestation emissions
+r52c0c97e,exclude,wrong-population,,Commodity deforestation emissions in seven non-African countries
+r53135339,exclude,wrong-population,,"Governance of Global South forest frontiers, no mapping"
+r532cb150,exclude,wrong-population,,Peruvian Amazon gold mining
+r5343f012,include,,q4,Mexican protected area impact baselines; tropical status doubtful
+r53bf5a57,undecided,,q4 q6,No abstract; Brazilian REDD reference scenario land change model
+r549800fc,exclude,wrong-population,,Bolivian Pando land cover change
+r56409d4b,exclude,wrong-population,,Mozambique mangrove carbon stocks
+r56bcc661,exclude,wrong-population,,Climate governance institutions
+r56be7d03,exclude,wrong-population,,Peruvian Amazon carbon mapping
+r57380bd6,exclude,wrong-population,,"REDD+ political economy, no place"
+r58195c5b,undecided,,q3,No abstract; Landsat and radar deforestation detection in tropics
+r5836cab1,exclude,wrong-population,,Trade displacement of land use in non-Congo countries
+r58448288,undecided,,q2,No abstract; 1997 paper on socioeconomic causes of deforestation
+r586cc6e4,exclude,wrong-population,,Brazilian river basin sustainability
+r588d463e,exclude,wrong-population,,"Third World frontier land degradation, no Congo Basin place"
+r5928b7d8,exclude,wrong-population,,Landsat sample size debate using Andean countries
+r594dd361,exclude,wrong-population,,Bolivian Amazon forest mapping
+r5a12ffef,exclude,wrong-population,,"Interdisciplinary tropical forest research review, no place"
+r5a736e88,exclude,wrong-population,,"Defaunation in REDD+ governance, no place"
+r5aa7d0d3,undecided,,q1,"No abstract; Kashmir title, forest cover dynamics"
+r5afdd1ac,exclude,wrong-population,,Nepal REDD+ livelihoods
+r5b2b930f,undecided,,q4,No abstract; 2009 preprint on REDD prospects
+r5b8baba6,exclude,wrong-population,,"Reply on oil palm stream hydrology, no Congo Basin place"
+r5b932b6a,exclude,wrong-concept,,"Cameroon soil nutrients by land use, no forest change mapping"
+r5bb39e37,exclude,wrong-population,,"Global forest finance report, no place"
+r5c13aae3,exclude,wrong-population,,"Global forest change map, Central Africa not named in abstract"
+r5c43cddd,exclude,wrong-population,,Mato Grosso deforestation
+r5c56d94d,exclude,wrong-population,,"REDD+ leakage policy discussion, no place"
+r5ca0f936,exclude,wrong-concept,,"Cameroon smallholder palm oil profit, no forest change measured"
+r5d0f3533,exclude,wrong-population,,Malaysian oil palm LiDAR carbon
+r5dd08077,exclude,wrong-population,,Global atmospheric water recycling
+r5e827786,exclude,wrong-population,,"Theoretical land rent framework, no place"
+r5e8e03ee,include,,q2 q3,Atlas of African rain forest extent and causes of deforestation
+r5e9da1ac,exclude,wrong-population,,Costa Rica plantation mapping
+r5ea8b7df,exclude,wrong-population,,REDD+ and supply chain initiatives review
+r5eb20145,exclude,wrong-population,,Central Kalimantan peatland politics
+r5f000961,undecided,,q2,No abstract; Tanzania mountain deforestation title
+r5f0aba0f,exclude,not-english,,Spanish book on REDD deforestation research
+r5f1d04de,undecided,,q2,No abstract; conference item on instability and deforestation
+r605fa027,exclude,wrong-population,,"Local REDD+ impacts, no Congo Basin place"
+r6063df5b,exclude,wrong-population,,Myanmar disturbance attribution
+r60fc484e,exclude,wrong-concept,,"Congo biodiversity climate impacts review, no forest change"
+r61712034,include,,q8,Yangambi water quality modelled on land cover metrics
+r621bf636,exclude,wrong-concept,,"Consumer payment for maize in DRC, no forest change"
+r623df14e,exclude,wrong-population,,Thailand deforestation causes
+r62e46d24,exclude,wrong-concept,,Yangambi plot survey of disturbance and tree traits
+r6317eae8,undecided,,q2 q7,"No abstract; DRC roads, deforestation and carbon loss title"
+r646235a4,exclude,wrong-population,,Indonesian REDD+ safeguards
+r6498f783,include,,q3,Global forest loss map naming DRC among country results
+r64b146e5,exclude,wrong-population,,"REDD mechanism negotiation elements, no place"
+r65209c82,exclude,wrong-population,,Indonesia policy general equilibrium model
+r653fd562,exclude,wrong-concept,,"REDD+ reference levels tested for biodiversity, not accuracy"
+r6585466d,exclude,wrong-population,,Mycorrhizal fungi community study
+r66344a0e,exclude,wrong-population,,"REDD+ and biodiversity commentary, no place"
+r6655207a,exclude,wrong-population,,Colombia vegetation carbon stocks
+r6682205a,exclude,wrong-concept,,"Congo Basin agroforestry carbon, no forest change"
+r66a11ef5,exclude,wrong-concept,,"Native tree restoration trial in Congo Basin, no mapped change"
+r66b67163,exclude,not-english,,German thesis on Bolivian soils
+r66f22566,include,,q2 q3,Small-scale Congo Basin forest loss product with settlement and protection effects
+r6788a048,exclude,wrong-population,,"Pantropical 1990s rates, Africa not named"
+r6812a49a,exclude,wrong-population,,Zanzibar REDD+ ethnography
+r689622af,include,,q3,"Pantropical forest change from sample imagery, humid Africa rates reported"
+r69a5fe45,include,,q2 q7,"Tropical agriculture-driven deforestation emissions with uncertainty, Africa reported"
+r6a36e249,exclude,wrong-population,,Brazilian Amazon economic model
+r6abdd10f,exclude,not-english,,"German Cameroon policy model, no abstract"
+r6ad46c66,exclude,wrong-population,,Colombian basin deforestation drivers
+r6b0fd453,exclude,wrong-population,,"Palm oil consumer debate, no place"
+r6b4cbb96,exclude,wrong-population,,Brazilian indigenous land effects
+r6c985909,exclude,wrong-population,,West African forest connectivity
+r6d013ba3,exclude,wrong-population,,South Sumatra oil palm land cover
+r6d20ab76,exclude,wrong-population,,Nepal REDD+ discourse
+r6e19fe4f,exclude,wrong-population,,Mesoamerica REDD prospects
+r6ebb3f75,exclude,wrong-concept,,"Cameroon cocoa agroforestry farmers, no forest change measured"
+r6f12a01b,exclude,wrong-population,,Ghana galago acoustic survey
+r6f2cce42,exclude,wrong-population,,Peru REDD+ household revenue
+r6f49cb08,undecided,,q2,Abstract is a stub; Korean version of REDD deforestation research paper
+r6f816b0a,exclude,wrong-concept,,"DRC amphibian survey, forest loss only background"
+r6fc16eaf,exclude,wrong-concept,,"Congo Basin agriculture and ecosystem services chapter, no change measured"
+r701d3acf,exclude,wrong-population,,"Pantropical REDD+ monitoring overview, Central Africa not named"
+r705822e7,exclude,wrong-population,,"Land allocation economics, no place"
+r70d2c269,exclude,wrong-population,,Brazilian Amazon enforcement
+r71e657c9,exclude,wrong-population,,"Tropical drivers meta-analysis, Asia and Latin America only"
+r727d0221,exclude,wrong-population,,Tropical soil nitrogen oxide emissions meta-analysis
+r72c7ece5,exclude,wrong-population,,West Kalimantan peat drainage
+r73049aa7,exclude,wrong-concept,,"Southern and Central African water storage, deforestation only context"
+r730590d3,exclude,wrong-population,,Panama biomass monitoring
+r73131f66,undecided,,q2,No abstract; title on tropical Asian deforestation
+r7363650c,include,,q3,SAR forest mapping across the Congo Basin
+r73873795,exclude,wrong-population,,"Macroeconomic policy and frontier forests, no place"
+r73f98210,exclude,wrong-population,,Yogyakarta airport land cover
+r740d9590,exclude,wrong-population,,Kalimantan governance working paper
+r74fd2087,undecided,,q1,No abstract; 1987 tropical deforestation scenarios title
+r7527f1fc,exclude,wrong-population,,"Cross-national fragmentation, Central Africa not named"
+r7617651f,exclude,wrong-population,,Latin American foreign debt and forest loss
+r76448ffc,exclude,wrong-population,,Tanzania degradation waves from Dar es Salaam
+r765087cb,include,,q3,"Forest loss hot spot method applied to Brazil, Indonesia and DRC"
+r767f1f70,exclude,wrong-population,,Indonesian forestry bureaucracy
+r7689e860,exclude,wrong-population,,Latin American REDD+ planning cases
+r77750cf8,include,,q2 q3,"Separates smallholder and mining change in Okapi Reserve, DRC"
+r77a3fb22,exclude,wrong-population,,Nepal REDD+ gender
+r785007e8,exclude,wrong-population,,"Indigenous rights in REDD+ governance, no place"
+r790a3af0,exclude,wrong-population,,Amazon degradation model
+r79db6066,exclude,wrong-population,,Mexican secondary forest biomass
+r7a43a9ae,exclude,wrong-population,,Peruvian Amazon land allocation
+r7a6ebebb,exclude,wrong-population,,Land change monitoring tools demonstrated in United States
+r7b339448,undecided,,q2,Abstract only repeats title; tropical agriculture and deforestation review
+r7b4dece4,include,,q3,InSAR degradation mapping tested in Gabon logged plots
+r7b5dd7ef,exclude,wrong-population,,"Commentary on pantropical biomass maps, Central Africa not named"
+r7c2f1983,exclude,wrong-population,,"Theoretical deforestation model, no place"
+r7c8532ee,exclude,wrong-population,,Brazil Forest Code enforcement
+r7cc8a538,exclude,wrong-population,,Amazon secondary forest regrowth mapping
+r7dc1ed5a,exclude,wrong-population,,Indonesian palm oil certification
+r7e66f556,exclude,wrong-population,,Riau Sumatra land cover classification
+r7ee721d5,include,,q2,Household survey of land use change drivers near Cameroon reserve
+r7f048029,exclude,wrong-population,,"Community forest governance, no place"
+r7f23eb2f,exclude,wrong-population,,Sumatra conservation project evaluation
+r7f628676,exclude,wrong-population,,Ecuador payment programme
+r80791673,exclude,wrong-population,,"REDD+ benefit sharing framework, no place"

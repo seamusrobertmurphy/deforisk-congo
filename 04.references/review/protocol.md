@@ -138,6 +138,20 @@ The review code stays out of the manuscript, because the article reports nothing
 
 4. On 13 November 2026, a column was added to the charting. Each included record also takes its main result, in the reader's words and with its numbers, in a field named `finding`. The seven columns above give a record's design but not what it found, and the Introduction reports what prior work found. The fields are set out in `charting-rule.md`. Both readers charted ten records first, and the rule was revised once from that pilot into `charting-rule-2.md`, which the full charting follows.
 
+5. On 13 November 2026, Seamus settled two screening matters, choosing among options put to him. Criterion 1 named no theses, conference abstracts, datasets or software, and 120 kept or undecided records were of these types. Such a record is kept as grey literature when no admitted record reports the same study. When one does, it is excluded as `duplicate`, and the published record stands. Of the 120, 4 were excluded on that test. Records left undecided for want of an abstract are looked up on CrossRef by DOI, or by an exact title match where no DOI is held. The requests carry a generic client name and no email address. An abstract found there is screened by the two readers under `screening-rule-2.md` and settled by a third reading.
+
+6. On 15 November 2026, the emission reduction programme documents of the Forest Carbon Partnership Facility were dropped from the grey literature. The search had found five, a programme document and monitoring reports for Mai-Ndombe in the Democratic Republic of the Congo, and the same for Sangha and Likouala in the Republic of the Congo. Asked why they were wanted, Seamus answered in these words.
+
+   > "So while you're looking up these forest carbon partnership facility and monitoring reports, what is it? Why do you want to look at those? I don't think there's a need for them."
+
+   The five rows stay in `review-grey.csv` as the search found them, and none is charted. The Mai-Ndombe monitoring report for 2019 and 2020, saved by hand the same day, is not charted either.
+
+7. On 15 November 2026, the review scripts left the repository. The Files section names `04.references/review/scripts/`, and its five scripts were moved to `05.tasks/review-scripts/`, which git ignores. Asked whether they belonged in the manuscript, Seamus answered in these words.
+
+   > "The search and screening scripts should not go into the manuscript. You can save them in tasks folder or something like this, where gitignore will drop them from the repo."
+
+   Only the paths in their usage notes were changed, and they run from the repository root as before. The versions committed before the move stay in the history of commits `8ab9c74` and `230023a`.
+
 ## References
 
 Arksey, H. and O'Malley, L. (2005) Scoping studies, towards a methodological framework. International Journal of Social Research Methodology 8(1), 19 to 32. https://doi.org/10.1080/1364557032000119616

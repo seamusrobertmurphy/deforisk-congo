@@ -1,0 +1,4 @@
+record_id,decision,reason,questions,note
+r0eba7fb8,exclude,wrong-population,,Pantropical emissions estimate; no Congo Basin or Central Africa named.
+r5b2b930f,exclude,wrong-population,,General REDD policy overview; no Congo Basin place or mapping.
+r97e9a4fc,exclude,wrong-population,,Amazon tenure economics model; no Congo place and no risk prediction.

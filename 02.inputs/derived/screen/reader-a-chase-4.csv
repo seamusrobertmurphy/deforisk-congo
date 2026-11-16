@@ -1,0 +1,161 @@
+record_id,decision,reason,questions,note
+rc113b137,exclude,wrong-population,,"Amazon case, outside the six countries"
+rc1146df9,exclude,wrong-concept,,Cameroon environmental activism and law; forest change only context
+rc154aa07,exclude,wrong-concept,,Congo forestry revenue and policy; no change analysis
+rc1b5ea98,undecided,,q2,no abstract; tropical deforestation expert views
+rc28e2f1c,undecided,,q2,no abstract; African policymakers on deforestation drivers
+rc2aa352b,include,,q6,"tropical land-cover change modelling review, predictive models"
+rc2d2b408,include,,q7,Central African logging reduction and emission reduction scenarios
+rc2d4385e,exclude,wrong-population,,Brazilian Amazon REDD costs
+rc372af39,exclude,wrong-concept,,"logging road literature review, no forest change measured"
+rc405cef9,exclude,wrong-concept,,REDD governance structures report
+rc58221b1,include,,q2,fire and land cover change in Central Africa sites
+rc5cd9fe1,exclude,wrong-population,,"mangrove economics across countries, no Congo place"
+rc673e924,include,,q2,oil palm expansion and forest clearing in Congo Basin
+rc6a5d435,exclude,wrong-population,,Indonesian household perceptions of REDD
+rc6c66c66,exclude,wrong-concept,,"review of forest incentives, no change measured"
+rc6f2b3f2,exclude,wrong-population,,Amazonian village land use
+rc74ecad9,exclude,wrong-population,,Ethiopia land use classification
+rc75d8ab4,exclude,wrong-population,,Tanzania REDD politics
+rc7d3c042,exclude,wrong-concept,,"review of REDD outcomes, no baseline evaluation"
+rc80cb5fd,exclude,wrong-concept,,"REDD monitoring and verification proposals, no baseline evaluation"
+rc8475bb5,exclude,wrong-population,,Iranian city expansion
+rc8f770cb,exclude,wrong-population,,"global land use carbon flux, no Congo result named"
+rc8fbe38f,exclude,wrong-population,,radar forest change in Indonesia and Australia
+rc98436ad,exclude,wrong-population,,Southeast Asia canopy disturbance
+rc99c3936,exclude,wrong-population,,"economic model of deforestation, no place"
+rc9be991f,exclude,wrong-population,,Latin American policy sequences
+rcb12984a,exclude,wrong-concept,,"biomass plot variability, no forest change"
+rcbb9ec06,include,,q4,Guyana reference level set far above historical deforestation
+rcc45f9f4,include,,q4,REDD+ project baselines overstated avoided deforestation
+rcc51c5db,exclude,wrong-concept,,forest governance and climate regime
+rcc990422,exclude,wrong-concept,,REDD+ implementation book
+rcc9a309b,exclude,wrong-concept,,defaunation and carbon storage
+rcd02deb9,include,,q2,degradation drivers measured in forests including Cameroon
+rcd271990,exclude,wrong-population,,Indonesian fungi and forest conversion
+rcd71eaf9,exclude,wrong-population,,"agricultural technology and deforestation hypotheses, no place"
+rcddb154c,exclude,wrong-population,,"tropical country development risks, no Congo result named"
+rcde2d292,undecided,,q2,no abstract; population and tropical frontier deforestation
+rce5a94fa,undecided,,q2,no abstract; meta-analysis of deforestation causes
+rcea30798,exclude,wrong-concept,,REDD+ finance review
+rcf191337,include,,q3,pantropical forest clearing map naming humid Africa result
+rd0842df2,include,,q4,national REDD baseline setting and risk of inflated payments
+rd0be95c8,undecided,,q6,no abstract; agent-based model of Amazon deforestation frontier
+rd1309003,exclude,wrong-concept,,"reference scenario institution proposal, no baseline evaluation"
+rd153640c,exclude,wrong-population,,Indonesian REDD+ perceptions
+rd25fbf63,exclude,wrong-population,,Eastern Amazon policy
+rd2cbd002,undecided,,q2,no abstract; statistical causes of Ecuador deforestation
+rd30b12b9,exclude,wrong-population,,Nepal forest loss
+rd3ef2d12,exclude,wrong-population,,"Amazon forest loss map bias, no Congo place"
+rd472a716,exclude,wrong-population,,Southeast Asian peatlands
+rd561f95e,include,,q2,oil palm and forest loss in Southwest Cameroon
+rd624206e,exclude,wrong-population,,Indonesian oil palm review
+rd6bf258b,exclude,wrong-population,,"tropical fauna chapter, no place"
+rd7119afc,exclude,wrong-population,,Nepal REDD+ pilot
+rd735e41a,exclude,wrong-population,,Tanzanian island REDD+ forest cover
+rd7b834ef,include,,q4,synthetic controls show baselines overstate avoided deforestation
+rd7cf34f7,exclude,wrong-concept,,REDD carbon market report
+rd83ea81f,exclude,wrong-population,,South American gold mining
+rd84384eb,exclude,wrong-population,,Latin America review
+rd89546f3,exclude,wrong-population,,Panama reserve
+rd8a9349f,include,,q1,oil palm land available under carbon thresholds in Cameroon and Gabon
+rd8fc58a1,exclude,wrong-concept,,"conservation causal inference, no baseline evaluation"
+rd9279fd0,exclude,wrong-population,,"tropical agriculture expansion editorial, no Congo result"
+rd97207dc,exclude,wrong-population,,Tanzanian REDD+ payments
+rd9fd7a58,exclude,wrong-population,,Bolivian soybean frontier
+rdab48069,exclude,wrong-population,,Peruvian peatlands
+rdafe73bc,exclude,wrong-concept,,REDD+ media discourse
+rdb794194,exclude,wrong-population,,"economic perspective, no place"
+rdc4cdcfc,undecided,,q2,no abstract; debt and tropical deforestation
+rdca4566f,exclude,wrong-population,,Maritime Continent climate model
+rdd48a248,exclude,wrong-concept,,"Central African REDD+ governance, baselines only background"
+rdd68d673,exclude,wrong-population,,Indian land cover and tigers
+rdd84df0e,exclude,wrong-population,,"agriculture and REDD+ policy, no place"
+rddb322ac,undecided,,q4,no abstract; method for REDD reference effort
+rde654e65,exclude,wrong-population,,"REDD+ modelling frameworks, no Congo place"
+rde665260,exclude,wrong-concept,,trade and environment review
+rded0c52d,exclude,wrong-population,,"population and deforestation chapter, no place"
+re02b3cae,exclude,wrong-population,,theoretical household model
+re0425617,include,,q3,"African woodland NDVI change, Congo Basin result named"
+re05f86a1,exclude,wrong-population,,"tropical peat carbon pool, Southeast Asia focus"
+re11232d7,include,,q6,CA-Markov simulation of mangrove land change in Sumatra
+re2013d92,undecided,,q2,no abstract; statistical causes of tropical deforestation
+re27ed30e,exclude,wrong-population,,"pantropical carbon balance, no Africa result named"
+re2bdde2f,exclude,wrong-population,,Indonesian peat fire emissions
+re317a02c,exclude,wrong-population,,Mexican REDD+ communities
+re3a7be14,exclude,wrong-population,,"1990 FAO tropical assessment critique, no Congo named"
+re4b8aef2,exclude,wrong-population,,global food security essay
+re4d18aa3,exclude,wrong-population,,Neotropical stream invertebrates
+re4f76e37,include,,q7,degradation emissions in 74 countries with African share reported
+re5641e54,exclude,wrong-concept,,"carbon stock measurement bias, no baseline or risk map"
+re57e67d3,exclude,wrong-population,,"frontier village income, no Congo place"
+re59de1f9,undecided,,q2,no abstract; Congo Basin forest loss and climate adaptation
+re5ada1a8,exclude,wrong-concept,,national REDD+ strategy content analysis
+re6030797,include,,q3,Cameroon radar mapping of degraded forest
+re6b3ba5f,exclude,wrong-population,,Mexico institutions and deforestation
+re6c9a294,exclude,wrong-population,,Switzerland forest clearance drivers
+re6ed2ea7,exclude,wrong-concept,,oil palm and climate review
+re723532c,exclude,wrong-concept,,REDD+ non-carbon benefits review
+re790d6bb,exclude,wrong-population,,Indonesian oil palm opportunity costs
+re7fdae45,undecided,,q2,no abstract; rural land use policy and deforestation
+re8310193,exclude,wrong-population,,Southeast Asian peat oil palm biomass
+re8d00312,exclude,wrong-population,,Brazilian Amazon urbanisation
+re8de2025,exclude,wrong-population,,"commodity crop case studies, no Congo place"
+re8dea9db,exclude,not-english,,German thesis on Guatemalan cloud forest
+re947b231,exclude,wrong-concept,,private demand for REDD+ credits
+rea4522bd,undecided,,q7,abstract is only a contents list; REDD markets chapter
+reb54ff91,exclude,wrong-population,,Sumatra protected areas
+reb775a59,exclude,wrong-population,,Malaysia and Indonesia poverty and deforestation
+recbee5eb,exclude,wrong-population,,theoretical forest conflict game
+red6190c6,include,,q2,protected areas and clearing in 64 countries including Africa
+redc6ac0d,undecided,,q2,no abstract; Indonesian land use incentives
+rededd859,exclude,wrong-population,,Malaysian soil carbon payments
+redf36c39,exclude,wrong-concept,,national strategies on commodity drivers
+ree0e6339,exclude,wrong-population,,Malaysian carbon storage
+ree170f68,exclude,wrong-population,,palm oil imports from Southeast Asia
+ree2ad782,exclude,wrong-population,,Indonesia clearing rates
+ree72396d,exclude,wrong-concept,,REDD+ governance politics
+ree8db8cd,exclude,wrong-population,,Uganda REDD policy
+reed1bea0,exclude,wrong-population,,Ecuador deforestation
+ref977aa2,undecided,,q2,no abstract; deforestation knowledge in Zambia
+rf000f8d5,exclude,wrong-population,,"economics review, no Congo place"
+rf002042f,exclude,wrong-population,,Yucatan forest transition
+rf01cbcc7,undecided,,q3,no abstract; radar deforestation detection in Sumatra
+rf0c0dc85,exclude,wrong-population,,"pantropical forest loss sample, no Africa result named"
+rf11ba78b,exclude,wrong-concept,,essay on forest futures
+rf24827a4,exclude,wrong-population,,Mekong radar forest disturbance
+rf29e7fd5,exclude,wrong-population,,"global forest carbon sink, no Congo result named"
+rf2cbdc5f,exclude,wrong-concept,,"Cameroon soil carbon under fallow, no forest change mapped"
+rf316508a,exclude,wrong-concept,,Cameroon cocoa farm finances
+rf330ab93,undecided,,q2,no abstract; book review on deforestation causes
+rf3647bc4,exclude,wrong-population,,Southeast Asian oil palm mapping
+rf51d8a8f,exclude,wrong-population,,"pantropical biomass map, no change"
+rf529efe6,exclude,wrong-population,,global economic models of avoided deforestation
+rf53c99ee,exclude,wrong-population,,Guatemala forest clearing
+rf6cedf5d,exclude,wrong-population,,Puerto Rico carbon literature
+rf7727484,exclude,wrong-population,,India biomass mapping
+rf7b0ac51,exclude,wrong-concept,,geopolitics of negative emissions
+rf7b74f87,exclude,wrong-population,,REDD+ projects in Indonesia and Brazil
+rf8a37087,exclude,wrong-population,,Borneo rainfall effects
+rf9344035,exclude,wrong-concept,,REDD+ finance institutions
+rf941f944,exclude,wrong-population,,Bornean logged forest carbon flux
+rf99bf881,exclude,wrong-population,,Mexican forest certification
+rfaa39685,exclude,wrong-population,,Vietnam consent in REDD+
+rfb3c2d6f,exclude,wrong-concept,,"REDD+ project accounting comparison, no baseline evaluation"
+rfb8d5efe,undecided,,q2,no abstract; global economic causes of deforestation
+rfbbe4dd0,include,,q2,seed access and clearing in a DR Congo trial
+rfbfd9ef3,exclude,wrong-concept,,REDD+ research needs commentary
+rfcc65672,include,,q6,"econometric spatial deforestation model, Indonesia"
+rfd444f74,exclude,wrong-population,,"pantropical carbon loss, Latin America emphasis"
+rfd4e3cb1,exclude,wrong-concept,,Baka wild plant diet
+rfde6f6d3,exclude,wrong-population,,Ecuador montane land cover
+rfe91fd70,exclude,wrong-population,,"tropical deforestation mapping, no Congo place"
+rfec40641,include,,q6,Mexico land cover change scenario modelling and hotspots
+rfec7b5ce,exclude,wrong-population,,historic global carbon flux
+rfed7bb77,exclude,wrong-concept,,REDD+ project payment designs
+rff05cb00,exclude,wrong-population,,"southern African charcoal degradation, outside six countries"
+rff174b42,exclude,wrong-population,,Latin America agriculture and clearing
+rff282bd8,exclude,wrong-population,,Brazil REDD+ governance
+rff2a3815,exclude,wrong-concept,,community monitoring review for REDD+
+rff66e607,exclude,wrong-population,,Nepal REDD+ economics
+rff68bf22,exclude,wrong-concept,,EU import policy options

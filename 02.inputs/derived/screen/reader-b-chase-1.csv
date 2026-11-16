@@ -1,0 +1,164 @@
+record_id,decision,reason,questions,note
+r004ba8e2,exclude,wrong-population,,"Sulawesi driver econometrics; drivers need Congo Basin, and nothing is predicted."
+r01775694,exclude,wrong-population,,"Oil palm versus REDD profit comparison; no Congo Basin place, no forest change model."
+r01eedb43,exclude,wrong-population,,"Brazilian dry forest loss drivers at county level; outside Congo Basin, no prediction."
+r01f728c2,exclude,not-english,,"Abstract in Japanese; general review of tropical clearing causes, no Congo place."
+r03687371,exclude,wrong-population,,"Bolivian lowland clearing and fragmentation mapped from imagery; past change only, outside Congo."
+r0381499f,exclude,wrong-population,,Global bookkeeping carbon flux estimate; abstract reports no Central African result.
+r04290657,include,,q8,Satellite fire trends in Congo Basin forests linked to clearing hotspots and warming.
+r0474043a,exclude,wrong-population,,"Essay proposing a global forest science agenda; no Congo place, no evaluation."
+r04795bc3,undecided,,q6,No abstract; title suggests a Peruvian model of deforestation predisposition.
+r04d7aa44,include,,q2,"DRC protected area boundaries tested for holding back forest loss, quasi-experimental design."
+r04e6dc82,exclude,wrong-population,,Climate model land surface test for Sub-Saharan Africa; Congo Basin never named.
+r05dbb5df,exclude,wrong-population,,Malaysian urban forest patch mammal survey; wrong place and no forest change measured.
+r0684a560,undecided,,q2,"No abstract; title links timber certification to deforestation, place unknown."
+r06cdc1a7,exclude,wrong-concept,,Bird demography in logged Equatorial Guinea forest; forest change itself not measured.
+r06ff0f9f,exclude,wrong-population,,Ethiopian cookstove fuel trial for REDD+; outside the six Congo Basin countries.
+r078042e8,include,,q4 q6,"Thai reference level types compared, giving different projected deforestation areas."
+r07c6b848,exclude,wrong-population,,Review of Latin American landscape change trajectories and REDD+; outside Congo Basin.
+r07d6d971,undecided,,q2 q7,Keywords only and title marks a Japanese edition; place and language unclear.
+r083caf09,include,,q2,Cameroon household survey ties economic crisis farming shifts to faster forest clearing.
+r09113aa1,exclude,wrong-population,,Insular Southeast Asia deforestation rates from land cover maps; outside Congo Basin.
+r091f7fc1,exclude,wrong-population,,Brazilian press discourse on REDD+; outside Congo Basin and no forest change measured.
+r09289717,exclude,wrong-population,,"Microwave-based forest loss series for South America; outside Congo Basin, past change only."
+r09328189,exclude,wrong-population,,Thai road and population drivers of clearing; driver questions need the Congo Basin.
+r093f037b,undecided,,q2,Truncated abstract of a short comment on frontier clearing causes; place unclear.
+r09a744ea,exclude,wrong-population,,"Malaysian urban housing growth model; predicts residential expansion, not forest loss."
+r09cc6630,exclude,wrong-population,,Southeast Asian peat drainage emissions; emission questions need a Congo Basin place.
+r0ab42923,exclude,wrong-population,,Jambi tenure and migrant study on emission policy; outside the Congo Basin.
+r0ae544b5,exclude,wrong-population,,"Automated tropical forest change mapping tool; examples from Brazil and Peru, no Congo site."
+r0b65c954,exclude,wrong-population,,"Political account of slowing Amazon clearing; outside Congo Basin, nothing predicted."
+r0b6bbc8b,exclude,wrong-population,,Ugandan payment scheme participation survey; Uganda lies outside the six countries.
+r0bec46c4,exclude,wrong-population,,"Change detection accuracy tested at Brazilian, Ethiopian and Vietnamese sites; no Congo site."
+r0c524f50,exclude,wrong-population,,Kalimantan peat forest logging and fire detection; outside the Congo Basin.
+r0cbf03fe,exclude,wrong-concept,,Peruvian REDD+ project impact study; no crediting baseline or risk map evaluated.
+r0cf7061d,exclude,wrong-population,,Sabah oil palm biomass and conversion emissions; outside the Congo Basin.
+r0cff875a,include,,q6,Pantropical protected areas judged against modelled expected clearing; only Africa named.
+r0d7bbdde,undecided,,q6,No abstract; title points to Mexican cloud forest cover change and carbon.
+r0da78589,include,,q6,"Oil palm clearing sampled in 20 countries, with forests suited to future expansion mapped."
+r0e988ae5,undecided,,q2,"No abstract; title on population, farming and social structure as clearing causes."
+r0eba7fb8,undecided,,q7,One sentence abstract on diverging tropical clearing emission estimates; too short to judge.
+r0f67d1de,exclude,wrong-population,,"Kalimantan ethnography of REDD+ value conflicts; outside Congo Basin, no forest change."
+r0f79fd92,include,,q6,Ghana peatland land cover projected to 2040 by a validated cellular automata network.
+r0fc61159,exclude,wrong-population,,"General policy essay on lessons for REDD+; no Congo place, no forest change analysis."
+r1073882a,include,,q3,Radar forest loss detection method built and scored for Congo Basin moist forest.
+r107a6650,exclude,wrong-population,,Framing and coalition analysis of REDD+ debates; no place and no forest change.
+r10b49948,exclude,wrong-population,,Rondônia carbon bookkeeping from Landsat land cover; emission questions need the Congo Basin.
+r1131d9b3,undecided,,q3,No abstract; title on tropical forest change seen at several satellite scales.
+r115d0335,exclude,wrong-population,,Biomass equations for North East Indian forests; wrong place and no change measured.
+r1161fb88,exclude,wrong-population,,"Indonesian urban watershed land use forecast; built-up growth modelled, not forest loss."
+r1219b208,exclude,wrong-population,,"Indonesian pine and coffee ecosystem service modelling; outside Congo Basin, no clearing model."
+r1276b920,undecided,,q7,No abstract; title questions REDD incentive theory for fragile states.
+r128970df,exclude,wrong-population,,Venezuelan reserve clearing emissions measured; emission questions need a Congo Basin place.
+r12d55b14,exclude,wrong-population,,Reliability of global FRA forest area trends; abstract names no Central African result.
+r13380e2d,exclude,wrong-population,,"Comparative policy analysis of twelve REDD+ countries; none named, no forest change."
+r13891b92,exclude,wrong-population,,East Kalimantan land cover trajectories behind forest loss; outside the Congo Basin.
+r139e666d,exclude,wrong-population,,"Indonesian REDD+ social safeguard evaluation; outside Congo Basin, no forest change."
+r146d0b5a,undecided,,q6,No abstract; title links global rubber prices to Cambodian forest clearing.
+r1490042f,exclude,wrong-population,,Sabah floodplain oil palm suitability and economics; outside the Congo Basin.
+r166b87aa,exclude,wrong-concept,,Cameroon newspaper coverage of REDD+; no forest change or emissions measured.
+r175a808b,exclude,wrong-population,,"Global aerosol model test of fire particulates; not forest change, no Central Africa result."
+r1784505c,include,,q1 q3,Cameroon reserve land cover mapped at three dates to measure forest loss rate.
+r1789612c,exclude,wrong-population,,Paraguayan Chaco land cover drivers from satellite and census data; outside Congo Basin.
+r178b5cef,include,,q4 q6,Alternative baselines rebuilt for four certified REDD+ projects show large disagreement.
+r17a920b8,exclude,wrong-population,,"National carbon stock synthesis for REDD; stocks only, no Central Africa named."
+r181fc250,exclude,wrong-population,,Puerto Rico forest and wetland fragmentation history; outside the Congo Basin.
+r182e25b8,exclude,wrong-population,,Dominican Republic pine degradation monitoring; outside the Congo Basin.
+r184e95f1,exclude,wrong-population,,"Review of tropical plant conservation targets; no forest change analysis, no Congo place."
+r18ba1da4,exclude,wrong-population,,"Review tying land use shifts to new disease outbreaks; no Congo place, no risk model."
+r18e08f47,exclude,wrong-population,,Amazon mangrove carbon and avoided emissions for Brazil; outside the Congo Basin.
+r18f3206f,exclude,wrong-population,,Brazilian Amazon secondary forest age mapping; outside the Congo Basin.
+r191e828f,exclude,wrong-population,,Biofuel-driven clearing in three regions; sub-Saharan Africa named but not Central Africa.
+r19986575,include,,q4,Forest change datasets compared at five tropical REDD+ sites for crediting uncertainty.
+r1a2371ac,undecided,,q2,No abstract; title ties large land acquisitions to tropical forest loss.
+r1a6a4fa9,exclude,wrong-population,,Ten years of satellite fire records over Borneo; outside the Congo Basin.
+r1a8d34aa,undecided,,q3,No abstract; title on a vegetation time series method for detecting tropical clearing.
+r1ae72b66,undecided,,q7,No abstract; title on tropical clearing under the Kyoto Protocol.
+r1b3ef614,include,,q3,Logging degradation mapping method built in Cameroon and reused at a Central African Republic site.
+r1b4b06f8,exclude,wrong-population,,"REDD+ institutional design on Pemba, Tanzania; outside Congo Basin, no forest change."
+r1b6d621f,exclude,wrong-population,,Pantropical mangrove change estimate variability; no Central African country named.
+r1b87c874,undecided,,q6,No abstract; title on causes and projected clearing on Timor.
+r1bdc31e0,exclude,wrong-population,,"Peruvian indigenous tenure and REDD+ governance; outside Congo Basin, no forest change."
+r1cbeb92d,exclude,wrong-population,,Bornean oil palm set-aside carbon and plant diversity; outside the Congo Basin.
+r1d5cfa33,exclude,wrong-population,,Indonesian plantation and bioenergy policy review; outside the Congo Basin.
+r1e01dd94,exclude,wrong-population,,Qualitative study of Indonesian community REDD+ interests; outside Congo Basin.
+r1ebb7043,exclude,wrong-population,,"Fire-linked oil palm clearing in Indonesia and Malaysia; outside Congo Basin, nothing predicted."
+r1f10a9a7,include,,q4 q6,Six REDD reference level designs compared in an economic model for emission gains.
+r1f738b7f,exclude,wrong-population,,"Conceptual chapter on payment scheme design for REDD+; no place, no forest change data."
+r1f7dc1e7,exclude,wrong-concept,,Congo Basin hydrology review; clearing appears only as one proposed hypothesis.
+r1f9eca35,exclude,wrong-population,,"Social learning in a Kalimantan REDD+ project; outside Congo Basin, no forest change."
+r1fd34af1,exclude,wrong-population,,Sumatran oil palm classification method; outside the Congo Basin.
+r1fd7a5d6,exclude,wrong-population,,National causes of forest cover shifts across eight Southeast Asian countries; outside Congo.
+r1fe08364,exclude,wrong-population,,"Climate justice principles for Amazon peoples; outside Congo Basin, no forest change data."
+r1fe41078,undecided,,q6,No abstract; short title on a tropical deforestation debt.
+r2014d034,exclude,wrong-population,,Ivorian time series of clearing and crop yield; outside the six countries.
+r20e74ddc,exclude,wrong-concept,,DRC deforestation policy coalitions traced through Twitter networks; no forest change measured.
+r21720ae4,exclude,wrong-population,,Pantropical intact forest loss carbon accounting; abstract names no Central African result.
+r224902e7,undecided,,q4,Two sentence abstract on judging subnational REDD+ carbon performance; methods unstated.
+r229597ed,exclude,wrong-population,,Review of Madagascar conservation costs and benefits; outside the Congo Basin.
+r22b58447,include,,q4,Pixel matching tests performance of 40 certified REDD+ projects; bears on crediting.
+r22da550c,exclude,wrong-population,,Global summary of land use change carbon flux estimates; no Central African result.
+r2350ffad,include,,q1 q2,Kahuzi-Biega park clearing rates traced to farming and mining using imagery and visits.
+r237fd983,undecided,,q2,No abstract; title pairs a meta-analysis of clearing drivers with REDD+ benefit sharing.
+r241b90dc,exclude,wrong-population,,Comparison of forest economics textbooks; no place and no forest change analysis.
+r243a4781,include,,q4 q6,Dynamic land conversion model compares four REDD baselines for effectiveness and cost.
+r244f20e3,undecided,,q4,No abstract; title reviews REDD+ leakage research and policy.
+r24a68625,exclude,wrong-concept,,Congo Basin carbon cycle and ecology synthesis; forest change only background.
+r24ebff5c,exclude,wrong-population,,Papua New Guinea bird hunting and climate vulnerability; outside Congo Basin.
+r251e13e4,exclude,wrong-population,,"Policy proposal nesting project REDD accounting in national schemes; no place, no data."
+r256758c3,exclude,wrong-population,,Brazilian Amazon frontier clearing and cattle economics; outside the Congo Basin.
+r26ad8f8b,exclude,wrong-population,,Myanmar selective logging detection with Landsat; outside the Congo Basin.
+r274ea48b,exclude,wrong-population,,Cross-country regression of clearing determinants in the 1980s; no Central African result named.
+r2794706f,include,,q1 q3,Small patch forest loss mapped 2000 to 2022 in four countries including Cameroon.
+r27ff3ac6,include,,q6,Spatial transition probabilities of Amazon frontier land change modelled; tropical prediction.
+r2805e9b2,include,,q4,Proposes conservative accounting to handle uncertainty in REDD emission reduction estimates.
+r2909e87b,exclude,wrong-population,,Tropics-wide land use carbon emissions and mitigation potential; no Central Africa result.
+r29664294,exclude,wrong-population,,Madagascar resource use and biodiversity dissertation; outside the Congo Basin.
+r2a2ad27a,exclude,wrong-population,,Cambodian community forestry and REDD+ equity interviews; outside the Congo Basin.
+r2a31438c,exclude,wrong-population,,Review of satellite monitoring readiness for crediting reduced clearing; no Central Africa named.
+r2a82c2ec,exclude,wrong-population,,"Sulawesi protected area bird surveys; outside Congo Basin, no forest change measured."
+r2ac8d3ae,exclude,wrong-population,,"Governance analysis of Indonesian REDD+ incentives; outside Congo Basin, no forest change."
+r2ad0bc68,exclude,wrong-population,,Southern Benin land use change and carbon stocks; Benin lies outside the six countries.
+r2b41cba2,exclude,wrong-population,,Review of the South American carbon budget; outside the Congo Basin.
+r2b95dc8e,exclude,wrong-population,,Review of global change effects on humid tropical forests; no Central Africa named.
+r2bf9d582,exclude,wrong-population,,Tropics-wide land sector emission hotspot dataset; Africa named only for dry forest fire.
+r2c1ad9b0,exclude,wrong-population,,Global nitrogen budget model stressing tropical land use; no forest change focus or Congo place.
+r2c763d22,include,,q6,Household model of Amazon frontier forest dynamics explains where clearing occurs.
+r2c8d8e87,exclude,wrong-population,,West Kalimantan peat land use and livelihood change; outside the Congo Basin.
+r2d24d532,include,,q3,Systematic review of degradation remote sensing reports the Congo Basin as little studied.
+r2d61d14e,exclude,wrong-population,,"Essay on justice and equity in REDD+ governance; no place, no forest change."
+r2ecfe0f0,exclude,wrong-population,,"Perspective on linking REDD design with biodiversity; no place, no forest change data."
+r2f8570ef,exclude,wrong-population,,Global vegetation model land use emissions constrained by biomass; no Central Africa result.
+r2fc0d8f3,exclude,not-research,,"Whole journal issue of literary ecocriticism; editorial overview, not forest change research."
+r2fd68947,exclude,wrong-population,,Indonesian national regression of emissions on economic output and forest extent; outside Congo.
+r2fe70ec9,exclude,wrong-population,,"Brazilian compensation scheme for legal clearing; outside Congo Basin, no forest change model."
+r3078f89d,exclude,wrong-population,,Pantropical hinterland forest loss mapped; Africa named but no Central African result.
+r307ffcd7,exclude,wrong-population,,Riau oil palm conversion and emissions from Landsat; outside the Congo Basin.
+r31be2e8e,undecided,,q2,No abstract; title on a meta-analysis of tenure security and tropical clearing.
+r32240371,exclude,wrong-population,,"Optimal stopping model of logging concession compliance; no named place, no forest change data."
+r324adab4,exclude,wrong-population,,"Sulawesi cacao shade systems carbon and yield; outside Congo Basin, no forest change."
+r331f0b24,exclude,wrong-population,,Global 1990 to 2000 Landsat forest change maps; abstract names no Central African result.
+r33d8e33b,exclude,wrong-population,,"Game theory model of state and community forest appropriation; no place, no data."
+r33de7d3b,exclude,wrong-population,,Process tracing of Indonesian forest governance and clearing; outside the Congo Basin.
+r33ff117c,include,,q1 q2 q6,"Projected clearing trends tested against 2020 observations, with DRC analysed by country."
+r347a8528,include,,q1 q8,Potential vegetation model maps where Congo Basin climate grows less able to hold forest.
+r35cc0fc0,exclude,wrong-population,,Cross-national test of population and capital explanations of clearing; no Central Africa named.
+r365d68b9,exclude,wrong-population,,Brazilian Amazon spatial regression confirms soy-linked indirect clearing; driver study outside Congo.
+r36f676c9,exclude,wrong-population,,"Oil wealth effects on forests compared across eight tropical economies, none named."
+r39aa3fc6,exclude,wrong-population,,"Meta-analysis of 152 tropical clearing cases; Africa pooled, no Central African result named."
+r39fd03e0,include,,q2,Cameroon national time series links trade openness and farm output to clearing.
+r3a3aa955,exclude,wrong-concept,,Brazilian indigenous REDD+ project governance account; baseline mentioned but never evaluated.
+r3ac1ad63,exclude,wrong-population,,Soil carbon dioxide flux after Sumatran peat forest conversion; outside the Congo Basin.
+r3adb9bc2,exclude,wrong-population,,Review of satellite biomass mapping across tropical forests; no Central Africa result named.
+r3b6ababa,exclude,wrong-population,,Review of Latin American forest carbon markets; outside the Congo Basin.
+r3bd5b4ee,exclude,wrong-population,,"Pantropical biomass maps give alternative Tier 1 stock values; stocks only, no Central Africa."
+r3be4e4b7,exclude,wrong-population,,Synthesis of REDD+ policy risks in thirteen unnamed countries; no forest change measured.
+r3c1f7f79,undecided,,q4 q7,"Abstract lists only the book's parts on emissions, crediting and policy; too thin to judge."
+r3c51efa9,exclude,wrong-population,,Thesis on remote sensing of post-clearing land use and emissions; no Central Africa named.
+r3d04a98f,exclude,wrong-population,,Colombian Amazon soil carbon after pasture conversion; outside the Congo Basin.
+r3d5a9027,exclude,wrong-population,,Southern Myanmar oil palm concession land use mapping; outside the Congo Basin.
+r3d6e0218,exclude,wrong-population,,"Comparative REDD+ policy analysis across thirteen countries; no forest change, no Central Africa."
+r3d7150fd,exclude,wrong-population,,Lao land use cost-benefit comparison and REDD+; outside the Congo Basin.
+r3ea890ae,exclude,wrong-population,,Review of REDD+ and commodity roundtables with a Mato Grosso case; outside Congo.
+r3f2ab6fa,include,,q7,Afromontane reserve land cover change emissions estimated; abstract never names the country.
+r3fa5c6d3,include,,q6,Costa Rica land use model estimates clearing susceptibility for use in offset baselines.

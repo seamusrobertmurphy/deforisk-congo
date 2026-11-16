@@ -1,0 +1,241 @@
+record_id,decision,reason,questions,note
+rbb25907d,exclude,not-research,,Opinion piece with no spatial model
+rbb2860b0,include,,q6,Random forest deforestation risk map for Amazon
+rbb8dbead,include,,q2,Tests effect of concession plans on forest loss in Congo Basin
+rbc2042be,exclude,wrong-concept,,"Soil carbon stocks, no forest change"
+rbc4ada01,exclude,wrong-population,,Bats in Ecuador
+rbc5d6080,include,,q2,National determinants of deforestation including Congo basin countries
+rbca9b437,exclude,wrong-population,,"Global forest loss assessment, Congo Basin not named"
+rbcd5f159,exclude,wrong-population,,Nigerian forest reserve
+rbcdc5593,include,,q6,Business as usual deforestation model for Sumatra
+rbcea2251,exclude,wrong-concept,,Chikungunya review with no spatial model
+rbd65b01c,include,,q2,Deforestation pressure on DRC mangroves from surveys
+rbd842954,include,,q2,"Mining driven forest loss mapped, Congo Basin named"
+rbdbffe5a,include,,q6,Dinamica deforestation scenarios for Acre
+rbdd0c0ef,exclude,wrong-population,,Generic image classification on Eurosat
+rbe7e88b9,include,,q2 q3,Cameroon land cover change and its drivers
+rbef267ce,exclude,wrong-population,,"Satellite data download tool, no place"
+rbf8acfbd,include,,q4,Framework for setting forest reference levels
+rbffa1710,exclude,wrong-population,,Cave drip water in Budapest
+rc00e64ea,exclude,wrong-population,,Deforestation mapping in Sumatra
+rc098bb8a,exclude,wrong-population,,Vietnam forest carbon densities
+rc0c995fa,exclude,wrong-concept,,Single virus case in DRC
+rc0e39e69,exclude,wrong-population,,Coffee mapping in Vietnam
+rc11f1270,exclude,wrong-concept,,Human migration and infectious disease
+rc127d636,exclude,wrong-concept,,"Flood hydrodynamics, deforestation only background"
+rc12d74bf,exclude,wrong-concept,,"REDD+ contingent valuation, no forest change"
+rc1d313e4,exclude,wrong-concept,,"Catalogue of government authority, no change mapped"
+rc1ec7473,exclude,wrong-population,,Costa Rica biomass lidar
+rc1ff4ec1,exclude,wrong-concept,,Policy analysis of REDD+ in Cameroon
+rc1fffaad,exclude,wrong-concept,,"Peatland water level mapping, forest change absent"
+rc234bdb6,exclude,wrong-concept,,Bushmeat and Ebola risk commentary
+rc266c1c7,exclude,wrong-concept,,"Household charcoal preferences, no forest change"
+rc29d1331,exclude,wrong-concept,,"Atmospheric moisture network, no forest change measured"
+rc2d9650f,include,,q3,Forest disturbance alert map including Republic of Congo
+rc300f240,include,,q2 q3,Cameroon land cover change and drivers
+rc30dc2a3,include,,q2 q3 q7,"Mount Cameroon forest loss, road driver, carbon emissions"
+rc3192625,exclude,wrong-population,,Maya Forest in Central America
+rc343af12,exclude,wrong-population,,Mexican dry forest
+rc388d319,include,,q3,Land cover classification of DRC Congo basin scenes
+rc39792a5,exclude,wrong-concept,,"Household survey on secondary forest use, no change measured"
+rc406df98,include,,q3,Radar forest loss index calibrated in DRC
+rc4b10a55,exclude,wrong-concept,,"Economic abatement model, no spatial forest change"
+rc5d90f3e,exclude,wrong-population,,Global trade impacts thesis
+rc6dae592,include,,q2,Survey assessing drivers of deforestation in Cameroon park
+rc73368f2,include,,q4,Uncertainty of REDD+ baseline emissions in Panama
+rc76158b4,exclude,wrong-concept,,"Oil palm economics, no forest change measured"
+rc8058d5d,exclude,wrong-concept,,"Bird parasites after clearing, no spatial risk model"
+rc922a26d,exclude,not-research,,Conference news report on climate talks
+rc9cf4372,exclude,wrong-population,,Soybean maps in South Africa
+rc9eb3cbd,exclude,wrong-population,,Ethiopian forest
+rca5104d5,exclude,wrong-population,,Uganda disease outbreak
+rca7c61d9,exclude,wrong-population,,"Pastoralist rangeland geospatial data critique, no place"
+rca968387,exclude,wrong-concept,,Soil geomaterials for housing
+rcaf6c472,include,,q2,Commodity crop expansion and deforestation risk in Africa
+rcb4066b0,exclude,wrong-population,,Arboviruses in Pakistan
+rcbaa3dd2,include,,q2,Land use context of forest clearing in DRC
+rcc476665,exclude,wrong-concept,,Forest proximity and diet
+rcc76decf,exclude,wrong-concept,,"Biomass estimates, no forest change"
+rcc9b6369,exclude,wrong-concept,,"Biomass map comparison, no forest change"
+rcd817c3d,exclude,wrong-population,,Indonesian peatland groundwater
+rcda306f5,include,,q6,Calibrated deforestation simulation for Riau Sumatra
+rcdbb7dac,exclude,off-topic,,"Hyperspectral classification, glance matched a network name"
+rce429638,exclude,wrong-population,,Indonesian watershed hydrology
+rceacebc4,exclude,wrong-population,,"Global deforestation drivers, Congo not named"
+rcecd7e13,exclude,wrong-concept,,Ice age tree genetics
+rcf701315,include,,q6,"Spatial model of forest cover change and trade, Brazil"
+rcfab0ff8,exclude,wrong-population,,"Pantropical monitoring review, Congo not named"
+rcfc699d8,exclude,wrong-concept,,Bibliometric review of deforestation literature
+rd015d627,exclude,wrong-concept,,"Plantation allometry, no forest change"
+rd04a0caf,exclude,wrong-concept,,Political analysis of REDD+ in DRC
+rd091d3fc,include,,q2 q3,Synthesis of DRC deforestation estimates and agriculture drivers
+rd0a2266a,exclude,wrong-population,,Ghana deforestation costs and drivers
+rd0dd4562,exclude,wrong-concept,,"Community attitudes to payments, no forest change measured"
+rd0e78126,exclude,wrong-concept,,Forest finance case report
+rd128db38,exclude,wrong-concept,,Tree ring growth trends
+rd13de0b4,exclude,wrong-concept,,"Cocoa suitability under climate change, no forest change"
+rd1b60c5d,exclude,wrong-population,,Global air quality modelling
+rd1deb8b2,include,,q4 q6,Risk zone method from distance to deforestation for crediting
+rd29ac0ed,exclude,wrong-population,,Southeast Asia biodiversity data
+rd2adf144,include,,q6,Commentary on spatial deforestation model for REDD pilot
+rd2c491ad,exclude,wrong-population,,Colombia emission factors
+rd2d431ed,include,,q8,Banana disease risk maps and land use change in eastern DRC
+rd33bb82d,exclude,wrong-population,,Ecuador dry forest
+rd379ae9b,include,,q5,Describes global GLanCE land cover training dataset
+rd37b97fb,exclude,wrong-concept,,Infectious disease review with no spatial model
+rd38f7555,exclude,wrong-concept,,"Household survey on forest use, no change measured"
+rd414eaf6,include,,q2 q7,Congo Basin carbon emissions from land use disturbance and forest change
+rd4471479,exclude,wrong-concept,,"REDD+ wellbeing survey, no forest change"
+rd4d8d1c8,include,,q8,Landslide susceptibility in DRC linked to deforestation and roads
+rd4ea25b5,include,,q6,Deforestation model for Tanzanian REDD project
+rd502bea6,exclude,not-research,,"Workshop report on logging practice, Amazon"
+rd539c573,exclude,wrong-concept,,Policy description of REDD+ institutions in DRC
+rd5455700,exclude,wrong-population,,"Embedding decomposition method, no place"
+rd55ea465,exclude,wrong-concept,,Cameroon REDD+ payment stakeholder analysis
+rd5601249,include,,q3,Forest degradation metric for Congo Basin validated with Landsat
+rd6ebd106,exclude,not-research,,Journal launch editorial
+rd735e823,exclude,wrong-concept,,"Water storage trends, deforestation only a minor driver"
+rd73e64f5,exclude,wrong-population,,"Landsat resampling test, no place"
+rd758ae60,exclude,wrong-concept,,"Streamflow change, forest loss is secondary"
+rd7c3a708,exclude,wrong-population,,Bangladesh emission factors
+rd85d738e,exclude,wrong-concept,,Climate model on future forest cover and rainfall
+rd93309ad,exclude,wrong-concept,,Mosquito virus review with no spatial model
+rd9c60ae3,exclude,wrong-concept,,Household compensation survey in DRC
+rda482a84,exclude,not-research,,Humanitarian editorial
+rda68eea6,exclude,wrong-concept,,"Coastal erosion vulnerability, forest change absent"
+rdac2f9e3,exclude,wrong-population,,Zambia restoration project
+rdad52d4b,include,,q3,Land use maps and deforestation rates in TRIDOM landscape
+rdb3aa748,include,,q8,Landslide susceptibility model using land cover in DRC
+rdb919ed7,include,,q6,Spatial economic model simulating deforestation in Peruvian Amazon
+rdbe50736,exclude,wrong-concept,,"Flood model, land cover only a roughness input"
+rdc246465,exclude,wrong-concept,,Climate exposure of ape sites
+rdc8d5e64,include,,q2,Questionnaire on causes of deforestation in Dimako Cameroon
+rdcb7b245,exclude,wrong-population,,Cropland mapping in China
+rdcddac45,exclude,wrong-concept,,Atmospheric chemistry model biases
+rdd3a4590,include,,q3,Sentinel 1 forest loss detection in DRC concession
+rdd51e4d8,include,,q6,Logistic model of forest loss predictors in Philippines
+rdd578301,exclude,wrong-population,,Runoff estimation in India
+rdd874867,exclude,wrong-concept,,"Flood and soil mapping, no forest change"
+rdd8fc52f,exclude,wrong-concept,,Soil gas fluxes under land use
+rddcf499b,exclude,wrong-concept,,Community participation in REDD+ park
+rdff22b8a,exclude,wrong-concept,,Bird communities by habitat type
+re08acba5,include,,q2 q3 q7,Isangi DRC forest loss drivers and emissions
+re0a573ee,include,,q6,Modelled future deforestation risk for tropical protected areas
+re0adabb4,exclude,wrong-population,,Land cover mapping in Para Brazil
+re1732923,exclude,wrong-concept,,"Urban classification in Goma, forest change absent"
+re1939391,exclude,wrong-population,,Global forest class mapping thesis
+re1aa032c,include,,q6,Logistic model of forest degradation risk in Indonesia
+re2844669,exclude,wrong-concept,,Household cooking fuel survey
+re298b4f5,exclude,wrong-population,,Vietnam REDD+ household participation
+re2cc92fa,exclude,wrong-population,,Deforestation drivers in South America
+re2d86db5,exclude,wrong-concept,,Mosquito abundance across habitats
+re332362f,include,,q2,"Fire driven forest disturbance, Republic of Congo reported"
+re34beaf2,exclude,wrong-population,,Livestock water use
+re35328dd,exclude,wrong-population,,Crop mapping in Chile
+re35e5204,include,,q2,Forest management plans and deforestation in Congo Basin concessions
+re3f69312,exclude,wrong-population,,Land cover accuracy in Europe
+re42918b8,exclude,wrong-population,,Refugee settlement in Uganda
+re49e179c,include,,q2 q3,Fire effect on land cover change in DRC reserve
+re4bc8bcc,include,,q3,Cameroon national vegetation class mapping
+re4cc38da,include,,q4,"Barriers to measuring tropical forest emissions, including uncertainty"
+re512b2dc,exclude,wrong-concept,,Forest gas flux measurements
+re52d6c04,exclude,wrong-concept,,Forest law enforcement and livelihoods
+re5c64b0a,include,,q2 q3,Congo Basin forest loss disaggregated by driver
+re5c79a1d,include,,q3,Radar forest disturbance mapping validated in Gabon
+re63432c5,exclude,wrong-concept,,"Carbon stock plots, no forest change"
+re652f4a9,include,,q1 q6,Agent based deforestation simulation near Cameroon reserve
+re706bf60,include,,q6,Review of spatial models derived from deforestation modelling
+re7123380,include,,q4,"National forest change mapping accuracy for reporting, Guyana"
+re71a7639,exclude,wrong-population,,Indonesian land moratoria
+re74526b6,exclude,wrong-population,,Brazil secondary forest dataset
+re75fcfcc,include,,q1 q2 q3,"Cameroon land cover change, drivers and Markov projection"
+re80c795c,exclude,wrong-population,,Land cover dataset for France
+re8a3bcf0,include,,q3,SAR forest land cover maps validated in Mai Ndombe DRC
+re90c3cf3,include,,q1 q3,Libreville land cover maps with deforestation and simulation
+re9a460b3,include,,q6,"Deforestation forecast model with population, Madagascar"
+reb16c847,exclude,wrong-concept,,Deforestation only one component of national index
+reb3f3dd2,exclude,wrong-population,,Amazon deep learning land cover
+reb474d7b,include,,q2 q3,Disturbance drivers in Cuvette Centrale peat forest
+reb807eda,include,,q6,Scenario model of future forest carbon loss in Sumatra
+reb9e1958,exclude,wrong-concept,,"Sri Lanka forest change, no baseline evaluated"
+rebbbe35d,exclude,wrong-concept,,Qualitative REDD+ implementation in Tshopo
+rec1b5c2c,exclude,wrong-concept,,"Peat carbon mapping, no forest change"
+rec235da7,exclude,wrong-population,,African hydropower planning
+rec3f661b,exclude,wrong-concept,,"Biomass carbon map of Gabon, no change"
+rec55db15,exclude,wrong-population,,Indonesian forest change mapping
+rec73aefb,include,,q4,Method allocating REDD+ baseline weighted by deforestation risk
+rec8f1380,exclude,wrong-population,,Dengue in Europe
+red256dbf,exclude,wrong-population,,"Iran forest risk model, not tropical"
+redbe985b,exclude,wrong-population,,"Global land cover framework, no place"
+redd3c1ab,include,,q1 q2 q3 q6,Predicted land cover change and drivers in Virunga DRC
+ree0f2f2c,exclude,wrong-population,,"Community forest monitoring review, no place"
+ree262e75,exclude,wrong-concept,,"Rainfall drying analysis, no forest change"
+ree281029,exclude,wrong-population,,Canopy height radar in the United States
+ree748fa3,exclude,wrong-concept,,Zoonoses review with no spatial model
+ref6b145c,exclude,wrong-population,,California disturbance mapping
+refa75441,exclude,wrong-concept,,Civil society participation study
+refc1be04,exclude,wrong-concept,,Regional climate model with idealised vegetation loss
+rf09ec046,include,,q8,Nutrition outcomes modelled against deforestation in DRC and Cameroon
+rf109c239,exclude,wrong-population,,"Global land cover product, GLanCE not named"
+rf1eb0138,include,,q2 q3,Cameroon land cover change and fire links
+rf1eba004,exclude,wrong-concept,,Forestry law reform politics
+rf24b26e2,include,,q3 q8,Land cover and soil erosion risk in Kivu basin
+rf2addf70,exclude,wrong-concept,,Cocoa climate vulnerability
+rf2b65c46,exclude,wrong-concept,,REDD+ institutional analysis
+rf2f201d1,include,,q2 q3,Forest fragmentation mapped in Yoko DRC
+rf34b009e,exclude,wrong-concept,,Mining health survey
+rf437668c,include,,q2 q3,Land cover change and drivers in Ebo reserve
+rf450ab0d,include,,q8,Review of land cover change and hazard risk in Kinshasa
+rf451e549,exclude,wrong-population,,Disease risk map for India
+rf518ef16,include,,q2,Pantropical deforestation drivers including Congo Basin
+rf51a218b,exclude,wrong-population,,Global land cover product comparison
+rf543debd,include,,q3 q8,Landslide risk linked to reconstructed forest cover change in DRC
+rf54cb733,include,,q1 q6,Deep learning models predicting deforestation from image series
+rf56343ad,exclude,wrong-population,,Global forest change over sixty years
+rf5d05cc9,include,,q2 q3,Land cover change and deforestation rate in North Kivu watershed
+rf5d2cdb7,exclude,wrong-concept,,Political account of REDD+ in DRC
+rf60501c2,exclude,wrong-population,,Cacao suitability in Peru
+rf6231c2a,exclude,wrong-population,,"Global change detection dataset, no place"
+rf6540360,include,,q2 q3,Forest disturbance dataset and drivers across Congo Basin
+rf6bf4912,include,,q7,Carbon emissions from selective logging in Congo Basin concessions
+rf6e4f9d0,exclude,wrong-concept,,Holocene pollen land cover reconstruction
+rf6e6f3d0,exclude,wrong-concept,,"River nutrient export, no forest change"
+rf7254266,exclude,wrong-concept,,Literature review of artisanal sawing
+rf73abb32,exclude,wrong-population,,Kenyan mangrove carbon
+rf7d8ae64,exclude,wrong-population,,Latin America land cover datasets
+rf7dcd1c6,exclude,wrong-concept,,"Human animal contact, no spatial risk model"
+rf833f2d9,include,,q4,Method to test REDD+ baselines against observed forest loss
+rf84eb889,exclude,wrong-concept,,"Bird parasites and habitat, no spatial model"
+rf8670c38,exclude,not-research,,Letter on pandemic causes
+rf8ab1cfa,exclude,wrong-population,,Nigerian primate habitat
+rf8ac7c27,exclude,wrong-population,,"Land cover network, no place"
+rf8c0beef,exclude,wrong-concept,,Gender survey of a value chain
+rf8eca70a,exclude,wrong-concept,,Document review of war and environment in DRC
+rf92b25ed,exclude,wrong-population,,"Global reference data for land cover, GLanCE not named"
+rf938a13d,exclude,wrong-population,,Post loss land cover for the Amazon
+rf955b971,include,,q3,Forest regrowth mapped with GEDI in DRC
+rf99de160,include,,q3,Forest and nonforest and forest change maps for DRC validated
+rf9aae17e,exclude,wrong-population,,Global vegetation persistence
+rf9d89d0c,exclude,wrong-population,,Brazil leather supply chain discourse
+rfa3051d5,exclude,wrong-population,,Amazon segmentation model
+rfa3fc4ed,include,,q7,Land use sector emissions and removals for Cameroon zones
+rfa874914,exclude,wrong-concept,,Institutional description of REDD+ in DRC
+rfadb41d8,exclude,wrong-concept,,REDD+ governance perceptions in Cameroon
+rfaf53d96,exclude,wrong-population,,Indian watershed deforestation model
+rfaf64ae9,exclude,wrong-concept,,Legal analysis of NGO company partnerships
+rfb13b9e9,include,,q7,Emission reduction scenarios against Republic of Congo reference level
+rfb23a8a9,exclude,wrong-population,,Brazil REDD+ project siting
+rfb52042d,include,,q3,Woodland loss mapped in DRC reserve from Landsat
+rfbe793cc,include,,q2,Oil palm as deforestation driver in Cameroon with mapping
+rfc07bc02,include,,q2 q3,Woodland loss by land use type in Lualaba DRC
+rfc0e2690,exclude,wrong-population,,Urban forecasting in Turkey
+rfc36825b,include,,q8,"Pest distribution model driven by land use change, central Africa named"
+rfcca22af,exclude,wrong-population,,Panama biomass inventory
+rfcfc906e,include,,q2 q3,Classifies drivers of forest loss in Cameroon from imagery
+rfd17d2ad,include,,q2,Questionnaire on activities causing deforestation in Cameroon reserve
+rfe0b5b35,include,,q6,Maxent deforestation risk model for Peru
+rfe2fdc21,exclude,wrong-concept,,Community forestry and REDD+ policy review
+rfe9709bf,exclude,wrong-concept,,"Landslide perception survey, no spatial risk model"
+rfef1d9cc,exclude,wrong-concept,,"Sediment sources, forest change only context"
+rfefbf877,include,,q3,Regional land cover map and forest to cropland change in Kasai
+rffab562a,exclude,wrong-concept,,"Temperature forecasting, no forest change"

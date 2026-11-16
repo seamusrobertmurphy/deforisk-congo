@@ -1,0 +1,21 @@
+place,country,url,retrieved,status,found
+UNFCCC REDD+ Web Platform,Cameroon,https://redd.unfccc.int/submissions/by-country/country_detail/cmr.html,2026-11-11,"unreachable, HTTP 200 with a bot challenge page and no content. Documents reached by direct PDF links from a web search",1
+UNFCCC REDD+ Web Platform,Central African Republic,https://redd.unfccc.int/submissions/by-country/country_detail/caf.html,2026-11-11,"unreachable, HTTP 200 with a bot challenge page and no content. Documents reached by direct PDF links from a web search",0
+UNFCCC REDD+ Web Platform,Democratic Republic of the Congo,https://redd.unfccc.int/submissions/by-country/country_detail/cod.html,2026-11-11,"unreachable, HTTP 200 with a bot challenge page and no content. Documents reached by direct PDF links from a web search",3
+UNFCCC REDD+ Web Platform,Equatorial Guinea,https://redd.unfccc.int/submissions/by-country/country_detail/gnq.html,2026-11-11,"unreachable, HTTP 200 with a bot challenge page and no content. Documents reached by direct PDF links from a web search",3
+UNFCCC REDD+ Web Platform,Gabon,https://redd.unfccc.int/submissions/by-country/country_detail/gab.html,2026-11-11,"unreachable, HTTP 200 with a bot challenge page and no content. Documents reached by direct PDF links from a web search",4
+UNFCCC REDD+ Web Platform,Republic of the Congo,https://redd.unfccc.int/submissions/by-country/country_detail/cog.html,2026-11-11,"unreachable, HTTP 200 with a bot challenge page and no content. Documents reached by direct PDF links from a web search",6
+"Verra methodologies, modules and tools",all,https://verra.org/methodologies/vm0048-reducing-emissions-from-deforestation-and-forest-degradation-v1-0/,2026-11-11,reached,4
+Verra jurisdictional risk map and activity data pages,Cameroon,https://verra.org/methodologies-main/activity-data-availability/,2026-11-11,reached,1
+Verra jurisdictional risk map and activity data pages,Central African Republic,https://verra.org/methodologies-main/activity-data-availability/,2026-11-11,reached,1
+Verra jurisdictional risk map and activity data pages,Democratic Republic of the Congo,https://verra.org/methodologies-main/activity-data-availability/,2026-11-11,reached,2
+Verra jurisdictional risk map and activity data pages,Equatorial Guinea,https://verra.org/methodologies-main/activity-data-availability/,2026-11-11,reached,0
+Verra jurisdictional risk map and activity data pages,Gabon,https://verra.org/methodologies-main/activity-data-availability/,2026-11-11,reached,0
+Verra jurisdictional risk map and activity data pages,Republic of the Congo,https://verra.org/methodologies-main/activity-data-availability/,2026-11-11,reached,1
+ART TREES,all,https://www.artredd.org/trees/,2026-11-11,reached,3
+FCPF,Cameroon,https://www.forestcarbonpartnership.org/country/cameroon,2026-11-11,"unreachable, HTTP 403",0
+FCPF,Central African Republic,https://www.forestcarbonpartnership.org/,2026-11-11,"unreachable, HTTP 403",0
+FCPF,Democratic Republic of the Congo,https://www.forestcarbonpartnership.org/country/congo-democratic-republic,2026-11-11,"unreachable, HTTP 403",3
+FCPF,Equatorial Guinea,https://www.forestcarbonpartnership.org/,2026-11-11,"unreachable, HTTP 403",0
+FCPF,Gabon,https://www.forestcarbonpartnership.org/,2026-11-11,"unreachable, HTTP 403",0
+FCPF,Republic of the Congo,https://www.forestcarbonpartnership.org/country/congo-republic,2026-11-11,"unreachable, HTTP 403",2

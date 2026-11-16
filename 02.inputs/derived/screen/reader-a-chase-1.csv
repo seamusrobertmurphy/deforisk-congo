@@ -1,0 +1,164 @@
+record_id,decision,reason,questions,note
+r004ba8e2,exclude,wrong-population,,Indonesian forest margin deforestation determinants
+r01775694,exclude,wrong-population,,"Palm oil versus REDD profitability, no Congo place"
+r01eedb43,exclude,wrong-population,,Brazilian dry forest land use change
+r01f728c2,exclude,wrong-population,,"Pantropical review of deforestation causes, no Congo named"
+r03687371,exclude,wrong-population,,Bolivian lowland forest clearance
+r0381499f,exclude,wrong-population,,"Global carbon flux bookkeeping, no Congo named"
+r04290657,include,,q2 q8,Fire trends in African tropical forests linked to deforestation
+r0474043a,exclude,wrong-concept,,Essay on global forest science and monitoring
+r04795bc3,undecided,,q6,No abstract; Peru predictors of forest change
+r04d7aa44,include,,q2,Protected area boundary forest loss in DR Congo
+r04e6dc82,exclude,wrong-population,,Land surface model for Sub-Saharan Africa climate
+r05dbb5df,exclude,wrong-population,,Malaysian urban forest mammals
+r0684a560,undecided,,q2,No abstract; timber certification and deforestation
+r06cdc1a7,exclude,wrong-concept,,Bird ecology in logged Central African forest
+r06ff0f9f,exclude,wrong-population,,Ethiopian cookstove trial
+r078042e8,include,,q4,Compares reference level types for REDD+ in Thailand
+r07c6b848,exclude,wrong-population,,Latin American landscape change review
+r07d6d971,undecided,,q2,Abstract is only keywords; deforestation causes and REDD policy
+r083caf09,include,,q2,Cameroon household survey of farming and forest cover change
+r09113aa1,exclude,wrong-population,,Southeast Asian deforestation rates
+r091f7fc1,exclude,wrong-population,,Brazilian press coverage of REDD+
+r09289717,exclude,wrong-population,,South American forest loss from microwave data
+r09328189,exclude,wrong-population,,Thai deforestation causes
+r093f037b,exclude,wrong-population,,"Comment on pantropical deforestation models, no Congo named"
+r09a744ea,exclude,wrong-population,,Malaysian city residential growth
+r09cc6630,exclude,wrong-population,,Southeast Asian peatland emissions
+r0ab42923,exclude,wrong-population,,Indonesian land tenure and emissions
+r0ae544b5,exclude,wrong-population,,"Forest mapping software, no Congo named"
+r0b65c954,exclude,wrong-population,,Amazon deforestation decline narrative
+r0b6bbc8b,exclude,wrong-population,,Ugandan carbon project participation
+r0bec46c4,exclude,wrong-population,,"BFAST accuracy at Brazil, Ethiopia and Vietnam sites"
+r0c524f50,exclude,wrong-population,,"Peat swamp disturbance monitoring, Southeast Asia"
+r0cbf03fe,exclude,wrong-population,,Peruvian REDD+ impact evaluation
+r0cf7061d,exclude,wrong-population,,Malaysian biomass and oil palm mapping
+r0cff875a,include,,q7,Pantropical protected area emissions with an Africa result
+r0d7bbdde,undecided,,q2,No abstract; Mexican cloud forest land cover change
+r0da78589,include,,q2 q6,"Oil palm forest conversion and modelled future expansion, Africa included"
+r0e988ae5,undecided,,q2,No abstract; social structure and tropical deforestation
+r0eba7fb8,undecided,,q7,One-line abstract; tropical deforestation carbon estimates
+r0f67d1de,exclude,wrong-population,,Indonesian REDD+ social values
+r0f79fd92,exclude,wrong-population,,Ghana land cover prediction
+r0fc61159,exclude,wrong-population,,"REDD+ policy chapter, no place or method"
+r1073882a,include,,q3,Sentinel-1 forest loss detection in the Congo Basin
+r107a6650,exclude,wrong-population,,"REDD+ political narratives, no Congo named"
+r10b49948,exclude,wrong-population,,Rondonia carbon balance
+r1131d9b3,undecided,,q3,No abstract; tropical forest cover change from satellites
+r115d0335,exclude,wrong-population,,Indian forest biomass models
+r1161fb88,exclude,wrong-population,,Indonesian watershed land use prediction
+r1219b208,exclude,wrong-population,,Indonesian coffee and plantation ecosystem services
+r1276b920,undecided,,q2,No abstract; fragile states and REDD incentives
+r128970df,exclude,wrong-population,,Venezuelan reserve deforestation emissions
+r12d55b14,exclude,wrong-population,,"Global tropical forest area trend, no Congo named"
+r13380e2d,exclude,wrong-population,,"REDD+ governance comparison, no Congo named"
+r13891b92,exclude,wrong-population,,Indonesian land cover trajectories
+r139e666d,exclude,wrong-population,,Indonesian REDD+ safeguards
+r146d0b5a,undecided,,q2,No abstract; rubber price and Cambodian deforestation
+r1490042f,exclude,wrong-population,,Malaysian oil palm and forest conservation
+r166b87aa,exclude,wrong-concept,,Cameroon press coverage of REDD+
+r175a808b,exclude,wrong-population,,Aerosol model of tropical burning
+r1784505c,include,,q3,Landsat land cover change in a Cameroon forest reserve
+r1789612c,exclude,wrong-population,,Paraguayan Chaco land cover change
+r178b5cef,include,,q4,Critique of REDD+ deforestation baselines and additionality
+r17a920b8,exclude,wrong-population,,"Carbon monitoring methods review, no Congo named"
+r181fc250,exclude,wrong-population,,Puerto Rico land cover fragmentation
+r182e25b8,exclude,wrong-population,,"Pine forest degradation monitoring, not Congo"
+r184e95f1,exclude,wrong-population,,Tropical plant conservation review
+r18ba1da4,exclude,wrong-population,,"Pantropical land use and disease review, no Congo named"
+r18e08f47,exclude,wrong-population,,Brazilian mangrove carbon
+r18f3206f,exclude,wrong-population,,Brazilian secondary forest mapping
+r191e828f,include,,q2,Biofuel feedstock and deforestation including sub-Saharan Africa
+r19986575,exclude,wrong-population,,"Global forest loss data for REDD+, no Congo named"
+r1a2371ac,undecided,,q2,No abstract; land acquisitions and tropical forest loss
+r1a6a4fa9,exclude,wrong-population,,Borneo fire occurrence
+r1a8d34aa,undecided,,q3,No abstract; deforestation detection time series
+r1ae72b66,undecided,,q7,No abstract; editorial on deforestation and Kyoto Protocol
+r1b3ef614,include,,q3,Selective logging degradation mapping in Cameroon and Central African Republic
+r1b4b06f8,exclude,wrong-population,,Tanzanian island REDD+ design
+r1b6d621f,exclude,wrong-population,,Pantropical mangrove area estimates
+r1b87c874,undecided,,q6,No abstract; Timor deforestation causes and projection
+r1bdc31e0,exclude,wrong-population,,Peruvian REDD+ tenure
+r1cbeb92d,exclude,wrong-population,,Bornean oil palm set-asides
+r1d5cfa33,exclude,wrong-population,,Indonesian plantations and land use change
+r1e01dd94,exclude,wrong-population,,Indonesian community forest management
+r1ebb7043,exclude,wrong-population,,Southeast Asian fire-driven palm conversion
+r1f10a9a7,include,,q4,Compares reference level designs for REDD emission reductions
+r1f738b7f,exclude,wrong-population,,"Payments for services and REDD+, no place"
+r1f7dc1e7,exclude,wrong-concept,,"Congo Basin hydrology review, no forest change"
+r1f9eca35,exclude,wrong-population,,Indonesian REDD+ demonstration learning
+r1fd34af1,exclude,wrong-population,,Southeast Asian oil palm mapping
+r1fd7a5d6,exclude,wrong-population,,Southeast Asian forest area change factors
+r1fe08364,exclude,wrong-population,,Amazon REDD+ and Indigenous justice
+r1fe41078,undecided,,q2,No abstract; tropical deforestation debt
+r2014d034,exclude,wrong-population,,Ivorian deforestation and agriculture
+r20e74ddc,exclude,wrong-concept,,"DRC deforestation advocacy politics, no data analysis"
+r21720ae4,exclude,wrong-population,,"Pantropical intact forest carbon, no Congo named"
+r224902e7,include,,q4,"REDD+ initiative performance assessment, baseline evaluation possible"
+r229597ed,exclude,wrong-population,,Madagascar forest conservation costs
+r22b58447,include,,q4,Pantropical REDD+ project impacts against matched baselines
+r22da550c,exclude,wrong-population,,"Global land use carbon flux, no Congo named"
+r2350ffad,include,,q2,"Drivers of forest loss in Kahuzi-Biega park, DR Congo"
+r237fd983,undecided,,q2,No abstract; meta-analysis of deforestation drivers
+r241b90dc,exclude,wrong-concept,,Forest economics textbook comparison
+r243a4781,include,,q4,Baseline choice effects on REDD performance
+r244f20e3,undecided,,q4,No abstract; leakage from REDD+ review
+r24a68625,exclude,wrong-concept,,"Congo Basin ecology and carbon synthesis, no forest change measured"
+r24ebff5c,exclude,wrong-population,,Papua New Guinea bird hunting
+r251e13e4,exclude,wrong-population,,"REDD policy design, no place"
+r256758c3,exclude,wrong-population,,Brazilian Amazon livestock and deforestation
+r26ad8f8b,exclude,wrong-population,,Myanmar logging disturbance detection
+r274ea48b,exclude,wrong-population,,"Pantropical deforestation econometrics, no Congo named"
+r2794706f,include,,q3,Forest patch loss mapping in West Africa including Cameroon
+r27ff3ac6,exclude,wrong-population,,Amazon land transition modelling
+r2805e9b2,include,,q4,Uncertainty in REDD emission reduction estimates
+r2909e87b,exclude,wrong-population,,"Tropical emissions trends, no Congo named"
+r29664294,exclude,wrong-population,,Madagascar resource use
+r2a2ad27a,exclude,wrong-population,,Cambodian community forestry
+r2a31438c,exclude,wrong-population,,"Pantropical monitoring data availability, no Congo named"
+r2a82c2ec,exclude,wrong-population,,Sulawesi protected areas and birds
+r2ac8d3ae,exclude,wrong-population,,Indonesian REDD+ incentives
+r2ad0bc68,exclude,wrong-population,,Benin land use and soil carbon
+r2b41cba2,exclude,wrong-population,,South American carbon budget
+r2b95dc8e,exclude,wrong-concept,,Global change and tropical forest ecosystem review
+r2bf9d582,include,,q7,Tropical land use emission hotspots including African dry forest fire
+r2c1ad9b0,exclude,wrong-concept,,Tropical nitrogen pollution model
+r2c763d22,exclude,wrong-population,,Amazon household land use change
+r2c8d8e87,exclude,wrong-population,,Indonesian peatland land use change
+r2d24d532,include,,q3,"Review of remote sensing for degradation, Congo Basin gaps noted"
+r2d61d14e,exclude,wrong-population,,REDD+ justice and equity
+r2ecfe0f0,exclude,wrong-concept,,REDD and biodiversity conservation options
+r2f8570ef,exclude,wrong-population,,"Global land use emissions model, no Congo named"
+r2fc0d8f3,exclude,off-topic,,Francophone ecocriticism journal issue
+r2fd68947,exclude,wrong-population,,Indonesian economic growth and CO2
+r2fe70ec9,exclude,wrong-population,,Brazilian legal deforestation compensation
+r3078f89d,include,,q3,"Pantropical hinterland forest mapping, Africa named in results"
+r307ffcd7,exclude,wrong-population,,Riau oil palm land use emissions
+r31be2e8e,undecided,,q2,No abstract; land tenure and tropical deforestation meta-analysis
+r32240371,exclude,wrong-population,,"Concession logging decision model, no place"
+r324adab4,exclude,wrong-population,,Southeast Asian cacao shade carbon
+r331f0b24,exclude,wrong-population,,"Global forest cover change map, no Congo named"
+r33d8e33b,exclude,wrong-population,,"Game theory of forest appropriation, no place"
+r33de7d3b,exclude,wrong-population,,Indonesian forest governance
+r33ff117c,include,,q2,"Pantropical COVID effect on deforestation, Congo named"
+r347a8528,include,,q2,Climate versus deforestation in Congo Basin forest margins
+r35cc0fc0,include,,q2,Cross-national population and deforestation incl. African countries
+r365d68b9,exclude,wrong-population,,Amazon indirect land use change
+r36f676c9,exclude,wrong-population,,"Oil economies and forest cover, no Congo named"
+r39aa3fc6,include,,q2,Meta-analysis of deforestation causes incl. Africa
+r39fd03e0,include,,q2,Trade and agriculture effects on Cameroon deforestation
+r3a3aa955,exclude,wrong-population,,Brazilian Indigenous REDD+ project
+r3ac1ad63,exclude,wrong-population,,Sumatran peat soil CO2 fluxes
+r3adb9bc2,exclude,wrong-population,,"Tropical biomass remote sensing review, no forest change"
+r3b6ababa,exclude,wrong-population,,Latin American carbon markets
+r3bd5b4ee,exclude,wrong-concept,,"Biomass maps for Tier 1 values, no forest change"
+r3be4e4b7,exclude,wrong-population,,"REDD+ policy risks, no place"
+r3c1f7f79,exclude,wrong-population,,"Tropical deforestation and climate book, no place"
+r3c51efa9,exclude,wrong-population,,"Tropical deforestation carbon losses thesis, no Congo named"
+r3d04a98f,exclude,wrong-population,,Colombian soil carbon after conversion
+r3d5a9027,exclude,wrong-population,,Myanmar oil palm concessions
+r3d6e0218,exclude,wrong-concept,,REDD+ policy change comparison
+r3d7150fd,exclude,wrong-population,,Lao land use valuation
+r3ea890ae,exclude,wrong-population,,Global REDD+ and land crisis review
+r3f2ab6fa,exclude,wrong-population,,Ethiopian biosphere reserve emissions
+r3fa5c6d3,exclude,wrong-population,,Costa Rica land use and mitigation

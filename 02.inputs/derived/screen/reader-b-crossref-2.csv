@@ -1,0 +1,4 @@
+record_id,decision,reason,questions,note
+r0eba7fb8,undecided,,q7,"Abstract of one sentence, with no study area or method, too short to decide."
+r5b2b930f,exclude,wrong-population,,"General REDD policy overview, with no Congo Basin study area and no baseline evaluated."
+r97e9a4fc,exclude,wrong-population,,"Economic model of tenure as a driver of clearing, set in the Amazon."

@@ -1,0 +1,26 @@
+record_id,decision,reason,questions,note
+r1919607a,exclude,wrong-population,,Global land cover change product whose abstract names no Congo Basin country or Central Africa.
+r220602d3,include,,q8,Disease risk in small mammals tested against village and forest land use in Maniema.
+r37944b04,include,,q1 q2,Maps forest and savanna change by farming type across the Republic of Congo.
+r3b17c928,exclude,wrong-concept,,"Summary of one African fire season, with land use change mentioned only as context."
+r3f808360,exclude,wrong-population,,"Hunting and carbon stock loss in the Brazilian Amazon, outside the Congo Basin."
+r434384f2,exclude,wrong-population,,"Carbon exposure accounting tested in three basins, none in the Congo Basin countries."
+r436d6b0e,exclude,wrong-population,,"Accuracy of global land cover change maps assessed for Uganda, not a Congo Basin country."
+r49756d94,include,,q8,Lion range model for Central Africa with projected land use change as an input.
+r4b1df871,exclude,wrong-concept,,Cameroon timber governance study with no measure of forest change.
+r4ba1d86b,include,,q4 q6,"Compares three ex post baseline methods on Asia Pacific forest carbon projects, finding bias."
+r58984d20,exclude,wrong-population,,"Firewood harvest effects on woodland in Zimbabwe, outside the Congo Basin."
+r5e3d71d3,exclude,wrong-concept,,"Household interviews on urban tree planting in Lubumbashi, with no forest change measured."
+r67a108f0,exclude,wrong-concept,,"Radar water mapping tested in Gabon uses static land cover classes, not land cover change."
+r871313bc,exclude,wrong-population,,"Forest loss and soil carbon in the Peruvian Amazon, outside the Congo Basin."
+r8bd9679d,undecided,,q2,"One sentence abstract on hydropower and river biodiversity, too short to judge forest change."
+r8bf69a63,include,,q6,"Economic model simulating how roads raise deforestation rates, calibrated on the Brazilian Amazon."
+ra1689a80,exclude,wrong-population,,"Urban growth and extreme rain in the Mexico Valley, outside the Congo Basin."
+ra1defa03,exclude,wrong-concept,,"Why Congolese farmers took up conservation farming, with no forest change measured."
+ra7aec1f6,exclude,wrong-concept,,"Legal comparison of Gabon and Sierra Leone, forest trends cited but drivers not tested."
+rc19b59c1,include,,q1 q3 q8,"Eight global land cover maps compared near Dja Reserve, with erosion risk modelled."
+rd278cf6a,include,,q5,Describes the GLanCE land cover and change dataset and its accuracy.
+rd2dd7205,include,,q8,"Kinshasa flood and landslide risk, with deforestation weighed as one possible cause."
+rd5ece9f6,include,,q1 q2 q3,"Sentinel-2 maps of vegetation lost to gold mining in eastern Cameroon, 2015 to 2025."
+re8432db7,exclude,duplicate,,"Same Kinshasa preprint as rd2dd7205, retitled with a reworded abstract."
+rfd0a9463,exclude,wrong-population,,"Cattle yield gaps in the Dry Chaco of South America, outside the Congo Basin."

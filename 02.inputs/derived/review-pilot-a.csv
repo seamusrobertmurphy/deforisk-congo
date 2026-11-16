@@ -1,0 +1,61 @@
+record_id,decision,reason,questions,note
+r82bec497,include,,q1,Chapter on climate effects of Congo Basin forest loss with future loss scenarios
+r571384db,exclude,wrong-concept,,Savanna land use model in northern Cameroon with no forest change reported
+r699a7217,include,,q1 q3,Landsat forest cover maps and forecast for the Kinshasa fuelwood supply area
+r32414e10,exclude,wrong-concept,,Peat carbon simulation under drainage with no forest change measured
+r860e7ef3,include,,q1 q3,Radar land cover maps and forecast for Douala showing vegetation decline
+r6139cb8f,include,,q1,Cellular automata model projecting DRC deforestation to 2050 under three policies
+rf5c88334,include,,q2,Lake cores test climate against farming as cause of ancient DRC forest loss
+rc19b59c1,undecided,,q3,No abstract and the title names no place or land cover product
+raf55b4ff,exclude,duplicate,,Deposited abstract file of the peatland article r32414e10
+r232b5853,undecided,,q3,No abstract and title leaves habitat monitoring method unknown
+r385fad29,exclude,duplicate,,Supplement deposit repeating the peatland article r32414e10
+re5184f8e,exclude,wrong-population,,Rubber and biodiversity study in Yunnan with Central Africa only mentioned in passing
+r21fc8762,include,,q1 q2,Spatial model projecting deforestation in southern Cameroon and testing the role of roads
+r1522002b,exclude,wrong-concept,,Isotope tracing of Gabon timber origin with no forest change measured
+re968f313,undecided,,q4,No abstract and title on carbon credit policy may touch baselines
+reb474d7b,include,,q2 q3,Sampled radar alerts attribute peat forest disturbance causes in both Congos
+r7c2c53b0,include,,q2 q3,Deep learning classifies fifteen causes of forest loss in Cameroon from a new dataset
+r3efff9d8,include,,q2,Title names farming and population causes of Central African deforestation though data use unclear
+r8b616661,include,,q1 q2,Rule based model allocating deforestation tested against MODIS in Central Africa
+raf91ca3b,exclude,wrong-concept,,Teak planting trial near Yangambi with deforestation only as motive
+r32951fe7,exclude,wrong-concept,,Urban heat study of Yaounde with forest loss only as background
+r826e3105,include,,q3,Two Landsat forest change products compared and merged for Cameroon 1990 to 2012
+r5f2d570b,exclude,wrong-concept,,Cocoa trader survey in Kumba with deforestation argued and not measured
+r22ae2544,exclude,wrong-concept,,Malaria spillover framework with deforestation as a background risk factor
+rdb73455f,exclude,wrong-concept,,Hydrological model of the Sanaga where land cover is only an input
+r5723a7b4,exclude,wrong-concept,,Groundwater potential mapping in Cameroon with no forest change
+rfefbf877,include,,q3,New Kasai land cover maps tested against global products with forest conversion measured
+r22a4b8c4,exclude,wrong-concept,,Laser scanning for tree biomass equations in Cameroon with no change measured
+r193b81b4,include,,q2 q3,Landsat deforestation rates and farming impact measured around Mount Cameroon
+ra340ecb4,exclude,wrong-concept,,Governance analysis of REDD and timber legality in Cameroon without forest change data
+redd1f32b,exclude,off-topic,,Contents list of a social simulation anthology
+rdb8d6186,undecided,,q1,No abstract and title suggests water study with future land cover
+r751796c1,include,,q4,Compares control area and before after methods for judging REDD results including Cameroon
+r2a15b20d,exclude,wrong-concept,,Global vegetation carbon model thesis with no deforestation analysis
+r383d7a53,undecided,,q3,No abstract and title on zoning in South Kivu may involve land cover
+r85c13706,exclude,wrong-concept,,Urban land cover classifier test in two Cameroon towns with no forest change
+r82cb57af,include,,q4,Reviews satellite monitoring for auditing REDD baselines and credits though depth unclear
+rc73368f2,include,,q4,Sensitivity analysis of baseline emission uncertainty for Panama under REDD
+r41b9d771,undecided,,q4,No abstract and title concerns carbon stock uncertainty in REDD reductions
+r474f84c8,include,,q4,Narrative review covering inflated baselines and excess crediting in REDD
+r58e82313,exclude,wrong-concept,,Opinion survey on Asian forest carbon markets with no baseline evaluation
+rf63bceee,exclude,off-topic,,Essay on cancelled canal and highway projects in Panama
+r9a649a7e,include,,q4,Book with chapters on project baselines and reference level design for REDD
+r8d0ec351,exclude,wrong-population,,Oil palm conversion mapping in Uganda outside the six countries
+re918c3fe,include,,q4,Proposes staged method for reference levels and notes bias incentives
+rdf5f731a,include,,q4,Policy report touching baseline setting and emission uncertainty though evaluation unclear
+r2723621f,exclude,wrong-population,,Image retrieval model for deforestation in Indonesia
+reb9e1958,exclude,wrong-population,,Forest cover change mapped in Sri Lanka to set a reference level
+rf9aae17e,exclude,off-topic,,Global greenness trend study by biome from 1982 to 2010
+rf8ac7c27,exclude,wrong-population,,Land cover network trained on another global product with no Congo area
+r522862c0,undecided,,q5,No abstract and title on satellite time series gap filling
+r4918b3d7,include,,q5,Review of global land change mapping that may describe the GLanCE products
+r96ec7e40,undecided,,q5,No abstract so any use of GLanCE land cover cannot be judged
+r81c1def6,include,,q5,Annual land cover change for Canadian Prairies with training data source unstated
+r4fad4ec0,undecided,,q5,No abstract so the land cover data used in Croatia is unknown
+ra5f025c3,undecided,,q5,No abstract so the training data of this classifier is unknown
+raf5830af,exclude,wrong-population,,Land cover forecast for upper Zambezi using own maps and ESA product
+r4fbda021,exclude,not-research,,Editorial preface to a special issue
+rf7b2a16b,exclude,off-topic,,Surface water dynamics in European coastal basins
+r95f772a7,exclude,wrong-population,,Wetland change detection in France with field collected training data
