@@ -1,4 +1,4 @@
-# Testing deforestation risk models against distance to the forest edge and past forest loss in Mai Ndombe, Democratic Republic of the Congo
+# Mapping deforestation risk from population, travel time to markets and the forest edge in Mai Ndombe, Democratic Republic of the Congo
 
 
 
