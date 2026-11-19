@@ -1,0 +1,8 @@
+﻿"Pressure","Expected effect","Reasoning"
+"Population density","Mixed","Small-scale clearing doubled with population growth across the basin from 2000 to 2014 [@tyukavina2018congo]. In a national model for 2000 to 2005, population distribution did not predict where forest changed [@kibambelubamba2013modeling]."
+"Travel time to Kinshasa and the river landings, by road and river","Lowers","Across eight Congo Basin countries, from 2000 to 2012, forest clearing fell by 0.63% with each 1% rise in travel time to the nearest market centre [@wheeler2015road]."
+"Distance to the forest edge","Lowers","In the Democratic Republic of the Congo, 81.53% of the forest cover changes of 2000 to 2005 lay less than 1 km from existing secondary forest [@kibambelubamba2013modeling]."
+"Distance to new forest roads","Mixed","Each kilometre of first-cut road in the basin was followed by 186 ha of forest loss and degradation [@engert2025explosive]. @engert2025explosive wrote that industrial selective logging there could ""degrade forests but lead to little outright deforestation""."
+"Distance to settlements and camps","Lowers","About 80% of the deforestation of 2015 to 2020 in the six countries lay within 3 km of the nearest road or settlement [@shapiro2023small]."
+"Territory's share of Kinshasa's charcoal","Mixed","In Mai Ndombe in 2021, 60% of producers made charcoal from trees felled to open fields [@dubiez2021rapport]. A review found ""a mismatch"" between wood energy use and forest degradation [@nguba2025assessing]."
+"Household wealth and cooking fuel","Not set","Across 52 countries, household wealth rose with access to population centres [@weiss2018global]. The direction for clearing in the basin was left to the model."
