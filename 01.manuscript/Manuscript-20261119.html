@@ -2319,7 +2319,7 @@ vertical-align: -.125em;
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Distance to new forest roads&quot;</span>, <span class="st">&quot;Mixed&quot;</span>, <span class="st">&quot;Each kilometre of first-cut road in the basin was followed by 186 ha of forest loss and degradation [@engert2025explosive]. @engert2025explosive wrote that industrial selective logging there could </span><span class="sc">\&quot;</span><span class="st">degrade forests but lead to little outright deforestation</span><span class="sc">\&quot;</span><span class="st">.&quot;</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Distance to settlements and camps&quot;</span>, <span class="st">&quot;Lowers&quot;</span>, <span class="st">&quot;About 80% of the deforestation of 2015 to 2020 in the six countries lay within 3 km of the nearest road or settlement [@shapiro2023small].&quot;</span>,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Territory&#39;s share of Kinshasa&#39;s charcoal&quot;</span>, <span class="st">&quot;Mixed&quot;</span>, <span class="st">&quot;In Mai Ndombe in 2021, 60% of producers made charcoal from trees felled to open fields [@dubiez2021rapport]. A review found </span><span class="sc">\&quot;</span><span class="st">a mismatch</span><span class="sc">\&quot;</span><span class="st"> between wood energy use and forest degradation [@nguba2025assessing].&quot;</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Household wealth and cooking fuel&quot;</span>, <span class="st">&quot;Not set&quot;</span>, <span class="st">&quot;Across 52 countries, household wealth rose with access to population centres [@weiss2018global]. The direction for clearing in the basin was left to the model.&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Household wealth and cooking fuel&quot;</span>, <span class="st">&quot;Mixed&quot;</span>, <span class="st">&quot;@ngouhouopoufoun2024cocoa found, among 1,035 households of the Tridom landscape shared by three countries, that </span><span class="sc">\&quot;</span><span class="st">a marginally higher income from cocoa production-based livelihood portfolios is associated with six to seven times higher deforestation</span><span class="sc">\&quot;</span><span class="st">. In two pilot sites of Equateur province, @samndong2018institutional found that </span><span class="sc">\&quot;</span><span class="st">shifting cultivation is driven by the poverty conditions of the study area</span><span class="sc">\&quot;</span><span class="st">. @behrendt2013deforestation judged that charcoal supply </span><span class="sc">\&quot;</span><span class="st">could represent the single biggest threat to Congo Basin forests in the coming decades</span><span class="sc">\&quot;</span><span class="st">.&quot;</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_excel_csv</span>(pressures, <span class="st">&quot;03.outputs/TBL/tbl-pressures.csv&quot;</span>)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pressures, <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2332,9 +2332,9 @@ Table 1 Pressures entered in the model, with the effect on forest clearing that
 <div class="cell-output-display">
 <table class="do-not-create-environment cell caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 4%">
-<col style="width: 75%">
+<col style="width: 10%">
+<col style="width: 2%">
+<col style="width: 87%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -2376,8 +2376,8 @@ Table 1 Pressures entered in the model, with the effect on forest clearing that
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Household wealth and cooking fuel</td>
-<td style="text-align: left;">Not set</td>
-<td style="text-align: left;">Across 52 countries, household wealth rose with access to population centres <span class="citation" data-cites="weiss2018global">(<a href="#ref-weiss2018global" role="doc-biblioref">Weiss et al., 2018</a>)</span>. The direction for clearing in the basin was left to the model.</td>
+<td style="text-align: left;">Mixed</td>
+<td style="text-align: left;"><span class="citation" data-cites="ngouhouopoufoun2024cocoa">Ngouhouo-Poufoun et al. (<a href="#ref-ngouhouopoufoun2024cocoa" role="doc-biblioref">2024</a>)</span> found, among 1,035 households of the Tridom landscape shared by three countries, that “a marginally higher income from cocoa production-based livelihood portfolios is associated with six to seven times higher deforestation”. In two pilot sites of Equateur province, <span class="citation" data-cites="samndong2018institutional">Samndong et al. (<a href="#ref-samndong2018institutional" role="doc-biblioref">2018</a>)</span> found that “shifting cultivation is driven by the poverty conditions of the study area”. <span class="citation" data-cites="behrendt2013deforestation">Behrendt et al. (<a href="#ref-behrendt2013deforestation" role="doc-biblioref">2013</a>)</span> judged that charcoal supply “could represent the single biggest threat to Congo Basin forests in the coming decades”.</td>
 </tr>
 </tbody>
 </table>
@@ -2408,6 +2408,9 @@ Arevalo, P., Zhang, Y., Friedl, M. A., Woodcock, C. E., Stanimirova, R., Tarrio,
 </div>
 <div id="ref-barra2016roads" class="csl-entry" role="listitem">
 Barra, A. F., Burnouf, M., Damania, R., &amp; Russ, J. (2016). Roads, forests, and the biodiversity of the <span class="nocase">Democratic Republic of Congo</span>. In <em>Economic boom or ecologic doom?: Using spatial analysis to reconcile road development with forest conservation</em> (pp. 21–37). The World Bank. <a href="https://doi.org/10.1596/978-1-4648-0810-4_ch3">https://doi.org/10.1596/978-1-4648-0810-4_ch3</a>
+</div>
+<div id="ref-behrendt2013deforestation" class="csl-entry" role="listitem">
+Behrendt, H., Megevand, C., &amp; Sander, K. (2013). <em>Deforestation trends in the <span>Congo Basin</span>: Reconciling economic growth and forest protection. <span>Working Paper</span> 5, wood-based biomass energy</em>. World Bank. <a href="https://doi.org/10.1596/23698">https://doi.org/10.1596/23698</a>
 </div>
 <div id="ref-nguba2025assessing" class="csl-entry" role="listitem">
 Besisa Nguba, T., Bogaert, J., Makana, J.-R., Mate Mweru, J.-P., Sambieni, K. R., Bwazani Balandi, J., Mumbere Musavandalo, C., &amp; Bastin, J.-F. (2025). Assessing forest degradation in the <span>Congo Basin</span>: The need to broaden the focus from logging to small-scale agriculture (a systematic review). <em>Forests</em>, <em>16</em>(6), 953. <a href="https://doi.org/10.3390/f16060953">https://doi.org/10.3390/f16060953</a>
@@ -2499,6 +2502,9 @@ Mostefaoui, M., Ciais, P., McGrath, M. J., Peylin, P., Patra, P. K., &amp; Ernst
 <div id="ref-nana2019estimation" class="csl-entry" role="listitem">
 Nana, T. N., Sannier, C., Fichet, L.-V., Ghomsi, H., &amp; Jaffrain, G. (2019, March). Estimation par r<span>é</span>gression de l’incertitude des cartes de pertes de couvert forestier au <span>Cameroun</span>. <em>Conf<span>é</span>rence <span>OSFACO</span>: Des Images Satellites Pour La Gestion Durable Des Territoires En <span>Afrique</span></em>. <a href="https://hal.science/hal-02189475v1">https://hal.science/hal-02189475v1</a>
 </div>
+<div id="ref-ngouhouopoufoun2024cocoa" class="csl-entry" role="listitem">
+Ngouhouo-Poufoun, J., Chaupain-Guillot, S., Ndiaye, Y., Sonwa, D. J., Yana Njabo, K., &amp; Delacote, P. (2024). Cocoa, livelihoods, and deforestation within the <span>Tridom</span> landscape in the <span>Congo Basin</span>: A spatial analysis. <em>PLOS ONE</em>, <em>19</em>(6), e0302598. <a href="https://doi.org/10.1371/journal.pone.0302598">https://doi.org/10.1371/journal.pone.0302598</a>
+</div>
 <div id="ref-ins2024enquete" class="csl-entry" role="listitem">
 RDC-Institut National de la Statistique, École de Santé Publique de Kinshasa, &amp; ICF. (2024). <em>Enqu<span>ê</span>te D<span>é</span>mographique et de Sant<span>é</span> de <span>R<span>é</span>publique D<span>é</span>mocratique du Congo</span> 2023–2024 : rapport final</em>. ICF. <a href="https://www.dhsprogram.com/pubs/pdf/FR393/FR393.pdf">https://www.dhsprogram.com/pubs/pdf/FR393/FR393.pdf</a>
 </div>
@@ -2507,6 +2513,9 @@ Renaudineau, S., Frappart, F., Peaucelle, M., Sollier, V., Wigneron, J.-P., Ciai
 </div>
 <div id="ref-rosa2014transparency" class="csl-entry" role="listitem">
 Rosa, I. M. D., Ahmed, S. E., &amp; Ewers, R. M. (2014). The transparency, reliability and utility of tropical rainforest land-use and land-cover change models. <em>Global Change Biology</em>, <em>20</em>(6), 1707–1722. <a href="https://doi.org/10.1111/gcb.12523">https://doi.org/10.1111/gcb.12523</a>
+</div>
+<div id="ref-samndong2018institutional" class="csl-entry" role="listitem">
+Samndong, R. A., Bush, G., Vatn, A., &amp; Chapman, M. (2018). Institutional analysis of causes of deforestation in <span>REDD+</span> pilot sites in the <span>Equateur</span> province: Implication for <span>REDD+</span> in the <span class="nocase">Democratic Republic of Congo</span>. <em>Land Use Policy</em>, <em>76</em>, 664–674. <a href="https://doi.org/10.1016/j.landusepol.2018.02.048">https://doi.org/10.1016/j.landusepol.2018.02.048</a>
 </div>
 <div id="ref-seyller2016virtual" class="csl-entry" role="listitem">
 Seyller, C., Desbureaux, S., Ongolo, S., Karsenty, A., Simonet, G., Faure, J., &amp; Brimont, L. (2016). The ’virtual economy’ of <span>REDD+</span> projects: Does private certification of <span>REDD+</span> projects ensure their environmental integrity? <em>International Forestry Review</em>, <em>18</em>(2), 231–246. <a href="https://doi.org/10.1505/146554816818966273">https://doi.org/10.1505/146554816818966273</a>
@@ -3196,7 +3205,7 @@ Zhao, W., Zhong, X., Yu, B., Wang, X., Li, X., Lu, X., Du, Y., &amp; Zhang, Y. (
 <span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Distance to new forest roads&quot;</span>, <span class="st">&quot;Mixed&quot;</span>, <span class="st">&quot;Each kilometre of first-cut road in the basin was followed by 186 ha of forest loss and degradation [@engert2025explosive]. @engert2025explosive wrote that industrial selective logging there could </span><span class="sc">\&quot;</span><span class="st">degrade forests but lead to little outright deforestation</span><span class="sc">\&quot;</span><span class="st">.&quot;</span>,</span>
 <span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Distance to settlements and camps&quot;</span>, <span class="st">&quot;Lowers&quot;</span>, <span class="st">&quot;About 80% of the deforestation of 2015 to 2020 in the six countries lay within 3 km of the nearest road or settlement [@shapiro2023small].&quot;</span>,</span>
 <span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Territory&#39;s share of Kinshasa&#39;s charcoal&quot;</span>, <span class="st">&quot;Mixed&quot;</span>, <span class="st">&quot;In Mai Ndombe in 2021, 60% of producers made charcoal from trees felled to open fields [@dubiez2021rapport]. A review found </span><span class="sc">\&quot;</span><span class="st">a mismatch</span><span class="sc">\&quot;</span><span class="st"> between wood energy use and forest degradation [@nguba2025assessing].&quot;</span>,</span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Household wealth and cooking fuel&quot;</span>, <span class="st">&quot;Not set&quot;</span>, <span class="st">&quot;Across 52 countries, household wealth rose with access to population centres [@weiss2018global]. The direction for clearing in the basin was left to the model.&quot;</span></span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Household wealth and cooking fuel&quot;</span>, <span class="st">&quot;Mixed&quot;</span>, <span class="st">&quot;@ngouhouopoufoun2024cocoa found, among 1,035 households of the Tridom landscape shared by three countries, that </span><span class="sc">\&quot;</span><span class="st">a marginally higher income from cocoa production-based livelihood portfolios is associated with six to seven times higher deforestation</span><span class="sc">\&quot;</span><span class="st">. In two pilot sites of Equateur province, @samndong2018institutional found that </span><span class="sc">\&quot;</span><span class="st">shifting cultivation is driven by the poverty conditions of the study area</span><span class="sc">\&quot;</span><span class="st">. @behrendt2013deforestation judged that charcoal supply </span><span class="sc">\&quot;</span><span class="st">could represent the single biggest threat to Congo Basin forests in the coming decades</span><span class="sc">\&quot;</span><span class="st">.&quot;</span></span>
 <span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_excel_csv</span>(pressures, <span class="st">&quot;03.outputs/TBL/tbl-pressures.csv&quot;</span>)</span>
 <span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(pressures, <span class="at">format =</span> <span class="st">&quot;pipe&quot;</span>)</span>
