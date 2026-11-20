@@ -127,6 +127,77 @@ For Mai Ndombe province, from 2016 to 2026, this study asked two questions that 
 
 # Materials and Methods
 
+## Study area
+
+```{r}
+#| label: study-area
+#| echo: true
+#| output: false
+# GADM version 4.1, level 1 boundaries of the Democratic Republic of the Congo
+# https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_1.json.zip
+fetch("https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_1.json.zip", "02.inputs/gadm/raw/gadm41_COD_1.json.zip")
+mai_ndombe <- sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE) |> dplyr::filter(NAME_1 == "Mai-Ndombe")
+```
+
+## Training samples
+
+```{r}
+#| label: glance-samples
+#| echo: true
+#| output: false
+# GLanCE training dataset, version 1, Boston University
+# https://doi.org/10.34911/rdnt.x4xfh3
+fetch("https://data.source.coop/boston-university/bu-glance/bu_glance_training_dataV1.parquet", "02.inputs/glance/raw/bu_glance_training_dataV1.parquet")
+bb <- sf::st_bbox(mai_ndombe)
+samples <- arrow::read_parquet("02.inputs/glance/raw/bu_glance_training_dataV1.parquet", col_select = c("Glance_ID", "Lon", "Lat", "Start_Year", "End_Year", "Glance_Class_ID_level1")) |>
+  dplyr::filter(dplyr::between(Lon, bb[["xmin"]], bb[["xmax"]]), dplyr::between(Lat, bb[["ymin"]], bb[["ymax"]])) |>
+  sf::st_as_sf(coords = c("Lon", "Lat"), crs = 4326) |>
+  sf::st_filter(mai_ndombe) |>
+  dplyr::mutate(class = c("Water", "Snow", "Developed", "Barren", "Trees", "Shrub", "Herbaceous")[Glance_Class_ID_level1])
+readr::write_excel_csv(sf::st_drop_geometry(dplyr::count(samples, Start_Year, End_Year, class)), "03.outputs/TBL/glance-samples-by-year.csv")
+```
+
+## Forest maps
+
+```{r}
+#| label: forest-maps
+#| echo: true
+#| output: false
+Sys.setenv(RETICULATE_PYTHON = "/opt/local/bin/python3.12")
+ee <- reticulate::import("ee")
+ee$Initialize(project = "murphys-deforisk")
+region <- ee$Geometry(reticulate::import("json")$loads(as.character(geojsonsf::sfc_geojson(sf::st_geometry(mai_ndombe)))), NULL, FALSE)
+xy <- sf::st_coordinates(samples)
+points <- ee$FeatureCollection(purrr::map(seq_len(nrow(xy)), \(i) ee$Feature(ee$Geometry$Point(c(xy[i, 1], xy[i, 2])), list(class = as.integer(samples$Glance_Class_ID_level1[i])))))$randomColumn("split", 2026L)
+classes <- sort(unique(as.integer(samples$Glance_Class_ID_level1)))
+# Harmonized Sentinel-2 MSI, Level-1C (TOA)
+# https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_HARMONIZED
+# Cloud Score+ S2_HARMONIZED V1
+# https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_CLOUD_SCORE_PLUS_V1_S2_HARMONIZED
+# NASA SRTM Digital Elevation 30m
+# https://developers.google.com/earth-engine/datasets/catalog/USGS_SRTMGL1_003
+composite <- function(start, end) {
+s2 <- ee$ImageCollection("COPERNICUS/S2_HARMONIZED")$filterBounds(region)$filterDate(start, end)$linkCollection(ee$ImageCollection("GOOGLE/CLOUD_SCORE_PLUS/V1/S2_HARMONIZED"), list("cs"))$map(\(im) im$updateMask(im$select("cs")$gte(0.6)))$select(c("B2", "B3", "B4", "B8", "B11", "B12"))$median()
+s2$addBands(s2$normalizedDifference(c("B8", "B4"))$rename("NDVI"))$addBands(ee$Image("USGS/SRTMGL1_003")$rename("DEM"))
+}
+years <- tibble::tibble(year = c(2016L, 2021L, 2026L), start = c("2016-01-01", "2021-01-01", "2026-01-01"), end = c("2017-01-01", "2022-01-01", "2026-11-18"))
+if (!"projects/murphys-deforisk/assets/deforisk-congo" %in% purrr::map_chr(ee$data$listAssets(list(parent = "projects/murphys-deforisk/assets"))$assets, "name")) ee$data$createAsset(list(type = "FOLDER"), "projects/murphys-deforisk/assets/deforisk-congo")
+made <- c(purrr::map_chr(ee$data$listAssets(list(parent = "projects/murphys-deforisk/assets/deforisk-congo"))$assets, "name"), purrr::map_chr(purrr::keep(ee$data$getTaskList(), \(t) t$state %in% c("READY", "RUNNING")), \(t) paste0("projects/murphys-deforisk/assets/deforisk-congo/", t$description)))
+if (!file.exists("03.outputs/TBL/forest-map-accuracy.csv") || !all(paste0("projects/murphys-deforisk/assets/deforisk-congo/landcover_", years$year) %in% made)) {
+accuracy <- purrr::pmap(years, \(year, start, end) {
+image <- composite(start, end)
+sampled <- image$sampleRegions(collection = points, properties = list("class", "split"), scale = 10L, tileScale = 4L)
+forest <- ee$Classifier$smileRandomForest(500L)$train(sampled$filter(ee$Filter$lt("split", 0.7)), "class", image$bandNames())
+if (!paste0("projects/murphys-deforisk/assets/deforisk-congo/landcover_", year) %in% made) ee$batch$Export$image$toAsset(image = image$classify(forest)$toByte()$clip(region), description = paste0("landcover_", year), assetId = paste0("projects/murphys-deforisk/assets/deforisk-congo/landcover_", year), region = region$bounds(), scale = 10L, crs = "EPSG:32734", maxPixels = 1e11)$start()
+matrix <- sampled$filter(ee$Filter$gte("split", 0.7))$classify(forest)$errorMatrix("class", "classification", as.list(classes))
+tibble::tibble(year, class = classes, producers = unlist(matrix$producersAccuracy()$getInfo()), consumers = unlist(matrix$consumersAccuracy()$getInfo()), overall = matrix$accuracy()$getInfo(), kappa = matrix$kappa()$getInfo())
+}) |> purrr::list_rbind()
+readr::write_excel_csv(accuracy, "03.outputs/TBL/forest-map-accuracy.csv")
+}
+```
+
+## Pressures
+
 ```{r}
 #| label: tbl-pressures
 #| tbl-cap: "Pressures entered in the model, with the effect on forest clearing that the literature expected of a higher value of each."
