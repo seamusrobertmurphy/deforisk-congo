@@ -392,6 +392,54 @@ if (!file.exists("03.outputs/TIF/travel_time_kinshasa.tif")) {
 }
 ```
 
+```{r}
+#| label: roads-merged
+#| echo: true
+#| output: false
+# The four road sources in one layer over the map box, each road keeping its source, class, opening year and the speed the travel time layers gave it
+# The sources overlap, so one road can appear up to four times, as it does in the friction surface, where each cell takes the fastest
+if (!file.exists("03.outputs/GPKG/roads_merged.gpkg")) {
+  box <- sf::st_as_text(sf::st_as_sfc(sf::st_bbox(c(xmin = reach[1], ymin = reach[2], xmax = reach[3], ymax = reach[4]), crs = sf::st_crs(4326))))
+  lines_in_box <- \(f) {
+    x <- sf::st_read(f, wkt_filter = box, quiet = TRUE)
+    x <- sf::st_sf(sf::st_drop_geometry(x), geometry = sf::st_geometry(x))
+    x[sf::st_is(x, c("LINESTRING", "MULTILINESTRING")), ]
+  }
+  # GRID3 COD - Roads v1.0, Center for International Earth Science Information Network and GRID3
+  # https://data.grid3.org/datasets/b489c28df02247e3b227dc1adee1dad4/about, https://doi.org/10.7916/00gb-e164
+  grid3_file <- "02.inputs/grid3/raw/roads_v1_0.gpkg"
+  track <- sf::st_read(grid3_file, query = sprintf("SELECT class, speed_estimate FROM \"%s\"", sf::st_layers(grid3_file)$name[1]), quiet = TRUE) |>
+    dplyr::filter(class == "track") |>
+    dplyr::pull(speed_estimate) |>
+    as.numeric() |>
+    stats::median(na.rm = TRUE)
+  merged <- rbind(
+    dplyr::transmute(lines_in_box(grid3_file), source = "GRID3", class, year = NA_integer_, speed_kmh = as.numeric(speed_estimate)),
+    # Congo Basin Forest Roads, January 2019 to December 2024, Slagter et al. (2024); the travel time layers use those opened before 2021
+    # https://gee-community-catalog.org/projects/forest_roads/, https://doi.org/10.1016/j.rse.2024.114380
+    dplyr::transmute(lines_in_box("02.inputs/forestroads/raw/forest_roads_2019_2024.geojson"), source = "Congo Basin Forest Roads", class = "forest road", year = as.integer(Year), speed_kmh = track),
+    # GRIP4 Global Roads Inventory Project, Africa, Meijer et al. (2018)
+    # https://gee-community-catalog.org/projects/grip/, https://doi.org/10.1088/1748-9326/aabd42
+    dplyr::transmute(lines_in_box("02.inputs/grip4/raw/grip4_africa.geojson"), source = "GRIP4", class = paste("road type", GP_RTP), year = NA_integer_, speed_kmh = track),
+    # Bing Maps mined roads, Middle Africa, release of 28 April 2025, Microsoft
+    # https://github.com/microsoft/RoadDetections, https://usaminedroads.z19.web.core.windows.net/drops/2025.04.28/Middle_Africa.zip
+    dplyr::transmute(lines_in_box("02.inputs/msroads/raw/msroads_cod.gpkg"), source = "Microsoft", class = "mined road", year = NA_integer_, speed_kmh = track))
+  # Length of each source over the map box and inside Mai Ndombe, in km along the ellipsoid
+  # GADM version 4.1, level 1 boundaries of the Democratic Republic of the Congo
+  # https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_1.json.zip
+  province <- dplyr::filter(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE), NAME_1 == "Mai-Ndombe")
+  merged$km <- as.numeric(sf::st_length(merged)) / 1000
+  inside <- sf::st_intersection(merged, sf::st_geometry(province))
+  dplyr::full_join(sf::st_drop_geometry(merged) |> dplyr::summarise(Roads = dplyr::n(), `km in map box` = sum(km), .by = source),
+    sf::st_drop_geometry(inside) |> dplyr::mutate(km = as.numeric(sf::st_length(inside)) / 1000) |> dplyr::summarise(`km in Mai Ndombe` = sum(km), .by = source), by = "source") |>
+    dplyr::rename(Source = source) |>
+    readr::write_excel_csv("03.outputs/TBL/roads-by-source.csv")
+  dir.create("03.outputs/GPKG", showWarnings = FALSE)
+  sf::st_write(merged, "03.outputs/GPKG/roads_merged-part.gpkg", layer = "roads", quiet = TRUE, delete_dsn = TRUE)
+  file.rename("03.outputs/GPKG/roads_merged-part.gpkg", "03.outputs/GPKG/roads_merged.gpkg")
+}
+```
+
 ## Market access
 
 ```{r}
