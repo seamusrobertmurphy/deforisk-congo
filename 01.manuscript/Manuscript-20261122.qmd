@@ -439,7 +439,8 @@ pick <- function(q, unit, act, stats, exclude = "^$", metres = FALSE) {
   dplyr::bind_cols(dplyr::select(d, key), ends(d$value) * f) |> dplyr::filter(!is.na(lo))
 }
 central <- c("mean", "median", "mode", "single")
-fmt <- \(x) prettyNum(round(x, 1), big.mark = ",")
+# Every distance keeps one decimal, because 0.5 km matters to a person carrying wood, timber or water, and is rounded down
+fmt <- \(x) formatC(floor(x * 10 + 1e-9) / 10, format = "f", digits = 1, big.mark = ",")
 measure <- \(d, name, lo = d$lo, hi = d$hi, mid = (d$lo + d$hi) / 2) tibble::tibble(Measure = name, Values = nrow(d),
   Studies = dplyr::n_distinct(d$key), Range = paste(fmt(min(lo)), "to", fmt(max(hi))), Median = fmt(stats::median(mid)))
 # Supply distances around towns are grouped by the town's population, read from the size the study printed
