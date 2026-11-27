@@ -1,0 +1,2 @@
+03.outputs/TIF/*.tif filter=lfs diff=lfs merge=lfs -text
+03.outputs/GPKG/*.gpkg filter=lfs diff=lfs merge=lfs -text
