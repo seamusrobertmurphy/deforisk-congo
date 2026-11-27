@@ -1,4 +1,4 @@
-# Testing deforestation risk variables in rural demography, distance to local market, regional haulage constraints and travel time estimates, compared against forest edge effects across Mai Ndombe district, Democratic Republic of the Congo
+# Testing deforestation risk variables in rural demography, distance to local market, regional haulage constraints and travel time estimates, compared against forest edge effects across Mai Ndombe province, Democratic Republic of the Congo
 
 
 
