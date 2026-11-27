@@ -127,6 +127,7 @@ def to_pipe_table(chunk: str) -> tuple[str, str] | None:
 # automatic layout still shares that width among the columns by their content. The
 # cost is raw HTML in the README instead of a pipe table.
 TH_WIDTH = "2000"
+LONG_CELL = 80
 ALIGN = {":---": "left", "---:": "right", ":---:": "center"}
 
 
@@ -135,7 +136,11 @@ def html_table(heads: list[str], aligns: list[str], rows: list[list[str]]) -> st
     esc = lambda s: html.escape(s, quote=False)
     al = [ALIGN.get(a, "left") for a in aligns] + ["left"] * len(heads)
     out = ["<table>", "<thead>", "<tr>"]
-    out += [f'<th width="{TH_WIDTH}" align="{al[i]}">{esc(h)}</th>' for i, h in enumerate(heads)]
+    # Autofit, set by Seamus on 27 November 2026. Only a column of running text, longer
+    # than LONG_CELL characters, takes the width hint and fills the page; every other
+    # column, and every table without such a column, is sized to its content.
+    long_col = [max([len(h)] + [len(r[i]) for r in rows if i < len(r)]) > LONG_CELL for i, h in enumerate(heads)]
+    out += [(f'<th width="{TH_WIDTH}" align="{al[i]}">' if long_col[i] else f'<th align="{al[i]}">') + f"{esc(h)}</th>" for i, h in enumerate(heads)]
     out += ["</tr>", "</thead>", "<tbody>"]
     for r in rows:
         r = (r + [""] * len(heads))[: len(heads)]

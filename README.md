@@ -12,8 +12,8 @@ The deforestation risk models of the Democratic Republic of the Congo measured a
 <table>
 <thead>
 <tr>
-<th width="2000" align="left">Pressure</th>
-<th width="2000" align="left">Expected effect</th>
+<th align="left">Pressure</th>
+<th align="left">Expected effect</th>
 <th width="2000" align="left">Reasoning</th>
 </tr>
 </thead>
@@ -33,11 +33,11 @@ The deforestation risk models of the Democratic Republic of the Congo measured a
 <table>
 <thead>
 <tr>
-<th width="2000" align="left">Variable</th>
-<th width="2000" align="right">Studies</th>
-<th width="2000" align="right">Stated a town size</th>
-<th width="2000" align="right">Stated a cap</th>
-<th width="2000" align="right">Stated a decay</th>
+<th align="left">Variable</th>
+<th align="right">Studies</th>
+<th align="right">Stated a town size</th>
+<th align="right">Stated a cap</th>
+<th align="right">Stated a decay</th>
 </tr>
 </thead>
 <tbody>
@@ -59,11 +59,11 @@ The deforestation risk models of the Democratic Republic of the Congo measured a
 <table>
 <thead>
 <tr>
-<th width="2000" align="left">Measure</th>
-<th width="2000" align="right">Values</th>
-<th width="2000" align="right">Studies</th>
-<th width="2000" align="right">Range</th>
-<th width="2000" align="right">Median</th>
+<th align="left">Measure</th>
+<th align="right">Values</th>
+<th align="right">Studies</th>
+<th align="right">Range</th>
+<th align="right">Median</th>
 </tr>
 </thead>
 <tbody>
