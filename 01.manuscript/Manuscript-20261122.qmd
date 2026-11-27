@@ -646,6 +646,29 @@ lakes$label <- ifelse(nzchar(lakes$Lake_name), paste("Lac", lakes$Lake_name), NA
 ```
 
 ```{r}
+#| label: town-flags
+#| echo: true
+#| output: false
+# Every point named as one of the province's territory seats or larger towns is kept as a flag to be checked by eye, because GRID3 repeats several names
+# GRID3 COD - Settlement Names v9.0, Center for International Earth Science Information Network and GRID3
+# https://data.grid3.org/datasets/f4a459a34e43476a9a9671c4095bddd9/about, https://doi.org/10.7916/77t0-h465
+if (!file.exists("03.outputs/SHP/town_flags.shp")) {
+  seats <- c("Bolobo", "Inongo", "Kiri", "Kutu", "Kwamouth", "Mushie", "Nioki", "Oshwe", "Yumbi", "Bandundu", "Kikwit", "Mbandaka", "Kinshasa")
+  grid3_flags <- sf::st_transform(sf::st_read("02.inputs/grid3/raw/settlement_names_v9_0.gpkg", quiet = TRUE), lc_grid$crsCode) |>
+    dplyr::filter(tolower(localite) %in% tolower(seats)) |>
+    dplyr::transmute(name = localite, source = "GRID3", province, type = localitetype)
+  ne_flags <- dplyr::transmute(dplyr::filter(towns, tolower(NAME) %in% tolower(seats)), name = NAME, source = "Natural Earth", province = NA_character_, type = FEATURECLA)
+  flags <- rbind(sf::st_sf(sf::st_drop_geometry(grid3_flags), geometry = sf::st_geometry(grid3_flags)), sf::st_sf(sf::st_drop_geometry(ne_flags), geometry = sf::st_geometry(ne_flags)))
+  # People in the 3 by 3 km square around each flag, from the High Resolution Settlement Layer at 1 km, to help tell a town from a village of the same name
+  # https://gee-community-catalog.org/projects/hrsl/, https://dataforgood.fb.com/tools/population-density-maps/
+  flags$people <- round(terra::extract(terra::focal(terra::rast("02.inputs/hrsl/raw/hrsl_1km.tif"), 3, sum, na.rm = TRUE), terra::vect(flags))[, 2])
+  flags$flag_id <- seq_len(nrow(flags))
+  dir.create("03.outputs/SHP", showWarnings = FALSE)
+  sf::st_write(flags, "03.outputs/SHP/town_flags.shp", quiet = TRUE)
+}
+```
+
+```{r}
 #| label: fig-market-access
 #| fig-cap: "Market access, Mai Ndombe and surroundings, 1 km. Red line, Mai Ndombe province; dashed lines, provinces; turquoise, rivers with a mean discharge of 100 m³/s or more and lakes of 10 km² or more."
 #| echo: true
