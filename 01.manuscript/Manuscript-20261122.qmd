@@ -613,20 +613,69 @@ if (!file.exists("03.outputs/TIF/market_access.tif")) {
 ```
 
 ```{r}
+#| label: map-backdrop
+#| echo: true
+#| output: false
+# Background layers for the maps, drawn as in the map templates at https://github.com/seamusrobertmurphy/map-templates
+box_ee <- ee$Geometry$Rectangle(reach)
+# NASA SRTM Digital Elevation 30m, read at 500 m for the relief shading
+# https://developers.google.com/earth-engine/datasets/catalog/USGS_SRTMGL1_003, https://doi.org/10.5067/MEaSUREs/SRTM/SRTMGL1_NC.003
+if (!file.exists("02.inputs/srtm/raw/srtm_500m.tif")) fetch(ee$Image("USGS/SRTMGL1_003")$getDownloadURL(list(region = box_ee, crs = lc_grid$crsCode, crs_transform = c(500, 0, terra::xmin(grid1k), 0, -500, terra::ymax(grid1k)), format = "GEO_TIFF")), "02.inputs/srtm/raw/srtm_500m.tif")
+# Free Flowing Rivers, HydroSHEDS, WWF, the reaches with a mean discharge of 100 m³/s or more
+# https://developers.google.com/earth-engine/datasets/catalog/WWF_HydroSHEDS_v1_FreeFlowingRivers
+if (!file.exists("02.inputs/hydrosheds/raw/rivers.geojson")) fetch(ee$FeatureCollection("WWF/HydroSHEDS/v1/FreeFlowingRivers")$filterBounds(box_ee)$filter(ee$Filter$gte("DIS_AV_CMS", 100))$select(list("DIS_AV_CMS"))$getDownloadURL("geojson"), "02.inputs/hydrosheds/raw/rivers.geojson")
+# HydroLAKES version 1.0, the lakes of 10 km² or more, served by the Earth Engine community catalog
+# https://gee-community-catalog.org/projects/hydrolakes/
+if (!file.exists("02.inputs/hydrolakes/raw/lakes.geojson")) fetch(ee$FeatureCollection("projects/sat-io/open-datasets/HydroLakes/lake_poly_v10")$filterBounds(box_ee)$filter(ee$Filter$gte("Lake_area", 10))$select(list("Lake_name", "Lake_area"))$getDownloadURL("geojson"), "02.inputs/hydrolakes/raw/lakes.geojson")
+# Natural Earth, populated places and countries at 1:10 million
+# https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
+fetch("https://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places.zip", "02.inputs/naturalearth/raw/ne_10m_populated_places.zip")
+fetch("https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_countries.zip", "02.inputs/naturalearth/raw/ne_10m_admin_0_countries.zip")
+# Relief lit from the north-west at 45 degrees, with heights tripled so that the low relief of the basin shows
+dem <- terra::rast("02.inputs/srtm/raw/srtm_500m.tif") * 3
+relief <- terra::shade(terra::terrain(dem, "slope", unit = "radians"), terra::terrain(dem, "aspect", unit = "radians"), angle = 45, direction = 315)
+rivers <- sf::st_transform(sf::st_read("02.inputs/hydrosheds/raw/rivers.geojson", quiet = TRUE), lc_grid$crsCode)
+lakes <- sf::st_transform(sf::st_read("02.inputs/hydrolakes/raw/lakes.geojson", quiet = TRUE), lc_grid$crsCode)
+countries <- sf::st_transform(sf::st_read("/vsizip/02.inputs/naturalearth/raw/ne_10m_admin_0_countries.zip", quiet = TRUE), lc_grid$crsCode)
+provinces <- sf::st_transform(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE), lc_grid$crsCode)
+# The towns named are those of the Democratic Republic of the Congo in the gazetteer, with Brazzaville, more than 30 km inside the map frame
+towns <- sf::st_transform(sf::st_read("/vsizip/02.inputs/naturalearth/raw/ne_10m_populated_places.zip", quiet = TRUE), lc_grid$crsCode) |>
+  dplyr::filter(ADM0_A3 == "COD" | NAME == "Brazzaville") |>
+  sf::st_filter(sf::st_buffer(sf::st_as_sfc(sf::st_bbox(grid1k)), -30000))
+lakes$label <- ifelse(nzchar(lakes$Lake_name), paste("Lac", lakes$Lake_name), NA)
+```
+
+```{r}
 #| label: fig-market-access
-#| fig-cap: "Market access, Mai Ndombe and surroundings, 1 km."
+#| fig-cap: "Market access, Mai Ndombe and surroundings, 1 km. Red line, Mai Ndombe province; dashed lines, provinces; turquoise, rivers with a mean discharge of 100 m³/s or more and lakes of 10 km² or more."
 #| echo: true
 #| fig-width: 6.5
-#| fig-height: 6
+#| fig-height: 5.6
+# Drawn with the layers and map furniture of the templates at https://github.com/seamusrobertmurphy/map-templates
 access <- terra::rast("03.outputs/TIF/market_access_1km.tif")
-cells <- as.data.frame(log10(access), xy = TRUE, na.rm = TRUE) |> dplyr::rename(access = 3) |> dplyr::filter(is.finite(access))
-ggplot2::ggplot() +
-  ggplot2::geom_raster(data = cells, ggplot2::aes(x, y, fill = access)) +
-  ggplot2::geom_sf(data = sf::st_transform(mai_ndombe, lc_grid$crsCode), fill = NA, colour = "white", linewidth = 0.4) +
-  ggplot2::scale_fill_viridis_c(option = "magma", name = "Market access\n(log10)") +
-  ggplot2::coord_sf(crs = lc_grid$crsCode, expand = FALSE) +
-  ggplot2::labs(x = NULL, y = NULL) +
-  th
+access <- log10(terra::ifel(access > 0, access, NA))
+cod <- dplyr::filter(countries, ADM0_A3 == "COD")
+locator <- tmap::tm_shape(countries, bbox = sf::st_bbox(sf::st_buffer(sf::st_as_sfc(sf::st_bbox(cod)), 1e5))) + tmap::tm_polygons(fill = "grey95", col = "grey60", lwd = 0.3) +
+  tmap::tm_shape(cod) + tmap::tm_polygons(fill = "grey80", col = "grey30", lwd = 0.4) +
+  tmap::tm_shape(mai_ndombe) + tmap::tm_polygons(fill = "red", col = "red", lwd = 0.3) +
+  tmap::tm_shape(sf::st_as_sfc(sf::st_bbox(grid1k))) + tmap::tm_borders(col = "black", lwd = 0.7)
+tmap::tm_shape(relief, bbox = sf::st_bbox(grid1k)) + tmap::tm_raster(col.scale = tmap::tm_scale_continuous(values = c("grey55", "white")), col.legend = tmap::tm_legend_hide()) +
+  tmap::tm_shape(access) + tmap::tm_raster(col.scale = tmap::tm_scale_continuous(values = "magma"), col_alpha = 0.7, col.legend = tmap::tm_legend(title = "Market access (log10)", group_id = "key", height = 10, width = 6, reverse = TRUE)) +
+  tmap::tm_shape(lakes) + tmap::tm_polygons(fill = "turquoise", col = "turquoise4", lwd = 0.3) +
+  tmap::tm_shape(rivers) + tmap::tm_lines(col = "turquoise3", lwd = 0.7) +
+  tmap::tm_shape(provinces) + tmap::tm_borders(col = "grey35", lwd = 0.4, lty = "dashed") +
+  tmap::tm_shape(countries) + tmap::tm_borders(col = "grey20", lwd = 0.9) +
+  tmap::tm_shape(sf::st_transform(mai_ndombe, lc_grid$crsCode)) + tmap::tm_borders(col = "red", lwd = 1.5) +
+  tmap::tm_shape(dplyr::filter(lakes, !is.na(label))) + tmap::tm_labels("label", size = 0.5, col = "turquoise4", fontface = "italic") +
+  tmap::tm_shape(towns) + tmap::tm_dots(size = 0.08, fill = "black") +
+  tmap::tm_labels("NAME", size = 0.5, col = "grey5", bgcol = "white", bgcol_alpha = 0.6, xmod = 0.4, options = tmap::opt_tm_labels(remove_overlap = TRUE)) +
+  tmap::tm_inset(locator, height = 6, width = 6, group_id = "key") +
+  tmap::tm_components("key", position = tmap::tm_pos_in("left", "top"), stack = "vertical", frame_combine = TRUE, bg.color = "white") +
+  tmap::tm_graticules(lines = TRUE, labels.rot = c(0, 90), lwd = 0.2) +
+  tmap::tm_scalebar(position = c("RIGHT", "BOTTOM"), text.size = 0.5) +
+  tmap::tm_compass(type = "4star", size = 1.5, color.dark = "gray60", text.color = "gray60", position = c("RIGHT", "TOP")) +
+  tmap::tm_credits("EPSG:32734", color = "gray40", size = 0.5, position = c("LEFT", "BOTTOM")) +
+  tmap::tm_layout(legend.text.size = 0.5, legend.title.size = 0.6)
 ```
 
 ## Benchmark comparison

@@ -82,4 +82,4 @@ The deforestation risk models of the Democratic Republic of the Congo measured a
 
 ![Fig. 1](03.outputs/PNG/fig-market-access.png)
 
-*Fig. 1 Market access, Mai Ndombe and surroundings, 1 km.*
+*Fig. 1 Market access, Mai Ndombe and surroundings, 1 km. Red line, Mai Ndombe province; dashed lines, provinces; turquoise, rivers with a mean discharge of 100 m³/s or more and lakes of 10 km² or more.*

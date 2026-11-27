@@ -74,9 +74,9 @@ Each source takes one entry in this form.
 | Publisher | NASA and USGS, served by Earth Engine |
 | Link | https://developers.google.com/earth-engine/datasets/catalog/USGS_SRTMGL1_003, https://doi.org/10.5067/MEaSUREs/SRTM/SRTMGL1_NC.003 |
 | Licence | As stated under the catalog page's terms of use |
-| Retrieved | 2026-11-19, read in Earth Engine |
-| Local path | none, read in Earth Engine |
-| Read by | `forest-maps` |
+| Retrieved | 2026-11-19, read in Earth Engine, and 2026-11-27 at 500 m for the map relief |
+| Local path | none for `forest-maps`, and `02.inputs/srtm/raw/srtm_500m.tif` for the map relief |
+| Read by | `forest-maps`, `map-backdrop` |
 
 ### GADM territories
 
@@ -221,3 +221,39 @@ Each source takes one entry in this form.
 | Retrieved | 2026-11-27, summed to 1 km in 16 tiles |
 | Local path | `02.inputs/hrsl/raw/hrsl_1km.tif` |
 | Read by | `market-access` |
+
+### HydroSHEDS rivers
+
+| Field | Entry |
+|---|---|
+| Dataset | Free Flowing Rivers, HydroSHEDS, `WWF/HydroSHEDS/v1/FreeFlowingRivers`, reaches with a mean discharge of 100 m³/s or more |
+| Publisher | World Wildlife Fund, served by Earth Engine |
+| Link | https://developers.google.com/earth-engine/datasets/catalog/WWF_HydroSHEDS_v1_FreeFlowingRivers |
+| Licence | As stated under the catalog page's terms of use |
+| Retrieved | 2026-11-27 |
+| Local path | `02.inputs/hydrosheds/raw/rivers.geojson` |
+| Read by | `map-backdrop` |
+
+### HydroLAKES lakes
+
+| Field | Entry |
+|---|---|
+| Dataset | HydroLAKES version 1.0, `projects/sat-io/open-datasets/HydroLakes/lake_poly_v10`, lakes of 10 km² or more |
+| Publisher | HydroSHEDS, served by the Earth Engine community catalog |
+| Link | https://gee-community-catalog.org/projects/hydrolakes/ |
+| Licence | As listed by the community catalog |
+| Retrieved | 2026-11-27 |
+| Local path | `02.inputs/hydrolakes/raw/lakes.geojson` |
+| Read by | `map-backdrop` |
+
+### Natural Earth
+
+| Field | Entry |
+|---|---|
+| Dataset | Natural Earth 1:10 million populated places and admin 0 countries, version 5.1.2 |
+| Publisher | Natural Earth |
+| Link | https://www.naturalearthdata.com/downloads/10m-cultural-vectors/, https://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places.zip, https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_countries.zip |
+| Licence | Public domain |
+| Retrieved | 2026-11-27 |
+| Local path | `02.inputs/naturalearth/raw/` |
+| Read by | `map-backdrop` |
