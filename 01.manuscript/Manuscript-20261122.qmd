@@ -440,6 +440,33 @@ if (!file.exists("03.outputs/GPKG/roads_merged.gpkg")) {
 }
 ```
 
+```{r}
+#| label: roads-asset
+#| echo: true
+#| output: false
+# The merged roads are also kept as an Earth Engine asset, so they can be read from any machine
+# One export request carries at most 10 MB, and Earth Engine doubles the size of the GeoJSON it is sent, so the roads go up in parts of about 4 MB of GeoJSON, and a later render joins the parts into one asset once every part has finished
+roads_dir <- "projects/manuscripts-december/assets/deforisk-congo"
+parts_dir <- paste0(roads_dir, "/roads_merged_parts")
+listed <- \(dir) c(purrr::map_chr(ee$data$listAssets(list(parent = dir))$assets, "name"), purrr::map_chr(purrr::keep(ee$data$getTaskList(), \(t) t$state %in% c("READY", "RUNNING")), \(t) paste0(dir, "/", t$description)))
+if (!paste0(roads_dir, "/roads_merged") %in% listed(roads_dir)) {
+  if (!parts_dir %in% listed(roads_dir)) ee$data$createAsset(list(type = "FOLDER"), parts_dir)
+  roads <- sf::st_cast(dplyr::select(sf::st_read("03.outputs/GPKG/roads_merged.gpkg", quiet = TRUE), source, class, year, speed_kmh), "MULTILINESTRING")
+  # About 22 bytes for each vertex at five decimals, about 1 m, and 120 for each road's fields
+  roads$part <- floor(cumsum(22 * tabulate(sf::st_coordinates(roads)[, "L2"], nrow(roads)) + 120) / 3.8e6) + 1
+  parts <- sprintf("%s/part_%02d", parts_dir, seq_len(max(roads$part)))
+  json <- reticulate::import("json")
+  purrr::walk(setdiff(parts, listed(parts_dir)), \(id) {
+    collection <- ee$FeatureCollection(json$loads(geojsonsf::sf_geojson(dplyr::select(roads[roads$part == match(id, parts), ], -part), digits = 5)))
+    stopifnot(nchar(collection$serialize(), type = "bytes") < 9.5e6)
+    ee$batch$Export$table$toAsset(collection = collection, description = basename(id), assetId = id)$start()
+  })
+  # Every part is listed as an asset only once its export has finished
+  finished <- purrr::map_chr(ee$data$listAssets(list(parent = parts_dir))$assets, "name")
+  if (all(parts %in% finished)) ee$batch$Export$table$toAsset(collection = ee$FeatureCollection(purrr::map(parts, ee$FeatureCollection))$flatten(), description = "roads_merged", assetId = paste0(roads_dir, "/roads_merged"))$start()
+}
+```
+
 ## Market access
 
 ```{r}
