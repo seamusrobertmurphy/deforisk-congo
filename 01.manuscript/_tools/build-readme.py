@@ -114,6 +114,12 @@ def to_pipe_table(chunk: str) -> tuple[str, str] | None:
         rows = rows[:-1]
     while len(aligns) < len(heads):
         aligns.append(":---")
+    # A flextable sets alignment by class, not inline, so a column whose every cell is a
+    # number or a range of numbers, such as 1 to 5, is right-aligned here
+    numeric = re.compile(r"^-?[\d.,]+( to -?[\d.,]+)?$")
+    for i in range(len(heads)):
+        if aligns[i] == ":---" and all(numeric.match(r[i]) for r in rows if i < len(r)):
+            aligns[i] = "---:"
     return html_table(heads, aligns[: len(heads)], rows), note
 
 

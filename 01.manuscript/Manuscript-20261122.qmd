@@ -60,6 +60,8 @@ editor: visual
 bibliography:
   - ../04.references/references.bib
 csl: ../04.references/apa.csl
+nocite: |
+  @nguba2025assessing, @ngouhouopoufoun2024cocoa, @samndong2018institutional, @behrendt2013deforestation
 ---
 
 ```{r}
@@ -77,14 +79,16 @@ fetch <- function(url, file) if (!file.exists(file)) {
 fmt_tbl <- function(df, right = NULL) {
   df <- dplyr::mutate(df, dplyr::across(dplyr::any_of("Year"), as.integer))
   right <- union(names(df)[vapply(df, is.numeric, TRUE)], right)
+  # Text cells are read as Markdown, so a citation inside a table prints and joins the reference list
   flextable::flextable(df) |>
+    ftExtra::colformat_md() |>
     flextable::fontsize(size = 9, part = "all") |>
     flextable::align(align = "center", part = "header") |>
     flextable::align(j = setdiff(names(df), right), align = "left", part = "body") |>
     flextable::align(j = right, align = "right", part = "body") |>
     flextable::colformat_int(big.mark = "") |>
     flextable::padding(padding.top = 1, padding.bottom = 1, part = "all") |>
-    flextable::set_table_properties(layout = "autofit", width = 1)
+    flextable::set_table_properties(layout = "autofit")
 }
 th <- ggplot2::theme_bw(base_size = 8) + ggplot2::theme(panel.grid.minor = ggplot2::element_blank())
 num <- \(x, d = 1) gsub("-(?=[0-9])", "−", sprintf(paste0("%.", d, "f"), round(x, d) + 0), perl = TRUE)
@@ -115,7 +119,7 @@ Distance to the forest edge had support as a predictor outside the basin. In and
 
 Spatial models of forest change in the Congo Basin differed most in what they were tested against. A review of 48 models, of which 32 covered the Amazon, 13 South-East Asia, two the Congo Basin and one the whole tropics, had judged their predictions "highly variable and often poorly validated" [@rosa2014transparency]. Over the core of the basin, between 3.5 degrees south and 3.5 degrees north, a scenario generator was run forward for one decade from satellite data of 2001 [@tompkins2015generalized]. Its output, averaged to 50 km, reached a maximum spatial correlation of 0.68 with the satellite record [@tompkins2015generalized]. For the six countries with Rwanda and Burundi, an econometric model estimated the effect of road improvement on forest clearing from the years 2000 to 2012 [@wheeler2015road]. For the Democratic Republic of the Congo, the cellular automata model SimCongo, which spread change from each cell to its neighbours, simulated deforestation from 1990 to 2010 [@galford2015will]. The simulated map fitted the observed one at 78 per cent within a 3.5 km search radius, over the same years used to calibrate the model [@galford2015will]. A second national model, a neural network run at 1 km resolution, was calibrated on land cover maps of 2000 and 2005 and tested against the map of 2010 [@kibambelubamba2013modeling]. Its simulated map agreed with the 2010 map at 98 per cent overall, the changes of 2005 to 2010 having been minor [@kibambelubamba2013modeling]. @kibambelubamba2013modeling added that "except for the transitions in primary forest, the model did not predict accurately the locations of change in secondary forest and woodlands". @grainger1999constraints wrote that deforestation models for tropical open woodlands had been "constrained by ecosystem heterogeneity and a lack of reliable data on forest areas and deforestation rates". In the shrub savanna of Bouba Ndjida National Park, northern Cameroon, three models each predicted the radar image of 2021 from the images of 2015 and 2020 [@moskolai2022comparative]. Overall prediction accuracy was 83 per cent for a model pairing cellular automata with a Markov chain, and 91 and 98 per cent for two deep learning networks [@moskolai2022comparative]. A pantropical model fitted to the deforestation of 2010 to 2020 was compared by cross-validation with a null model, a simple logistic regression and a random forest [@vieilledent2022spatial]. It predicted better than the other three [@vieilledent2022spatial]. The open software behind that model listed validation tools among its future developments [@vieilledent2021forestatrisk].
 
-Two models covered all six countries and were tested on later data. The first trained a neural network on land cover maps of 1990 and 2000 and projected them to 2010 and 2020, before projecting dense forest to 2050 [@yuh2024monitoring]. Pearson's correlation between the modelled and mapped land cover was R = 0.8 (p < 0.05) for both 2010 and 2020 [@yuh2024monitoring]. The second, the Forest Foresight model, predicted deforestation six months ahead at 400 m resolution across the tropics [@rosa2025predicting]. It was trained on January 2021 to December 2022 and tested on June 2023 to May 2024 [@rosa2025predicting]. Its F0.5 score, a measure that weighted precision above recall, was 68.8 per cent in Africa, where the model covered the same six countries [@rosa2025predicting]. A baseline that predicted loss wherever loss had occurred in the previous six months scored 65.0 per cent there [@rosa2025predicting]. None of the models described above was compared with a benchmark built from distance to the forest edge alone.
+Two models covered all six countries and were tested on later data. The first trained a neural network on land cover maps of 1990 and 2000 and projected them to 2010 and 2020, before projecting dense forest to 2050 [@yuh2024monitoring]. Pearson's correlation between the modelled and mapped land cover was R = 0.8 (p \< 0.05) for both 2010 and 2020 [@yuh2024monitoring]. The second, the Forest Foresight model, predicted deforestation six months ahead at 400 m resolution across the tropics [@rosa2025predicting]. It was trained on January 2021 to December 2022 and tested on June 2023 to May 2024 [@rosa2025predicting]. Its F0.5 score, a measure that weighted precision above recall, was 68.8 per cent in Africa, where the model covered the same six countries [@rosa2025predicting]. A baseline that predicted loss wherever loss had occurred in the previous six months scored 65.0 per cent there [@rosa2025predicting]. None of the models described above was compared with a benchmark built from distance to the forest edge alone.
 
 The margin of a complex model over a simple rule was small wherever both were run, and in two cases the rule was the more accurate. Across the tropics, the deep network of @rosa2025predicting "outperformed the Baseline and XGBoost by 4.2% and 1.4%, respectively", XGBoost being a boosted tree model. Around Salonga National Park in the Democratic Republic of the Congo, a random forest reached an area under the receiver operating characteristic curve of 0.980 on its test period [@mboyo2026spatio]. Its authors noted "the strong performance of persistence and historical hotspot baselines", two rules built only on past disturbance, and described disturbance there as "highly spatially clustered and temporally persistent" [@mboyo2026spatio]. In Campo commune, southern Cameroon, a model coupling cellular automata with a neural network was calibrated on 2000 to 2015 and tested against the map of 2025 [@tsoala2026modelisation]. A null model of persistence, which predicted no change, scored the higher overall accuracy, 84.3 per cent against 80.1 ± 0.4 per cent [@tsoala2026modelisation]. Its Figure of Merit, the share of observed and predicted change that was predicted correctly, was zero, against 0.185 ± 0.008 for the coupled model [@tsoala2026modelisation]. In Panama, a projection of forest cover for 2008, built from the trends of 1990 to 2000 and 25 drivers, was 85.2 per cent accurate [@sloan2012how]. @sloan2012how found it "slightly less accurate than if we had assumed no forest-cover change over 2000–2008", with a Figure of Merit of 8.36 per cent. Models built on past loss were weakest at new frontiers. The Forest Foresight model "performs well in active frontier regions but struggles to predict deforestation in previously intact areas", such as new logging roads [@rosa2025predicting]. Along 33 first-cut roads in the Congo Basin, each kilometre of first-cut road was followed by 4.8 km of secondary road on average [@engert2025explosive].
 
@@ -133,8 +137,8 @@ Forest change also entered spatial risk models in neighbouring fields. For land 
 
 For Mai Ndombe province, from 2016 to 2026, this study asked two questions that this literature left open.
 
-1. How did population, travel time to markets by road and river, and distance to the forest edge each affect where forest was cleared?
-2. Did a risk map built from these pressures locate the clearing of 2021 to 2026 better than distance to the forest edge alone?
+1.  How did population, travel time to markets by road and river, and distance to the forest edge each affect where forest was cleared?
+2.  Did a risk map built from these pressures locate the clearing of 2021 to 2026 better than distance to the forest edge alone?
 
 # Materials and Methods
 
@@ -224,7 +228,7 @@ pressures <- tibble::tribble(
   "Household wealth and cooking fuel", "Mixed", "@ngouhouopoufoun2024cocoa found, among 1,035 households of the Tridom landscape shared by three countries, that \"a marginally higher income from cocoa production-based livelihood portfolios is associated with six to seven times higher deforestation\". In two pilot sites of Equateur province, @samndong2018institutional found that \"shifting cultivation is driven by the poverty conditions of the study area\". @behrendt2013deforestation judged that charcoal supply \"could represent the single biggest threat to Congo Basin forests in the coming decades\"."
 )
 readr::write_excel_csv(pressures, "03.outputs/TBL/tbl-pressures.csv")
-knitr::kable(pressures, format = "pipe")
+fmt_tbl(pressures)
 ```
 
 ```{r}
@@ -389,6 +393,99 @@ if (!file.exists("03.outputs/TIF/travel_time_kinshasa.tif")) {
 ```
 
 ## Market access
+
+```{r}
+#| label: review-tables
+#| echo: true
+#| output: false
+# Variables of published deforestation risk and pressure models, one row each, read from the full texts on 27 November 2026, each with its quotation and page
+model_vars <- readr::read_csv("02.inputs/derived/review-model-variables.csv", col_types = readr::cols(.default = "c"))
+# Field measurements of travel for wood, fields and trade in Africa, one row each, read from the full texts on 27 November 2026, each with its quotation and page
+field <- readr::read_csv("02.inputs/derived/review-field-distances.csv", col_types = readr::cols(.default = "c")) |>
+  dplyr::mutate(dplyr::across(dplyr::everything(), \(x) dplyr::coalesce(x, "")))
+# A setting counts as stated when the study printed it, and not when it printed none or nothing
+stated <- \(x) {
+  x <- tolower(trimws(dplyr::coalesce(x, "")))
+  nzchar(x) & !grepl("^(not stated|none|not applicable|no cap)", x)
+}
+classes <- c(distance_road = "Distance to road", distance_river = "Distance to river", population_density = "Population density",
+  distance_settlement = "Distance to settlement", distance_town = "Distance to town", travel_time = "Travel time",
+  distance_edge = "Distance to forest edge", population_count = "Population count", distance_market = "Distance to market",
+  market_potential = "Market potential")
+model_table <- model_vars |>
+  dplyr::filter(variable_class %in% names(classes)) |>
+  dplyr::mutate(Variable = unname(classes[variable_class])) |>
+  dplyr::summarise(Studies = dplyr::n_distinct(key),
+    `Stated a town size` = dplyr::n_distinct(key[stated(destination_threshold)]),
+    `Stated a cap` = dplyr::n_distinct(key[stated(travel_time_cap)]),
+    `Stated a decay` = dplyr::n_distinct(key[stated(decay)]), .by = Variable) |>
+  dplyr::arrange(dplyr::desc(Studies), Variable)
+readr::write_excel_csv(model_table, "03.outputs/TBL/tbl-model-variables.csv")
+# A value printed as a range, such as 2.0 to 4.8, enters the range at its two ends and the median at its midpoint
+ends <- function(v) {
+  v <- gsub("[<>]", "", gsub(",", ".", v))
+  two <- "(?s)^\\s*(\\d+(?:\\.\\d+)?)\\s*(?:-|to)\\s*(\\d+(?:\\.\\d+)?).*$"
+  one <- "(?s)^\\s*(\\d+(?:\\.\\d+)?).*$"
+  lo <- suppressWarnings(ifelse(grepl(one, v, perl = TRUE), as.numeric(sub(one, "\\1", v, perl = TRUE)), NA))
+  hi <- suppressWarnings(ifelse(grepl(two, v, perl = TRUE), as.numeric(sub(two, "\\2", v, perl = TRUE)), lo))
+  tibble::tibble(lo, hi)
+}
+# Rows of one measure, chosen by question, unit, activity and statistic, with values in metres turned into kilometres
+pick <- function(q, unit, act, stats, exclude = "^$", metres = FALSE) {
+  d <- dplyr::filter(field, grepl(paste0("^(", q, ")$"), question), grepl(.env$unit, .data$unit, ignore.case = TRUE, perl = TRUE),
+    grepl(act, activity, ignore.case = TRUE, perl = TRUE), !grepl(exclude, paste(activity, sample), ignore.case = TRUE, perl = TRUE),
+    Reduce(`|`, lapply(stats, \(s) startsWith(statistic, s))))
+  f <- if (metres) ifelse(grepl("^m\\b", d$unit, perl = TRUE), 0.001, 1) else 1
+  dplyr::bind_cols(dplyr::select(d, key), ends(d$value) * f) |> dplyr::filter(!is.na(lo))
+}
+central <- c("mean", "median", "mode", "single")
+fmt <- \(x) prettyNum(round(x, 1), big.mark = ",")
+measure <- \(d, name, lo = d$lo, hi = d$hi, mid = (d$lo + d$hi) / 2) tibble::tibble(Measure = name, Values = nrow(d),
+  Studies = dplyr::n_distinct(d$key), Range = paste(fmt(min(lo)), "to", fmt(max(hi))), Median = fmt(stats::median(mid)))
+# Supply distances around towns are grouped by the town's population, read from the size the study printed
+supply <- dplyr::filter(field, question == "2", unit == "km", !grepl("felling|kiln|walk|carried|distance from city centre", activity, ignore.case = TRUE)) |>
+  dplyr::mutate(size = gsub(",", "", settlement_size),
+    size = suppressWarnings(dplyr::case_when(
+      grepl("\\d\\s*(or \\d+ )?million", size, perl = TRUE) ~ as.numeric(sub("^.*?(\\d+(?:\\.\\d+)?)\\s*(?:or \\d+ )?million.*$", "\\1", size, perl = TRUE)) * 1e6,
+      grepl("\\d{4,}", size) ~ as.numeric(sub("^.*?(\\d{4,}).*$", "\\1", size, perl = TRUE)))),
+    mid = rowMeans(ends(value))) |>
+  dplyr::filter(!is.na(size), !is.na(mid))
+by_size <- \(from, to, name) {
+  d <- dplyr::filter(supply, size >= from, size < to)
+  measure(d, name, lo = d$mid, hi = d$mid, mid = d$mid)
+}
+# Wood use per person, turned into kg per day from values per week and per year
+rural <- dplyr::filter(field, question == "5", grepl("^kg per person per (day|week|year)", unit), !grepl("equivalent|sack", unit),
+    grepl("rural|village", paste(settlement_type, settlement_size, place), ignore.case = TRUE)) |>
+  dplyr::mutate(use = rowMeans(ends(value)) / dplyr::case_when(grepl("week", unit) ~ 7, grepl("year", unit) ~ 365, .default = 1)) |>
+  dplyr::filter(!is.na(use))
+field_table <- dplyr::bind_rows(
+  measure(pick("1", "^(km|m)\\b", "distance|walk", central, "cited|round trip|stockpost|depletion|radius", metres = TRUE), "Walk to collect wood, km"),
+  measure(pick("1", "^h per trip|^h$", "hour|time", c(central, "range"), "walking time village"), "Time per wood collection trip, h"),
+  measure(pick("3", "^(km|m)\\b", "field|fallow|farming|cassava", c(central, "maximum", "minimum", "range", "mode"), "city", metres = TRUE), "Home to field, km"),
+  measure(pick("4", "^km per", "carrying distance|bicycle travel", c(central, "range", "maximum")), "Daily carrying distance per adult, km"),
+  measure(pick("3", "^km$", "market", c(central, "maximum", "minimum", "range")), "Village to market, km"),
+  measure(pick("4", "^km", "hunt|snare|expedition|catchment|forest|camp", c(central, "maximum", "range"), "area|road or river"), "Village to hunting ground, km"),
+  by_size(5e6, Inf, "Wood supply distance, cities of 5 million or more, km"),
+  by_size(1e6, 5e6, "Wood supply distance, cities of 1 to 5 million, km"),
+  by_size(0, 1e6, "Wood supply distance, towns under 1 million, km"),
+  measure(rural, "Rural wood use, kg per person per day", lo = rural$use, hi = rural$use, mid = rural$use))
+readr::write_excel_csv(field_table, "03.outputs/TBL/tbl-field-distances.csv")
+```
+
+```{r}
+#| label: tbl-model-variables
+#| tbl-cap: !expr paste0("Distance and population variables in ", dplyr::n_distinct(model_vars$key), " published risk models. Cap, a limit on travel time or distance. Decay, the form in which an effect fell with distance.")
+#| echo: true
+fmt_tbl(model_table)
+```
+
+```{r}
+#| label: tbl-field-distances
+#| tbl-cap: !expr paste0("Distances travelled for wood, fields and trade in ", dplyr::n_distinct(field$key), " African field studies. Values, measurements read from the studies.")
+#| echo: true
+fmt_tbl(field_table, right = c("Range", "Median"))
+```
 
 ```{r}
 #| label: market-access
