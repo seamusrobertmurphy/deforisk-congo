@@ -9,77 +9,75 @@ The deforestation risk models of the Democratic Republic of the Congo measured a
 
 *Table 1 Pressures entered in the model, with the effect on forest clearing that the literature expected of a higher value of each.*
 
-df1 <- tibble::tribble(
-  ~Pressure, ~`Expected effect`, ~Reasoning,
-  "Population density", "Mixed", "Small-scale clearing doubled with population growth across the basin from 2000 to 2014 (Tyukavina et al., 2018). In a national model for 2000 to 2005, population distribution did not predict where forest changed (Kibambe Lubamba, 2013).",
-  "Travel time to Kinshasa and the river landings, by road and river", "Lowers", "Across eight Congo Basin countries, from 2000 to 2012, forest clearing fell by 0.63% with each 1% rise in travel time to the nearest market centre (Wheeler & Damania, 2015).",
-  "Distance to the forest edge", "Lowers", "In the Democratic Republic of the Congo, 81.53% of the forest cover changes of 2000 to 2005 lay less than 1 km from existing secondary forest (Kibambe Lubamba, 2013).",
-  "Distance to new forest roads", "Mixed", "Each kilometre of first-cut road in the basin was followed by 186 ha of forest loss and degradation (Engert, Souza, Kleinschroth, Bignoli, et al., 2025). Engert, Souza, Kleinschroth, Bignoli, et al. (2025) wrote that industrial selective logging there could “degrade forests but lead to little outright deforestation”.",
-  "Distance to settlements and camps", "Lowers", "About 80% of the deforestation of 2015 to 2020 in the six countries lay within 3 km of the nearest road or settlement (A. Shapiro et al., 2023).",
-  "Territory’s share of Kinshasa’s charcoal", "Mixed", "In Mai Ndombe in 2021, 60% of producers made charcoal from trees felled to open fields (Dubiez et al., 2021). A review found “a mismatch” between wood energy use and forest degradation (Besisa Nguba et al., 2025).",
-  "Household wealth and cooking fuel", "Mixed", "Ngouhouo-Poufoun et al. (2024) found, among 1,035 households of the Tridom landscape shared by three countries, that “a marginally higher income from cocoa production-based livelihood portfolios is associated with six to seven times higher deforestation”. In two pilot sites of Equateur province, Samndong et al. (2018) found that “shifting cultivation is driven by the poverty conditions of the study area”. Behrendt et al. (2013) judged that charcoal supply “could represent the single biggest threat to Congo Basin forests in the coming decades”."
-)
-
-ft1 <- flextable(df1) %>%
-  set_caption("Table 1 Pressures entered in the model, with the effect on forest clearing that the literature expected of a higher value of each.") %>%
-  align(align = "left", part = "all") %>%
-  bold(part = "header") %>%
-  autofit()
-
-# Note: Because Table 1 has very long paragraphs in the 'Reasoning' column, 
-# autofit() alone will make it wider than a standard page. 
-# Uncomment the line below to constrain it to a 6.5-inch page width while wrapping text:
-# ft1 <- ft1 %>% width(j = c(1, 2, 3), width = c(1.5, 1.0, 4.0))
-
-ft1
+<table>
+<thead>
+<tr>
+<th align="left">Pressure</th>
+<th align="left">Expected effect</th>
+<th width="2000" align="left">Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr><td align="left">Population density</td><td align="left">Mixed</td><td align="left">Small-scale clearing doubled with population growth across the basin from 2000 to 2014 (Tyukavina et al., 2018). In a national model for 2000 to 2005, population distribution did not predict where forest changed (Kibambe Lubamba, 2013).</td></tr>
+<tr><td align="left">Travel time to Kinshasa and the river landings, by road and river</td><td align="left">Lowers</td><td align="left">Across eight Congo Basin countries, from 2000 to 2012, forest clearing fell by 0.63% with each 1% rise in travel time to the nearest market centre (Wheeler &amp; Damania, 2015).</td></tr>
+<tr><td align="left">Distance to the forest edge</td><td align="left">Lowers</td><td align="left">In the Democratic Republic of the Congo, 81.53% of the forest cover changes of 2000 to 2005 lay less than 1 km from existing secondary forest (Kibambe Lubamba, 2013).</td></tr>
+<tr><td align="left">Distance to new forest roads</td><td align="left">Mixed</td><td align="left">Each kilometre of first-cut road in the basin was followed by 186 ha of forest loss and degradation (Engert, Souza, Kleinschroth, Bignoli, et al., 2025). Engert, Souza, Kleinschroth, Bignoli, et al. (2025) wrote that industrial selective logging there could “degrade forests but lead to little outright deforestation”.</td></tr>
+<tr><td align="left">Distance to settlements and camps</td><td align="left">Lowers</td><td align="left">About 80% of the deforestation of 2015 to 2020 in the six countries lay within 3 km of the nearest road or settlement (A. Shapiro et al., 2023).</td></tr>
+<tr><td align="left">Territory’s share of Kinshasa’s charcoal</td><td align="left">Mixed</td><td align="left">In Mai Ndombe in 2021, 60% of producers made charcoal from trees felled to open fields (Dubiez et al., 2021). A review found “a mismatch” between wood energy use and forest degradation (Besisa Nguba et al., 2025).</td></tr>
+<tr><td align="left">Household wealth and cooking fuel</td><td align="left">Mixed</td><td align="left">Ngouhouo-Poufoun et al. (2024) found, among 1,035 households of the Tridom landscape shared by three countries, that “a marginally higher income from cocoa production-based livelihood portfolios is associated with six to seven times higher deforestation”. In two pilot sites of Equateur province, Samndong et al. (2018) found that “shifting cultivation is driven by the poverty conditions of the study area”. Behrendt et al. (2013) judged that charcoal supply “could represent the single biggest threat to Congo Basin forests in the coming decades”.</td></tr>
+</tbody>
+</table>
 
 *Table 2 Distance and population variables in 89 published risk models. Cap, a limit on travel time or distance. Decay, the form in which an effect fell with distance.*
 
-df2 <- tibble::tribble(
-  ~Variable, ~Studies, ~`Stated a town size`, ~`Stated a cap`, ~`Stated a decay`,
-  "Distance to road", 54, 0, 11, 21,
-  "Distance to river", 29, 2, 0, 10,
-  "Population density", 26, 1, 3, 6,
-  "Distance to settlement", 26, 2, 0, 9,
-  "Distance to town", 24, 0, 4, 5,
-  "Travel time", 18, 8, 5, 4,
-  "Distance to forest edge", 14, 2, 4, 4,
-  "Population count", 9, 0, 1, 4,
-  "Distance to market", 5, 1, 0, 2,
-  "Market potential", 5, 3, 0, 4
-)
-
-ft2 <- flextable(df2) %>%
-  set_caption("Table 2 Distance and population variables in 89 published risk models. Cap, a limit on travel time or distance. Decay, the form in which an effect fell with distance.") %>%
-  align(j = 1, align = "left", part = "all") %>%
-  align(j = 2:5, align = "right", part = "all") %>%
-  bold(part = "header") %>%
-  autofit()
-
-ft2
+<table>
+<thead>
+<tr>
+<th align="left">Variable</th>
+<th align="right">Studies</th>
+<th align="right">Stated a town size</th>
+<th align="right">Stated a cap</th>
+<th align="right">Stated a decay</th>
+</tr>
+</thead>
+<tbody>
+<tr><td align="left">Distance to road</td><td align="right">54</td><td align="right">0</td><td align="right">11</td><td align="right">21</td></tr>
+<tr><td align="left">Distance to river</td><td align="right">29</td><td align="right">2</td><td align="right">0</td><td align="right">10</td></tr>
+<tr><td align="left">Population density</td><td align="right">26</td><td align="right">1</td><td align="right">3</td><td align="right">6</td></tr>
+<tr><td align="left">Distance to settlement</td><td align="right">26</td><td align="right">2</td><td align="right">0</td><td align="right">9</td></tr>
+<tr><td align="left">Distance to town</td><td align="right">24</td><td align="right">0</td><td align="right">4</td><td align="right">5</td></tr>
+<tr><td align="left">Travel time</td><td align="right">18</td><td align="right">8</td><td align="right">5</td><td align="right">4</td></tr>
+<tr><td align="left">Distance to forest edge</td><td align="right">14</td><td align="right">2</td><td align="right">4</td><td align="right">4</td></tr>
+<tr><td align="left">Population count</td><td align="right">9</td><td align="right">0</td><td align="right">1</td><td align="right">4</td></tr>
+<tr><td align="left">Distance to market</td><td align="right">5</td><td align="right">1</td><td align="right">0</td><td align="right">2</td></tr>
+<tr><td align="left">Market potential</td><td align="right">5</td><td align="right">3</td><td align="right">0</td><td align="right">4</td></tr>
+</tbody>
+</table>
 
 *Table 3 Distances travelled for wood, fields and trade in 86 African field studies. Values, measurements read from the studies.*
 
-df3 <- tibble::tribble(
-  ~Measure, ~Values, ~Studies, ~Range, ~Median,
-  "Walk to collect wood, km", 16, 6, "1 to 5", "3",
-  "Time per wood collection trip, h", 6, 2, "1.7 to 6", "3.5",
-  "Home to field, km", 9, 4, "0.5 to 10", "3",
-  "Daily carrying distance per adult, km", 6, 1, "1 to 7", "3.4",
-  "Village to market, km", 6, 3, "10 to 400", "25",
-  "Village to hunting ground, km", 12, 6, "2 to 60", "17.5",
-  "Wood supply distance, Kinshasa, km", 23, 7, "50 to 1,000", "160",
-  "Wood supply distance, cities of 1 to 5 million, km", 53, 9, "4.5 to 550", "60",
-  "Wood supply distance, towns under 1 million, km", 9, 5, "5 to 500", "40",
-  "Rural wood use, kg per person per day", 8, 5, "0.4 to 2.0", "1.4"
-)
+<table>
+<thead>
+<tr>
+<th align="left">Measure</th>
+<th align="right">Values</th>
+<th align="right">Studies</th>
+<th align="right">Range</th>
+<th align="right">Median</th>
+</tr>
+</thead>
+<tbody>
+<tr><td align="left">Walk to collect wood, km</td><td align="right">16</td><td align="right">6</td><td align="right">1 to 5</td><td align="right">3</td></tr>
+<tr><td align="left">Time per wood collection trip, h</td><td align="right">6</td><td align="right">2</td><td align="right">1.7 to 6</td><td align="right">3.5</td></tr>
+<tr><td align="left">Home to field, km</td><td align="right">9</td><td align="right">4</td><td align="right">0.5 to 10</td><td align="right">3</td></tr>
+<tr><td align="left">Daily carrying distance per adult, km</td><td align="right">6</td><td align="right">1</td><td align="right">1 to 7</td><td align="right">3.4</td></tr>
+<tr><td align="left">Village to market, km</td><td align="right">6</td><td align="right">3</td><td align="right">10 to 400</td><td align="right">25</td></tr>
+<tr><td align="left">Village to hunting ground, km</td><td align="right">12</td><td align="right">6</td><td align="right">2 to 60</td><td align="right">17.5</td></tr>
+<tr><td align="left">Wood supply distance, Kinshasa, km</td><td align="right">23</td><td align="right">7</td><td align="right">50 to 1,000</td><td align="right">160</td></tr>
+<tr><td align="left">Wood supply distance, cities of 1 to 5 million, km</td><td align="right">53</td><td align="right">9</td><td align="right">4.5 to 550</td><td align="right">60</td></tr>
+<tr><td align="left">Wood supply distance, towns under 1 million, km</td><td align="right">9</td><td align="right">5</td><td align="right">5 to 500</td><td align="right">40</td></tr>
+<tr><td align="left">Rural wood use, kg per person per day</td><td align="right">8</td><td align="right">5</td><td align="right">0.4 to 2.0</td><td align="right">1.4</td></tr>
+</tbody>
+</table>
 
-ft3 <- flextable(df3) %>%
-  set_caption("Table 3 Distances travelled for wood, fields and trade in 86 African field studies. Values, measurements read from the studies.") %>%
-  align(j = 1, align = "left", part = "all") %>%
-  align(j = 2:5, align = "right", part = "all") %>%
-  bold(part = "header") %>%
-  autofit()
-
-ft3
 
