@@ -231,11 +231,11 @@ knitr::kable(pressures, format = "pipe")
 #| label: pressure-sources
 #| echo: true
 #| output: false
-# A box around Mai Ndombe with a margin of 0.5 degrees covers the distance layers, and a box that adds Kinshasa province covers the routes to Kinshasa
+# A box around Mai Ndombe with a margin of 0.5 degrees covers the distance layers, and a box that adds Kinshasa province with a margin of 1.5 degrees covers the routes to Kinshasa and to the markets just outside the province, Mbandaka among them
 # GADM version 4.1, level 1 boundaries of the Democratic Republic of the Congo
 # https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_1.json.zip
 near <- unname(sf::st_bbox(mai_ndombe)) + c(-0.5, -0.5, 0.5, 0.5)
-reach <- unname(sf::st_bbox(dplyr::filter(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE), NAME_1 %in% c("Mai-Ndombe", "Kinshasa")))) + c(-0.5, -0.5, 0.5, 0.5)
+reach <- unname(sf::st_bbox(dplyr::filter(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE), NAME_1 %in% c("Mai-Ndombe", "Kinshasa")))) + c(-1.5, -1.5, 1.5, 1.5)
 # GADM version 4.1, level 2 boundaries of the Democratic Republic of the Congo
 # https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_2.json.zip
 fetch("https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_2.json.zip", "02.inputs/gadm/raw/gadm41_COD_2.json.zip")
@@ -250,7 +250,13 @@ fetch("https://data.worldpop.org/repo/wopr/COD/population/v4.4/Province/Mai_Ndom
 fetch_features <- function(service, box, file) if (!file.exists(file)) {
   query <- paste0(service, "/FeatureServer/0/query?where=1%3D1&geometry=", paste(box, collapse = "%2C"), "&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outSR=4326")
   pages <- file.path(sub("\\.gpkg$", "", file), sprintf("page_%04d.geojson", seq_len(ceiling(jsonlite::fromJSON(paste0(query, "&returnCountOnly=true&f=json"))$count / 2000))))
-  purrr::iwalk(pages, \(page, i) fetch(paste0(query, "&outFields=*&orderByFields=OBJECTID&resultOffset=", (i - 1L) * 2000L, "&resultRecordCount=2000&f=geojson"), page))
+  # The server sometimes answers a page with an error message instead of features, so such a page is deleted and asked for again, up to three times
+  purrr::iwalk(pages, \(page, i) for (attempt in 1:3) {
+    fetch(paste0(query, "&outFields=*&orderByFields=OBJECTID&resultOffset=", (i - 1L) * 2000L, "&resultRecordCount=2000&f=geojson"), page)
+    if (!startsWith(readChar(page, 9), "{\"error\"")) break
+    file.remove(page)
+    Sys.sleep(30)
+  })
   features <- purrr::map(pages, \(page) dplyr::mutate(sf::st_read(page, quiet = TRUE), dplyr::across(!geometry, as.character))) |> dplyr::bind_rows()
   sf::st_write(features, sub("\\.gpkg$", "-part.gpkg", file), delete_dsn = TRUE, quiet = TRUE)
   file.rename(sub("\\.gpkg$", "-part.gpkg", file), file)
@@ -264,6 +270,18 @@ fetch_features("https://services3.arcgis.com/BU6Aadhn6tbBEdyk/arcgis/rest/servic
 # Congo Basin Forest Roads, January 2019 to December 2024, Slagter et al. (2024)
 # https://gee-community-catalog.org/projects/forest_roads/, https://doi.org/10.1016/j.rse.2024.114380
 if (!file.exists("02.inputs/forestroads/raw/forest_roads_2019_2024.geojson")) fetch(ee$FeatureCollection("projects/wurnrt-loggingroads/assets/distribution/forestroads_afr_2019-01_2024-12")$filterBounds(ee$Geometry$Rectangle(reach))$getDownloadURL("geojson"), "02.inputs/forestroads/raw/forest_roads_2019_2024.geojson")
+# GRIP4 Global Roads Inventory Project, Africa, Meijer et al. (2018), GLOBIO, PBL Netherlands Environmental Assessment Agency
+# https://gee-community-catalog.org/projects/grip/, https://doi.org/10.1088/1748-9326/aabd42
+if (!file.exists("02.inputs/grip4/raw/grip4_africa.geojson")) fetch(ee$FeatureCollection("projects/sat-io/open-datasets/GRIP4/Africa")$filterBounds(ee$Geometry$Rectangle(reach))$getDownloadURL("geojson"), "02.inputs/grip4/raw/grip4_africa.geojson")
+# Bing Maps mined roads, Middle Africa, release of 28 April 2025, Microsoft
+# https://github.com/microsoft/RoadDetections, https://usaminedroads.z19.web.core.windows.net/drops/2025.04.28/Middle_Africa.zip
+fetch("https://usaminedroads.z19.web.core.windows.net/drops/2025.04.28/Middle_Africa.zip", "02.inputs/msroads/raw/Middle_Africa.zip")
+if (!file.exists("02.inputs/msroads/raw/msroads_cod.gpkg")) {
+  # Each line holds a country code and one road as GeoJSON, and the roads of the Democratic Republic of the Congo are kept
+  lines <- readr::read_tsv(unz("02.inputs/msroads/raw/Middle_Africa.zip", "Middle_Africa.tsv"), col_names = c("iso3", "feature"), col_types = "cc", quote = "") |> dplyr::filter(iso3 == "COD")
+  writeLines(lines$feature, "02.inputs/msroads/raw/msroads_cod.geojsonl")
+  sf::st_write(sf::st_read("02.inputs/msroads/raw/msroads_cod.geojsonl", quiet = TRUE), "02.inputs/msroads/raw/msroads_cod.gpkg", quiet = TRUE)
+}
 # Share of Kinshasa's charcoal volume, sold by the wholesalers surveyed, that came from each territory of Mai Ndombe, Figure 9 on page 23 of Dubiez et al. (2021)
 # http://agritrop.cirad.fr/600203/1/20220106_Rapport_Filie%CC%80re_bois_e%CC%81nergie_Kinshasa_CIRAD_Vf.pdf
 charcoal <- tibble::tribble(~NAME_2, ~share, "Kutu", 11.0, "Oshwe", 4.9, "Inongo", 0.6, "Kwamouth", 0.5)
@@ -333,6 +351,26 @@ if (!file.exists("02.inputs/map/raw/friction_walking_2019.tif")) fetch(walking$g
 # GHS-SMOD R2023A, degree of urbanisation settlement model, 2020, European Commission Joint Research Centre
 # https://developers.google.com/earth-engine/datasets/catalog/JRC_GHSL_P2023A_GHS_SMOD_V2-0, https://doi.org/10.2905/A0DF7A6F-49DE-46EA-9BDE-563437A6E2BA
 if (!file.exists("02.inputs/ghsl/raw/smod_2020.tif")) fetch(ee$ImageCollection("JRC/GHSL/P2023A/GHS_SMOD_V2-0")$filter(ee$Filter$eq("system:index", "2020"))$first()$getDownloadURL(list(region = ee$Geometry$Rectangle(reach), crs = "EPSG:4326", scale = 1000L, format = "GEO_TIFF")), "02.inputs/ghsl/raw/smod_2020.tif")
+# Friction in minutes per metre on any grid, the faster of the road and boat network and walking in each cell
+# Each GRID3 road and boat route keeps the speed GRID3 estimated for it, in km/h, and a road found only in the other three sources takes the median speed GRID3 gave its roads of class track
+friction_on <- function(grid, walk_method) {
+  # GRID3 COD - Roads v1.0, Center for International Earth Science Information Network and GRID3
+  # https://data.grid3.org/datasets/b489c28df02247e3b227dc1adee1dad4/about, https://doi.org/10.7916/00gb-e164
+  roads <- terra::project(terra::vect("02.inputs/grid3/raw/roads_v1_0.gpkg"), lc_grid$crsCode)
+  roads$speed <- as.numeric(roads$speed_estimate)
+  track <- stats::median(roads$speed[roads$class == "track"], na.rm = TRUE)
+  # Congo Basin Forest Roads, January 2019 to December 2024, Slagter et al. (2024), opened before 2021
+  # https://gee-community-catalog.org/projects/forest_roads/, https://doi.org/10.1016/j.rse.2024.114380
+  forest_roads <- terra::vect("02.inputs/forestroads/raw/forest_roads_2019_2024.geojson")
+  # GRIP4 Global Roads Inventory Project, Africa, Meijer et al. (2018)
+  # https://gee-community-catalog.org/projects/grip/, https://doi.org/10.1088/1748-9326/aabd42
+  # Bing Maps mined roads, Middle Africa, release of 28 April 2025, Microsoft
+  # https://github.com/microsoft/RoadDetections
+  others <- list(forest_roads[forest_roads$Year < 2021, ], terra::vect("02.inputs/grip4/raw/grip4_africa.geojson"), terra::vect("02.inputs/msroads/raw/msroads_cod.gpkg"))
+  speeds <- c(list(terra::rasterize(roads[!is.na(roads$speed) & roads$speed > 0, ], grid, field = "speed", fun = "max", touches = TRUE)), purrr::map(others, \(v) terra::rasterize(terra::project(v, lc_grid$crsCode), grid, touches = TRUE) * track))
+  min(60 / (max(terra::rast(speeds), na.rm = TRUE) * 1000), terra::project(terra::rast("02.inputs/map/raw/friction_walking_2019.tif"), grid, method = walk_method), na.rm = TRUE)
+}
+graph <- reticulate::import("skimage.graph")
 if (!file.exists("03.outputs/TIF/travel_time_kinshasa.tif")) {
   # Kinshasa's urban centre is the largest patch of urban centre cells, class 30, inside Kinshasa province
   # GADM version 4.1, level 1 boundaries of the Democratic Republic of the Congo
@@ -340,28 +378,82 @@ if (!file.exists("03.outputs/TIF/travel_time_kinshasa.tif")) {
   kinshasa <- terra::vect(dplyr::filter(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE), NAME_1 == "Kinshasa"))
   urban <- terra::as.polygons(terra::patches(terra::classify(terra::mask(terra::rast("02.inputs/ghsl/raw/smod_2020.tif"), kinshasa), cbind(30, 1), others = NA), directions = 8))
   targets <- terra::rasterize(terra::project(urban[which.max(terra::expanse(urban)), ], lc_grid$crsCode), grid_reach, touches = TRUE)
-  # Each road and boat route keeps the speed GRID3 estimated for it, in km/h
-  # GRID3 COD - Roads v1.0, Center for International Earth Science Information Network and GRID3
-  # https://data.grid3.org/datasets/b489c28df02247e3b227dc1adee1dad4/about, https://doi.org/10.7916/00gb-e164
-  roads <- terra::project(terra::vect("02.inputs/grid3/raw/roads_v1_0.gpkg"), lc_grid$crsCode)
-  roads$speed <- as.numeric(roads$speed_estimate)
-  road_speed <- terra::rasterize(roads[!is.na(roads$speed) & roads$speed > 0, ], grid_reach, field = "speed", fun = "max", touches = TRUE)
-  # Forest roads carry no speed, so they take the median speed GRID3 gave its roads of class track
-  # Congo Basin Forest Roads, January 2019 to December 2024, Slagter et al. (2024)
-  # https://gee-community-catalog.org/projects/forest_roads/, https://doi.org/10.1016/j.rse.2024.114380
-  forest_roads <- terra::project(terra::vect("02.inputs/forestroads/raw/forest_roads_2019_2024.geojson"), lc_grid$crsCode)
-  forest_speed <- terra::rasterize(forest_roads[forest_roads$Year < 2021, ], grid_reach, touches = TRUE) * stats::median(roads$speed[roads$class == "track"], na.rm = TRUE)
-  # Friction is minutes per metre, the faster of the network and walking in each cell
-  friction <- min(60 / (max(road_speed, forest_speed, na.rm = TRUE) * 1000), terra::project(terra::rast("02.inputs/map/raw/friction_walking_2019.tif"), grid_reach, method = "near"), na.rm = TRUE)
-  costs <- terra::as.matrix(friction, wide = TRUE)
+  costs <- terra::as.matrix(friction_on(grid_reach, "near"), wide = TRUE)
   costs[is.na(costs)] <- Inf
   # The least-cost route from every cell to the urban centre, over eight neighbours with diagonal steps weighted by their length
-  graph <- reticulate::import("skimage.graph")
   mcp <- graph$MCP_Geometric(reticulate::r_to_py(costs)$copy(), fully_connected = TRUE, sampling = terra::res(grid_reach))
   minutes <- reticulate::py_to_r(mcp$find_costs(reticulate::r_to_py(lapply(asplit(which(!is.na(terra::as.matrix(targets, wide = TRUE)), arr.ind = TRUE) - 1L, 1), as.integer)))[[1]])
   minutes[!is.finite(minutes)] <- NA
   save_rast(terra::crop(terra::rast(minutes / 60, extent = terra::ext(grid_reach), crs = lc_grid$crsCode), grid100), "03.outputs/TIF/travel_time_kinshasa.tif")
 }
+```
+
+## Market access
+
+```{r}
+#| label: market-access
+#| echo: true
+#| output: false
+# Market access sums, over every settlement a cell reaches within 12 hours, the settlement's population raised to 0.55 times its travel time in hours raised to -1.25
+# Both exponents are those fitted to the wood energy flows of Bamako's villages by Gazull et al. (2011), Table 2
+# The 1 km grid is the resolution of Weiss et al. (2018) and shares the origin of the 100 m grid
+grid1k <- terra::aggregate(grid_reach, 10)
+gt1k <- c(1000, 0, terra::xmin(grid1k), 0, -1000, terra::ymax(grid1k))
+# High Resolution Settlement Layer, population, Facebook Connectivity Lab and CIESIN, served by the Earth Engine community catalog
+# https://gee-community-catalog.org/projects/hrsl/, https://dataforgood.fb.com/tools/population-density-maps/
+if (!file.exists("02.inputs/hrsl/raw/hrsl_1km.tif")) {
+  hrsl <- ee$ImageCollection("projects/sat-io/open-datasets/hrsl/hrslpop")$filterBounds(ee$Geometry$Rectangle(reach))
+  people <- hrsl$mosaic()$unmask(0)$setDefaultProjection(hrsl$first()$projection())$reduceResolution(ee$Reducer$sum()$unweighted(), maxPixels = 4000L)$reproject(crs = lc_grid$crsCode, crsTransform = gt1k)
+  # Earth Engine sums the 30 m cells onto 1 km only for small areas at a time, so the box is read in 16 tiles
+  tiles <- tidyr::expand_grid(i = 0:3, j = 0:3) |> dplyr::mutate(file = sprintf("02.inputs/hrsl/raw/tiles/hrsl_%d%d.tif", i, j))
+  step <- c(diff(reach[c(1, 3)]), diff(reach[c(2, 4)])) / 4
+  # Earth Engine sometimes refuses a tile and serves it on a later request, so each tile is asked for up to three times
+  purrr::pwalk(tiles, \(i, j, file) for (attempt in 1:3) {
+    got <- try(fetch(people$getDownloadURL(list(region = ee$Geometry$Rectangle(c(reach[1] + i * step[1], reach[2] + j * step[2], reach[1] + (i + 1) * step[1], reach[2] + (j + 1) * step[2])), crs = lc_grid$crsCode, crs_transform = gt1k, format = "GEO_TIFF")), file))
+    if (!inherits(got, "try-error")) break
+    Sys.sleep(60)
+  })
+  save_rast(terra::crop(terra::extend(terra::mosaic(terra::sprc(purrr::map(tiles$file, terra::rast)), fun = "max"), grid1k), grid1k), "02.inputs/hrsl/raw/hrsl_1km.tif")
+}
+if (!file.exists("03.outputs/TIF/market_access.tif")) {
+  # A settlement is a group of touching inhabited 1 km cells inside the Democratic Republic of the Congo, so Brazzaville is left out
+  # GADM version 4.1, level 1 boundaries of the Democratic Republic of the Congo
+  # https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_1.json.zip
+  pop1k <- terra::mask(terra::rast("02.inputs/hrsl/raw/hrsl_1km.tif"), terra::project(terra::vect(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE)), lc_grid$crsCode))
+  settlement <- terra::patches(terra::ifel(pop1k > 0, 1, NA), directions = 8)
+  towns <- tibble::tibble(id = terra::values(settlement)[, 1], people = terra::values(pop1k)[, 1], row = terra::rowFromCell(pop1k, seq_len(terra::ncell(pop1k))) - 1L, col = terra::colFromCell(pop1k, seq_len(terra::ncell(pop1k))) - 1L) |>
+    dplyr::filter(!is.na(id)) |>
+    dplyr::group_by(id) |>
+    dplyr::summarise(people = sum(people), starts = list(purrr::map2(as.integer(row), as.integer(col), c)))
+  costs <- terra::as.matrix(friction_on(grid1k, "average"), wide = TRUE)
+  costs[is.na(costs)] <- Inf
+  mcp <- graph$MCP_Geometric(reticulate::r_to_py(costs)$copy(), fully_connected = TRUE, sampling = terra::res(grid1k))
+  # A settlement's own cells count as half an hour away, so that no settlement weighs without limit
+  access <- 0
+  for (k in seq_len(nrow(towns))) {
+    hours <- reticulate::py_to_r(mcp$find_costs(towns$starts[[k]], max_cumulative_cost = 720)[[1]]) / 60
+    access <- access + ifelse(is.finite(hours) & hours <= 12, towns$people[k]^0.55 * pmax(hours, 0.5)^-1.25, 0)
+  }
+  save_rast(terra::rast(access, extent = terra::ext(grid1k), crs = lc_grid$crsCode), "03.outputs/TIF/market_access_1km.tif")
+  save_rast(terra::resample(terra::rast("03.outputs/TIF/market_access_1km.tif"), grid100, method = "bilinear"), "03.outputs/TIF/market_access.tif")
+}
+```
+
+```{r}
+#| label: fig-market-access
+#| fig-cap: "Market access, Mai Ndombe and surroundings, 1 km."
+#| echo: true
+#| fig-width: 6.5
+#| fig-height: 6
+access <- terra::rast("03.outputs/TIF/market_access_1km.tif")
+cells <- as.data.frame(log10(access), xy = TRUE, na.rm = TRUE) |> dplyr::rename(access = 3) |> dplyr::filter(is.finite(access))
+ggplot2::ggplot() +
+  ggplot2::geom_raster(data = cells, ggplot2::aes(x, y, fill = access)) +
+  ggplot2::geom_sf(data = sf::st_transform(mai_ndombe, lc_grid$crsCode), fill = NA, colour = "white", linewidth = 0.4) +
+  ggplot2::scale_fill_viridis_c(option = "magma", name = "Market access\n(log10)") +
+  ggplot2::coord_sf(crs = lc_grid$crsCode, expand = FALSE) +
+  ggplot2::labs(x = NULL, y = NULL) +
+  th
 ```
 
 ## Benchmark comparison

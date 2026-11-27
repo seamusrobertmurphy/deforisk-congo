@@ -185,3 +185,39 @@ Each source takes one entry in this form.
 | Retrieved | 2026-11-22 |
 | Local path | `02.inputs/ghsl/raw/smod_2020.tif` |
 | Read by | `travel-time` |
+
+### GRIP4 roads
+
+| Field | Entry |
+|---|---|
+| Dataset | GRIP4 Global Roads Inventory Project, Africa, `projects/sat-io/open-datasets/GRIP4/Africa` |
+| Publisher | GLOBIO, PBL Netherlands Environmental Assessment Agency, from Meijer et al. (2018), served by the Earth Engine community catalog |
+| Link | https://gee-community-catalog.org/projects/grip/, https://doi.org/10.1088/1748-9326/aabd42 |
+| Licence | CC BY 4.0, as listed by the community catalog |
+| Retrieved | 2026-11-27 |
+| Local path | `02.inputs/grip4/raw/grip4_africa.geojson` |
+| Read by | `pressure-sources`, `travel-time` |
+
+### Microsoft roads
+
+| Field | Entry |
+|---|---|
+| Dataset | Bing Maps mined roads, Middle Africa, release of 28 April 2025 |
+| Publisher | Microsoft |
+| Link | https://github.com/microsoft/RoadDetections, https://usaminedroads.z19.web.core.windows.net/drops/2025.04.28/Middle_Africa.zip |
+| Licence | Open Data Commons Open Database License |
+| Retrieved | 2026-11-27 |
+| Local path | `02.inputs/msroads/raw/Middle_Africa.zip`, with the roads of the Democratic Republic of the Congo in `msroads_cod.gpkg` |
+| Read by | `pressure-sources`, `travel-time` |
+
+### HRSL population
+
+| Field | Entry |
+|---|---|
+| Dataset | High Resolution Settlement Layer, overall population, `projects/sat-io/open-datasets/hrsl/hrslpop` |
+| Publisher | Facebook Connectivity Lab and the Center for International Earth Science Information Network, served by the Earth Engine community catalog |
+| Link | https://gee-community-catalog.org/projects/hrsl/, https://dataforgood.fb.com/tools/population-density-maps/ |
+| Licence | CC BY 4.0, as listed by the community catalog |
+| Retrieved | 2026-11-27, summed to 1 km in 16 tiles |
+| Local path | `02.inputs/hrsl/raw/hrsl_1km.tif` |
+| Read by | `market-access` |
