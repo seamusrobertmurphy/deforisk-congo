@@ -291,6 +291,12 @@ if (!file.exists("02.inputs/msroads/raw/msroads_cod.gpkg")) {
 charcoal <- tibble::tribble(~NAME_2, ~share, "Kutu", 11.0, "Oshwe", 4.9, "Inongo", 0.6, "Kwamouth", 0.5)
 # The other territories were absent from the figure and take a share of 0
 territories <- dplyr::left_join(territories, charcoal, by = "NAME_2") |> dplyr::mutate(share = dplyr::coalesce(share, 0))
+# Free Flowing Rivers, HydroSHEDS, WWF, the reaches with a mean discharge of 100 m³/s or more
+# https://developers.google.com/earth-engine/datasets/catalog/WWF_HydroSHEDS_v1_FreeFlowingRivers
+if (!file.exists("02.inputs/hydrosheds/raw/rivers.geojson")) fetch(ee$FeatureCollection("WWF/HydroSHEDS/v1/FreeFlowingRivers")$filterBounds(ee$Geometry$Rectangle(reach))$filter(ee$Filter$gte("DIS_AV_CMS", 100))$select(list("DIS_AV_CMS"))$getDownloadURL("geojson"), "02.inputs/hydrosheds/raw/rivers.geojson")
+# HydroLAKES version 1.0, the lakes of 10 km² or more, served by the Earth Engine community catalog
+# https://gee-community-catalog.org/projects/hydrolakes/
+if (!file.exists("02.inputs/hydrolakes/raw/lakes.geojson")) fetch(ee$FeatureCollection("projects/sat-io/open-datasets/HydroLakes/lake_poly_v10")$filterBounds(ee$Geometry$Rectangle(reach))$filter(ee$Filter$gte("Lake_area", 10))$select(list("Lake_name", "Lake_area"))$getDownloadURL("geojson"), "02.inputs/hydrolakes/raw/lakes.geojson")
 ```
 
 ```{r}
@@ -373,6 +379,13 @@ if (!file.exists("02.inputs/map/raw/friction_walking_2019.tif")) fetch(walking$g
 if (!file.exists("02.inputs/ghsl/raw/smod_2020.tif")) fetch(ee$ImageCollection("JRC/GHSL/P2023A/GHS_SMOD_V2-0")$filter(ee$Filter$eq("system:index", "2020"))$first()$getDownloadURL(list(region = ee$Geometry$Rectangle(reach), crs = "EPSG:4326", scale = 1000L, format = "GEO_TIFF")), "02.inputs/ghsl/raw/smod_2020.tif")
 # Friction in minutes per metre on any grid, the faster of the road and boat network and walking in each cell
 # Each GRID3 road and boat route keeps the speed GRID3 estimated for it, in km/h, and a road found only in the other three sources takes the median speed GRID3 gave its roads of class track
+# Boat routes beyond GRID3's water tracks, rivers with a mean flow of 300 m³/s or more and lakes of 10 km² or more
+# Free Flowing Rivers, HydroSHEDS, WWF, https://developers.google.com/earth-engine/datasets/catalog/WWF_HydroSHEDS_v1_FreeFlowingRivers
+# HydroLAKES version 1.0, https://gee-community-catalog.org/projects/hydrolakes/
+water_routes <- function() {
+  rivers <- terra::project(terra::vect("02.inputs/hydrosheds/raw/rivers.geojson"), lc_grid$crsCode)
+  list(rivers[rivers$DIS_AV_CMS >= 300, ], terra::project(terra::vect("02.inputs/hydrolakes/raw/lakes.geojson"), lc_grid$crsCode))
+}
 friction_on <- function(grid, walk_method) {
   # GRID3 COD - Roads v1.0, Center for International Earth Science Information Network and GRID3
   # https://data.grid3.org/datasets/b489c28df02247e3b227dc1adee1dad4/about, https://doi.org/10.7916/00gb-e164
@@ -387,7 +400,11 @@ friction_on <- function(grid, walk_method) {
   # Bing Maps mined roads, Middle Africa, release of 28 April 2025, Microsoft
   # https://github.com/microsoft/RoadDetections
   others <- list(forest_roads[forest_roads$Year < 2021, ], terra::vect("02.inputs/grip4/raw/grip4_africa.geojson"), terra::vect("02.inputs/msroads/raw/msroads_cod.gpkg"))
-  speeds <- c(list(terra::rasterize(roads[!is.na(roads$speed) & roads$speed > 0, ], grid, field = "speed", fun = "max", touches = TRUE)), purrr::map(others, \(v) terra::rasterize(terra::project(v, lc_grid$crsCode), grid, touches = TRUE) * track))
+  # GRID3 left out the Congo River and the Lukenie, so rivers with a mean flow of 300 m³/s or more and lakes of 10 km² or more are boat routes too,
+  # at the median speed GRID3 gave its water tracks, as Seamus set on 27 November 2026
+  boat <- stats::median(roads$speed[roads$class == "water track"], na.rm = TRUE)
+  speeds <- c(list(terra::rasterize(roads[!is.na(roads$speed) & roads$speed > 0, ], grid, field = "speed", fun = "max", touches = TRUE)), purrr::map(others, \(v) terra::rasterize(terra::project(v, lc_grid$crsCode), grid, touches = TRUE) * track),
+    purrr::map(water_routes(), \(v) terra::rasterize(v, grid, touches = TRUE) * boat))
   min(60 / (max(terra::rast(speeds), na.rm = TRUE) * 1000), terra::project(terra::rast("02.inputs/map/raw/friction_walking_2019.tif"), grid, method = walk_method), na.rm = TRUE)
 }
 graph <- reticulate::import("skimage.graph")
@@ -397,7 +414,7 @@ reticulate::py_run_string("
 import numpy as np
 from scipy.sparse import coo_matrix
 from scipy.sparse.csgraph import dijkstra
-def cost_graph(costs, step):
+def cost_graph(costs, step, water=None, transfer=0.0):
     nr, nc = costs.shape
     idx = np.arange(nr * nc).reshape(nr, nc)
     flat = costs.ravel()
@@ -407,7 +424,10 @@ def cost_graph(costs, step):
         b = idx[max(0, dr):nr + min(0, dr) or None, max(0, dc):nc + min(0, dc) or None].ravel()
         ok = np.isfinite(flat[a]) & np.isfinite(flat[b])
         rows.append(a[ok]); cols.append(b[ok])
-        weights.append((flat[a][ok] + flat[b][ok]) / 2.0 * step * (np.sqrt(2.0) if dr and dc else 1.0))
+        w = (flat[a][ok] + flat[b][ok]) / 2.0 * step * (np.sqrt(2.0) if dr and dc else 1.0)
+        if water is not None:
+            w = w + transfer * (water.ravel()[a][ok] != water.ravel()[b][ok])
+        weights.append(w)
     return coo_matrix((np.concatenate(weights), (np.concatenate(rows), np.concatenate(cols))), shape=(nr * nc, nr * nc)).tocsr()
 def gravity_sum(network, shape, starts, people, cap_minutes, pop_exp, time_exp, floor_hours):
     total = np.zeros(shape[0] * shape[1])
@@ -416,10 +436,10 @@ def gravity_sum(network, shape, starts, people, cap_minutes, pop_exp, time_exp, 
         reach = minutes <= cap_minutes
         total[reach] += p ** pop_exp * np.maximum(minutes[reach] / 60.0, floor_hours) ** time_exp
     return total.reshape(shape)
-def nearest_minutes(network, shape, cells):
-    minutes = dijkstra(network, indices=[int(r) * shape[1] + int(c) for r, c in cells], min_only=True)
-    minutes[~np.isfinite(minutes)] = np.nan
-    return minutes.reshape(shape)
+def nearest_cost(network, shape, cells):
+    cost = dijkstra(network, indices=[int(r) * shape[1] + int(c) for r, c in cells], min_only=True)
+    cost[~np.isfinite(cost)] = np.nan
+    return cost.reshape(shape)
 ")
 if (!file.exists("03.outputs/TIF/travel_time_kinshasa.tif")) {
   # Kinshasa's urban centre is the largest patch of urban centre cells, class 30, inside Kinshasa province
@@ -693,7 +713,7 @@ ladder <- c(500, 1500, 2500, 5000, 10000)
 ladder_files <- sprintf("03.outputs/TIF/market_hours_%d_1km.tif", ladder)
 for (i in seq_along(ladder)) if (!file.exists(ladder_files[i])) {
   net <- settlement_net()
-  minutes <- reticulate::py_to_r(reticulate::py$nearest_minutes(net$network, net$shape, unlist(net$towns$starts[net$towns$people >= ladder[i]], recursive = FALSE)))
+  minutes <- reticulate::py_to_r(reticulate::py$nearest_cost(net$network, net$shape, unlist(net$towns$starts[net$towns$people >= ladder[i]], recursive = FALSE)))
   save_rast(terra::rast(minutes / 60, extent = terra::ext(grid1k), crs = lc_grid$crsCode), ladder_files[i])
 }
 ```
@@ -707,12 +727,6 @@ box_ee <- ee$Geometry$Rectangle(reach)
 # NASA SRTM Digital Elevation 30m, read at 500 m for the relief shading
 # https://developers.google.com/earth-engine/datasets/catalog/USGS_SRTMGL1_003, https://doi.org/10.5067/MEaSUREs/SRTM/SRTMGL1_NC.003
 if (!file.exists("02.inputs/srtm/raw/srtm_500m.tif")) fetch(ee$Image("USGS/SRTMGL1_003")$getDownloadURL(list(region = box_ee, crs = lc_grid$crsCode, crs_transform = c(500, 0, terra::xmin(grid1k), 0, -500, terra::ymax(grid1k)), format = "GEO_TIFF")), "02.inputs/srtm/raw/srtm_500m.tif")
-# Free Flowing Rivers, HydroSHEDS, WWF, the reaches with a mean discharge of 100 m³/s or more
-# https://developers.google.com/earth-engine/datasets/catalog/WWF_HydroSHEDS_v1_FreeFlowingRivers
-if (!file.exists("02.inputs/hydrosheds/raw/rivers.geojson")) fetch(ee$FeatureCollection("WWF/HydroSHEDS/v1/FreeFlowingRivers")$filterBounds(box_ee)$filter(ee$Filter$gte("DIS_AV_CMS", 100))$select(list("DIS_AV_CMS"))$getDownloadURL("geojson"), "02.inputs/hydrosheds/raw/rivers.geojson")
-# HydroLAKES version 1.0, the lakes of 10 km² or more, served by the Earth Engine community catalog
-# https://gee-community-catalog.org/projects/hydrolakes/
-if (!file.exists("02.inputs/hydrolakes/raw/lakes.geojson")) fetch(ee$FeatureCollection("projects/sat-io/open-datasets/HydroLakes/lake_poly_v10")$filterBounds(box_ee)$filter(ee$Filter$gte("Lake_area", 10))$select(list("Lake_name", "Lake_area"))$getDownloadURL("geojson"), "02.inputs/hydrolakes/raw/lakes.geojson")
 # Natural Earth, populated places and countries at 1:10 million
 # https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
 fetch("https://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places.zip", "02.inputs/naturalearth/raw/ne_10m_populated_places.zip")
@@ -751,6 +765,48 @@ if (!file.exists("03.outputs/SHP/town_flags.shp")) {
   flags$flag_id <- seq_len(nrow(flags))
   dir.create("03.outputs/SHP", showWarnings = FALSE)
   sf::st_write(flags, "03.outputs/SHP/town_flags.shp", quiet = TRUE)
+}
+```
+
+```{r}
+#| label: haulage
+#| echo: true
+#| output: false
+# Travel time and haulage cost to the district towns, where structural timber is sawn and sold piece by piece, to the regional centres and to Kinshasa
+# Until Seamus reviews the town flags, each town is the Natural Earth point where the gazetteer holds it, and otherwise the GRID3 point in Mai Ndombe with the most people around it
+flags <- sf::st_read("03.outputs/SHP/town_flags.shp", quiet = TRUE)
+pick_town <- \(town) {
+  f <- flags[flags$name == town, ]
+  if (any(f$source == "Natural Earth")) f[f$source == "Natural Earth", ][1, ] else f[f$province %in% "Mai-Ndombe", ][which.max(f$people[f$province %in% "Mai-Ndombe"]), ]
+}
+centres <- list(district = do.call(rbind, lapply(c("Bolobo", "Inongo", "Kiri", "Kutu", "Mushie", "Nioki", "Oshwe"), pick_town)), regional = do.call(rbind, lapply(c("Bandundu", "Kikwit", "Mbandaka"), pick_town)))
+time_files <- c(district = "03.outputs/TIF/travel_hours_district_1km.tif", regional = "03.outputs/TIF/travel_hours_regional_1km.tif")
+haul_files <- c(district = "03.outputs/TIF/haulage_district_1km.tif", regional = "03.outputs/TIF/haulage_regional_1km.tif", kinshasa = "03.outputs/TIF/haulage_kinshasa_1km.tif")
+if (!all(file.exists(c(time_files, haul_files)))) {
+  cells_of <- \(v) lapply(asplit(terra::rowColFromCell(grid1k, terra::cellFromXY(grid1k, sf::st_coordinates(v))) - 1L, 1), as.integer)
+  # Kinshasa's urban centre, the largest patch of urban centre cells in Kinshasa province, as in the travel time layer
+  # GHS-SMOD R2023A, https://developers.google.com/earth-engine/datasets/catalog/JRC_GHSL_P2023A_GHS_SMOD_V2-0, https://doi.org/10.2905/A0DF7A6F-49DE-46EA-9BDE-563437A6E2BA
+  kinshasa <- terra::vect(dplyr::filter(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE), NAME_1 == "Kinshasa"))
+  urban <- terra::as.polygons(terra::patches(terra::classify(terra::mask(terra::rast("02.inputs/ghsl/raw/smod_2020.tif"), kinshasa), cbind(30, 1), others = NA), directions = 8))
+  kinshasa_cells <- which(!is.na(terra::as.matrix(terra::rasterize(terra::project(urban[which.max(terra::expanse(urban)), ], lc_grid$crsCode), grid1k, touches = TRUE), wide = TRUE)), arr.ind = TRUE) - 1L
+  targets <- list(district = cells_of(centres$district), regional = cells_of(centres$regional), kinshasa = lapply(asplit(kinshasa_cells, 1), as.integer))
+  net <- settlement_net()
+  for (k in names(time_files)) if (!file.exists(time_files[[k]])) save_rast(terra::rast(reticulate::py_to_r(reticulate::py$nearest_cost(net$network, net$shape, targets[[k]])) / 60, extent = terra::ext(grid1k), crs = lc_grid$crsCode), time_files[[k]])
+  # Haulage cost in km of truck haulage, after the haulage review. A road a truck can use costs 1, water a third of that, carrying off the roads 17 times,
+  # the ratio of head loads to trucks in Hine et al. (2015), and each change between water and land adds 1 hour at the median speed of GRID3's tracks
+  # GRID3 COD - Roads v1.0, https://data.grid3.org/datasets/b489c28df02247e3b227dc1adee1dad4/about, https://doi.org/10.7916/00gb-e164
+  roads <- terra::project(terra::vect("02.inputs/grid3/raw/roads_v1_0.gpkg"), lc_grid$crsCode)
+  roads$speed <- as.numeric(roads$speed_estimate)
+  track <- stats::median(roads$speed[roads$class == "track"], na.rm = TRUE)
+  # Congo Basin Forest Roads, https://doi.org/10.1016/j.rse.2024.114380; GRIP4, https://doi.org/10.1088/1748-9326/aabd42; Bing Maps mined roads, https://github.com/microsoft/RoadDetections
+  forest_roads <- terra::vect("02.inputs/forestroads/raw/forest_roads_2019_2024.geojson")
+  truck <- list(roads[!is.na(roads$speed) & roads$speed >= track & roads$class != "water track", ], forest_roads[forest_roads$Year < 2021, ], terra::vect("02.inputs/grip4/raw/grip4_africa.geojson"), terra::vect("02.inputs/msroads/raw/msroads_cod.gpkg"))
+  on_road <- !is.na(max(terra::rast(purrr::map(truck, \(v) terra::rasterize(terra::project(v, lc_grid$crsCode), grid1k, touches = TRUE))), na.rm = TRUE))
+  on_water <- !is.na(max(terra::rast(purrr::map(c(list(roads[roads$class == "water track", ]), water_routes()), \(v) terra::rasterize(v, grid1k, touches = TRUE))), na.rm = TRUE))
+  cost <- terra::ifel(on_water, 1 / 3, terra::ifel(on_road, 1, 17))
+  water <- terra::as.matrix(on_water, wide = TRUE)
+  haul_net <- reticulate::py$cost_graph(reticulate::r_to_py(terra::as.matrix(cost, wide = TRUE))$copy(), terra::res(grid1k)[1], reticulate::r_to_py(water)$copy(), track * 1000)
+  for (k in names(haul_files)) if (!file.exists(haul_files[[k]])) save_rast(terra::rast(reticulate::py_to_r(reticulate::py$nearest_cost(haul_net, dim(water), targets[[k]])) / 1000, extent = terra::ext(grid1k), crs = lc_grid$crsCode), haul_files[[k]])
 }
 ```
 
