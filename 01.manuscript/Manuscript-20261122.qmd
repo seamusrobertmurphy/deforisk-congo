@@ -675,6 +675,12 @@ if (!file.exists("03.outputs/TIF/hrsl_people_3km_1km.tif")) {
   ring <- terra::focalMat(hrsl1k, 3000, "circle")
   save_rast(terra::focal(hrsl1k, (ring > 0) * 1, sum, na.rm = TRUE), "03.outputs/TIF/hrsl_people_3km_1km.tif")
 }
+# Local wood supply, the people living around each cell weighted by a Gaussian kernel that falls to 1% of its peak at 8 km,
+# the distance beyond which the haulage review found almost no local supply, as a weighted mean of people per 1 km cell
+if (!file.exists("03.outputs/TIF/local_supply_1km.tif")) {
+  hrsl1k <- terra::subst(terra::rast("02.inputs/hrsl/raw/hrsl_1km.tif"), NA, 0)
+  save_rast(terra::focal(hrsl1k, terra::focalMat(hrsl1k, c(8000 / sqrt(2 * log(100)), 8000), "Gauss"), sum, na.rm = TRUE), "03.outputs/TIF/local_supply_1km.tif")
+}
 ```
 
 ```{r}
