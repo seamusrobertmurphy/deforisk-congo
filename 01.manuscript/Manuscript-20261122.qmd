@@ -342,6 +342,22 @@ if (!file.exists("03.outputs/TIF/charcoal_share.tif")) save_rast(terra::rasteriz
 ```
 
 ```{r}
+#| label: demography-layers
+#| echo: true
+#| output: false
+# Rural demography at the three radii the demography review set, 1, 3 and 8 km, for fields near homes, wood collection and the farthest fields
+# Density is averaged over a circle of each radius on a 500 m grid and kept at 500 m, the grid it was computed on. A cell the population map leaves empty counts as no people,
+# and the 2024 map stops at the province boundary, so its circles see no people outside it
+for (year in c(2018, 2024)) for (km in c(1, 3, 8)) {
+  file <- sprintf("03.outputs/TIF/population_%d_k%d_500m.tif", year, km)
+  if (!file.exists(file)) {
+    density <- terra::aggregate(terra::subst(terra::rast(sprintf("03.outputs/TIF/population_%d.tif", year)), NA, 0), 5, mean)
+    save_rast(terra::focal(density, terra::focalMat(density, km * 1000, "circle"), sum, na.rm = TRUE), file)
+  }
+}
+```
+
+```{r}
 #| label: travel-time
 #| echo: true
 #| output: false
@@ -375,6 +391,36 @@ friction_on <- function(grid, walk_method) {
   min(60 / (max(terra::rast(speeds), na.rm = TRUE) * 1000), terra::project(terra::rast("02.inputs/map/raw/friction_walking_2019.tif"), grid, method = walk_method), na.rm = TRUE)
 }
 graph <- reticulate::import("skimage.graph")
+# A search from every settlement needs a faster route finder than MCP_Geometric. The grid becomes a network once, with each step to one of the eight neighbours
+# costing the mean friction of its two cells times the step's length, as MCP_Geometric counts it, and scipy's Dijkstra search then runs from each settlement
+reticulate::py_run_string("
+import numpy as np
+from scipy.sparse import coo_matrix
+from scipy.sparse.csgraph import dijkstra
+def cost_graph(costs, step):
+    nr, nc = costs.shape
+    idx = np.arange(nr * nc).reshape(nr, nc)
+    flat = costs.ravel()
+    rows, cols, weights = [], [], []
+    for dr, dc in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]:
+        a = idx[max(0, -dr):nr - max(0, dr), max(0, -dc):nc - max(0, dc)].ravel()
+        b = idx[max(0, dr):nr + min(0, dr) or None, max(0, dc):nc + min(0, dc) or None].ravel()
+        ok = np.isfinite(flat[a]) & np.isfinite(flat[b])
+        rows.append(a[ok]); cols.append(b[ok])
+        weights.append((flat[a][ok] + flat[b][ok]) / 2.0 * step * (np.sqrt(2.0) if dr and dc else 1.0))
+    return coo_matrix((np.concatenate(weights), (np.concatenate(rows), np.concatenate(cols))), shape=(nr * nc, nr * nc)).tocsr()
+def gravity_sum(network, shape, starts, people, cap_minutes, pop_exp, time_exp, floor_hours):
+    total = np.zeros(shape[0] * shape[1])
+    for cells, p in zip(starts, people):
+        minutes = dijkstra(network, indices=[int(r) * shape[1] + int(c) for r, c in cells], limit=cap_minutes, min_only=True)
+        reach = minutes <= cap_minutes
+        total[reach] += p ** pop_exp * np.maximum(minutes[reach] / 60.0, floor_hours) ** time_exp
+    return total.reshape(shape)
+def nearest_minutes(network, shape, cells):
+    minutes = dijkstra(network, indices=[int(r) * shape[1] + int(c) for r, c in cells], min_only=True)
+    minutes[~np.isfinite(minutes)] = np.nan
+    return minutes.reshape(shape)
+")
 if (!file.exists("03.outputs/TIF/travel_time_kinshasa.tif")) {
   # Kinshasa's urban centre is the largest patch of urban centre cells, class 30, inside Kinshasa province
   # GADM version 4.1, level 1 boundaries of the Democratic Republic of the Congo
@@ -588,27 +634,61 @@ if (!file.exists("02.inputs/hrsl/raw/hrsl_1km.tif")) {
   })
   save_rast(terra::crop(terra::extend(terra::mosaic(terra::sprc(purrr::map(tiles$file, terra::rast)), fun = "max"), grid1k), grid1k), "02.inputs/hrsl/raw/hrsl_1km.tif")
 }
-if (!file.exists("03.outputs/TIF/market_access.tif")) {
-  # A settlement is a group of touching inhabited 1 km cells inside the Democratic Republic of the Congo, so Brazzaville is left out
-  # GADM version 4.1, level 1 boundaries of the Democratic Republic of the Congo
-  # https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_1.json.zip
-  pop1k <- terra::mask(terra::rast("02.inputs/hrsl/raw/hrsl_1km.tif"), terra::project(terra::vect(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE)), lc_grid$crsCode))
-  settlement <- terra::patches(terra::ifel(pop1k > 0, 1, NA), directions = 8)
-  towns <- tibble::tibble(id = terra::values(settlement)[, 1], people = terra::values(pop1k)[, 1], row = terra::rowFromCell(pop1k, seq_len(terra::ncell(pop1k))) - 1L, col = terra::colFromCell(pop1k, seq_len(terra::ncell(pop1k))) - 1L) |>
-    dplyr::filter(!is.na(id)) |>
-    dplyr::group_by(id) |>
-    dplyr::summarise(people = sum(people), starts = list(purrr::map2(as.integer(row), as.integer(col), c)))
-  costs <- terra::as.matrix(friction_on(grid1k, "average"), wide = TRUE)
-  costs[is.na(costs)] <- Inf
-  mcp <- graph$MCP_Geometric(reticulate::r_to_py(costs)$copy(), fully_connected = TRUE, sampling = terra::res(grid1k))
-  # A settlement's own cells count as half an hour away, so that no settlement weighs without limit
-  access <- 0
-  for (k in seq_len(nrow(towns))) {
-    hours <- reticulate::py_to_r(mcp$find_costs(towns$starts[[k]], max_cumulative_cost = 720)[[1]]) / 60
-    access <- access + ifelse(is.finite(hours) & hours <= 12, towns$people[k]^0.55 * pmax(hours, 0.5)^-1.25, 0)
+# The settlements and the 1 km route network are built once, and only when a layer that reads them is missing
+settlement_net <- local({
+  built <- NULL
+  function() {
+    if (is.null(built)) {
+      # A settlement is a group of touching inhabited 1 km cells inside the Democratic Republic of the Congo, so Brazzaville is left out
+      # GADM version 4.1, level 1 boundaries of the Democratic Republic of the Congo
+      # https://geodata.ucdavis.edu/gadm/gadm4.1/json/gadm41_COD_1.json.zip
+      pop1k <- terra::mask(terra::rast("02.inputs/hrsl/raw/hrsl_1km.tif"), terra::project(terra::vect(sf::st_read("/vsizip/02.inputs/gadm/raw/gadm41_COD_1.json.zip", quiet = TRUE)), lc_grid$crsCode))
+      settlement <- terra::patches(terra::ifel(pop1k > 0, 1, NA), directions = 8)
+      towns <- tibble::tibble(id = terra::values(settlement)[, 1], people = terra::values(pop1k)[, 1], row = terra::rowFromCell(pop1k, seq_len(terra::ncell(pop1k))) - 1L, col = terra::colFromCell(pop1k, seq_len(terra::ncell(pop1k))) - 1L) |>
+        dplyr::filter(!is.na(id)) |>
+        dplyr::group_by(id) |>
+        dplyr::summarise(people = sum(people), starts = list(purrr::map2(as.integer(row), as.integer(col), c)))
+      costs <- terra::as.matrix(friction_on(grid1k, "average"), wide = TRUE)
+      costs[is.na(costs)] <- Inf
+      built <<- list(towns = towns, shape = dim(costs), network = reticulate::py$cost_graph(reticulate::r_to_py(costs)$copy(), terra::res(grid1k)[1]))
+    }
+    built
   }
+})
+if (!file.exists("03.outputs/TIF/market_access.tif")) {
+  net <- settlement_net()
+  # A settlement's own cells count as half an hour away, so that no settlement weighs without limit
+  access <- reticulate::py_to_r(reticulate::py$gravity_sum(net$network, net$shape, net$towns$starts, net$towns$people, 720, 0.55, -1.25, 0.5))
   save_rast(terra::rast(access, extent = terra::ext(grid1k), crs = lc_grid$crsCode), "03.outputs/TIF/market_access_1km.tif")
   save_rast(terra::resample(terra::rast("03.outputs/TIF/market_access_1km.tif"), grid100, method = "bilinear"), "03.outputs/TIF/market_access.tif")
+}
+```
+
+```{r}
+#| label: hrsl-people
+#| echo: true
+#| output: false
+# People living within 3 km, summed from the High Resolution Settlement Layer and kept at its 1 km grid, the radius of wood collection in the field review
+# https://gee-community-catalog.org/projects/hrsl/, https://dataforgood.fb.com/tools/population-density-maps/
+if (!file.exists("03.outputs/TIF/hrsl_people_3km_1km.tif")) {
+  hrsl1k <- terra::subst(terra::rast("02.inputs/hrsl/raw/hrsl_1km.tif"), NA, 0)
+  ring <- terra::focalMat(hrsl1k, 3000, "circle")
+  save_rast(terra::focal(hrsl1k, (ring > 0) * 1, sum, na.rm = TRUE), "03.outputs/TIF/hrsl_people_3km_1km.tif")
+}
+```
+
+```{r}
+#| label: market-ladder
+#| echo: true
+#| output: false
+# Hours to the nearest settlement of at least 500, 1,500, 2,500, 5,000 and 10,000 people, the ladder of market sizes that the markets review set,
+# because no study fixed the size at which a village starts to hold a market. Each layer is kept at the 1 km grid of the route network
+ladder <- c(500, 1500, 2500, 5000, 10000)
+ladder_files <- sprintf("03.outputs/TIF/market_hours_%d_1km.tif", ladder)
+for (i in seq_along(ladder)) if (!file.exists(ladder_files[i])) {
+  net <- settlement_net()
+  minutes <- reticulate::py_to_r(reticulate::py$nearest_minutes(net$network, net$shape, unlist(net$towns$starts[net$towns$people >= ladder[i]], recursive = FALSE)))
+  save_rast(terra::rast(minutes / 60, extent = terra::ext(grid1k), crs = lc_grid$crsCode), ladder_files[i])
 }
 ```
 
